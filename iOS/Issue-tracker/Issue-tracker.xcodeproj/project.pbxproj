@@ -13,6 +13,7 @@
 		DB4C5B982A0B82EC0064C242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4C5B962A0B82EC0064C242 /* Main.storyboard */; };
 		DB4C5B9A2A0B82ED0064C242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4C5B992A0B82ED0064C242 /* Assets.xcassets */; };
 		DB4C5B9D2A0B82ED0064C242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4C5B9B2A0B82ED0064C242 /* LaunchScreen.storyboard */; };
+		DBBD75B52A0CA62E006C4EBE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBD75B42A0CA62E006C4EBE /* TabBarViewController.swift */; };
 		E05346E5DBC8E9DFC642EE57 /* Pods_Issue_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		DB4C5B992A0B82ED0064C242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB4C5B9C2A0B82ED0064C242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4C5B9E2A0B82ED0064C242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBBD75B42A0CA62E006C4EBE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "/Users/hwajin/Desktop/issue-tracker/iOS/Issue-tracker/Issue-tracker/TabBarViewController.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				DBBD75B42A0CA62E006C4EBE /* TabBarViewController.swift */,
 				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
 				DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */,
 				DB4C5B942A0B82EC0064C242 /* ViewController.swift */,
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBBD75B52A0CA62E006C4EBE /* TabBarViewController.swift in Sources */,
 				DB4C5B952A0B82EC0064C242 /* ViewController.swift in Sources */,
 				DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */,
 				DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */,
