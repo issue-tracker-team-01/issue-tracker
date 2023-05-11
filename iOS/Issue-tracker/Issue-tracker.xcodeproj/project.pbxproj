@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */; };
 		DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */; };
+		DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */; };
 		DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */; };
 		DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */; };
 		DB4C5B952A0B82EC0064C242 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4C5B942A0B82EC0064C242 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 		B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Issue_tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
+		DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionViewController.swift; sourceTree = "<group>"; };
 		DB4C5B8D2A0B82EC0064C242 /* Issue-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Issue-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */,
 				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
 				DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */,
 				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
@@ -217,6 +220,7 @@
 				DB4C5B952A0B82EC0064C242 /* ViewController.swift in Sources */,
 				DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */,
 				DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */,
+				DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */,
 				DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
