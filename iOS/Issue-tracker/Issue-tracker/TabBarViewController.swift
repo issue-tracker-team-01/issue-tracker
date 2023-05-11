@@ -38,5 +38,4 @@ class TabBarViewController: UITabBarController {
                 //각자의 프로필 사진이라 데이터 받아올 시 작업예정
                 items[3].image = .none
     }
-
 }
