@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */; };
+		DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */; };
 		DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */; };
 		DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */; };
 		DB4C5B952A0B82EC0064C242 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4C5B942A0B82EC0064C242 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 		0F66FA94D9D4EA16348D14FB /* Pods-Issue-tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Issue-tracker.release.xcconfig"; path = "Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker.release.xcconfig"; sourceTree = "<group>"; };
 		94811935BE967F35A55CF893 /* Pods-Issue-tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Issue-tracker.debug.xcconfig"; path = "Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Issue_tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
 		DB4C5B8D2A0B82EC0064C242 /* Issue-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Issue-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
+				DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */,
 				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
 				DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */,
 				DB4C5B942A0B82EC0064C242 /* ViewController.swift */,
@@ -207,8 +213,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */,
 				DB4C5B952A0B82EC0064C242 /* ViewController.swift in Sources */,
 				DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */,
+				DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */,
 				DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
