@@ -10,19 +10,23 @@ import UIKit
 class IssueListCollectionViewController: UIViewController {
 
     var collectionView: UICollectionView!
+    let ratio : CGFloat = 150/375
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setup()
-
+        let width = self.view.bounds.width
+        let layout = initLayout()
+        layout.itemSize = CGSize(width: width, height: width * ratio)
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        
+        setUI()
+        
     }
-    func setup() {
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout())
+    func setUI() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.backgroundColor = UIColor.white
         self.view.addSubview(collectionView)
     }
 }
@@ -44,7 +48,7 @@ extension IssueListCollectionViewController : UICollectionViewDataSource {
 }
 
 extension IssueListCollectionViewController : UICollectionViewDelegateFlowLayout {
-    func layout() -> UICollectionViewFlowLayout {
+    func initLayout() -> UICollectionViewFlowLayout {
         return UICollectionViewFlowLayout()
     }
 }
