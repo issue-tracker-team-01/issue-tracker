@@ -16,7 +16,7 @@ class TabBarViewController: UITabBarController {
     }
 
     func makeUI() {
-        let issueViewController = UIViewController()
+        let issueViewController = IssueListCollectionViewController()
         let labelViewController = UIViewController()
         let milestoneViewController = UIViewController()
         let myAccountVieController = UIViewController()
