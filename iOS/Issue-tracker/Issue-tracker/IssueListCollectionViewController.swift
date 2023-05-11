@@ -19,17 +19,22 @@ class IssueListCollectionViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: width, height: width * cellRatio)
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-     
+
         setUI()
-   
     }
     func setUI() {
         collectionView.delegate = self
         collectionView.dataSource = self
-     
+
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         self.view.addSubview(collectionView)
+   
+        let plusButtonSize = UIScreen.main.bounds.size.height*56/812
+        let plusButton = CreateIssueButton(frame: CGRect(x: UIScreen.main.bounds.size.width-plusButtonSize-24, y: UIScreen.main.bounds.size.height-plusButtonSize-106, width:
+                                                            plusButtonSize, height: plusButtonSize))
+        self.view.addSubview(plusButton)
+
     }
 }
 
@@ -66,8 +71,8 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
 
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
         let width = self.view.frame.width
-        let headerRatio = 94/375
-        return CGSize(width: width, height: width * 94/375)
+       let headerRatio: CGFloat = 94/375
+        return CGSize(width: width, height: width * headerRatio)
         }
 }
 

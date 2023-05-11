@@ -12,7 +12,7 @@ class CreateIssueButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .blue
+        self.backgroundColor = .link
         self.setTitle("+", for: .normal)
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
         self.clipsToBounds = true
