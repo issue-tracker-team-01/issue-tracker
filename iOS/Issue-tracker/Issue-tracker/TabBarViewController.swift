@@ -30,6 +30,13 @@ class TabBarViewController: UITabBarController {
         self.modalPresentationStyle = .fullScreen
         self.tabBar.backgroundColor = .white
 
+        guard let items = self.tabBar.items else { return }
+
+                items[0].image = UIImage(named: TabBarItems.issue.rawValue)
+                items[1].image = UIImage(named: TabBarItems.label.rawValue)
+                items[2].image = UIImage(named: TabBarItems.milestone.rawValue)
+                //각자의 프로필 사진이라 데이터 받아올 시 작업예정
+                items[3].image = .none
     }
 
 }
