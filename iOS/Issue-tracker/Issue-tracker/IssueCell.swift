@@ -6,3 +6,14 @@
 //
 
 import UIKit
+class IssueCell: UICollectionViewCell {
+    static let identifier = "Cell"
+    private let titleLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 16)
+        lbl.textAlignment = .left
+        lbl.text = "test"
+        
+        return lbl
+    }()
+}
