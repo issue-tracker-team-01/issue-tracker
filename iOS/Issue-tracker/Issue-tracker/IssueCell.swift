@@ -16,4 +16,11 @@ class IssueCell: UICollectionViewCell {
         
         return lbl
     }()
+    private let descriptionLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = .systemFont(ofSize: 10)
+        lbl.numberOfLines = 2
+        lbl.text = "asdfadfasdffaddfadfsadsfasdggggasgadgggsdsdadfgkbjlasdfgasdghjkgsdhjkgahjkasdghjklasdghjkladggasdhjkl"
+        return lbl
+    }()
 }
