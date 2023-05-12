@@ -35,4 +35,26 @@ class IssueCell: UICollectionViewCell {
         lbl.attributedText = attributedString
         return lbl
     }()
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(titleLabel)
+        addSubview(descriptionLabel)
+        addSubview(milestones)
+        milestones.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        milestones.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10).isActive = true
+
+    }
+    required init?(coder: NSCoder) {
+        fatalError("ERROR")
+    }
 }
