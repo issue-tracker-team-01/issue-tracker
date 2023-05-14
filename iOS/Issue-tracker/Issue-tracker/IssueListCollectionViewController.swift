@@ -14,7 +14,10 @@ class IssueListCollectionViewController: UIViewController {
     var createIssueButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = .link
+        button.frame = .init(x: UIScreen.main.bounds.size.width * 295/375, y: UIScreen.main.bounds.size.height * 650/812, width: 56, height: 56)
+        button.layer.cornerRadius = button.layer.frame.size.width/2
+        button.layer.masksToBounds = true
         return button
     }()
 
@@ -36,6 +39,7 @@ class IssueListCollectionViewController: UIViewController {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         self.view.addSubview(collectionView)
+        self.view.addSubview(createIssueButton)
     }
 }
 
