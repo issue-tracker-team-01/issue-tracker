@@ -11,3 +11,10 @@ enum TabBarItems: String{
     case label = "레이블"
     case myAccount = "내계정"
 }
+
+enum Font: String{
+    case regular = "SFProDisplay-Regular"
+    case medium = "SFProDisplay-Medium"
+    case semibold = "SFProDisplay-Semibold"
+    case bold = "SFProDisplay-Bold"
+}

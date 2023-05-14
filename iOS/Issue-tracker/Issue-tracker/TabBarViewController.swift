@@ -20,11 +20,12 @@ class TabBarViewController: UITabBarController {
         let labelViewController = UIViewController()
         let milestoneViewController = UIViewController()
         let myAccountVieController = UIViewController()
-
+        
         issueViewController.title = TabBarItems.issue.rawValue
         labelViewController.title = TabBarItems.label.rawValue
         milestoneViewController.title = TabBarItems.milestone.rawValue
         myAccountVieController.title = TabBarItems.myAccount.rawValue
+        
 
         self.setViewControllers([issueViewController, labelViewController, milestoneViewController, myAccountVieController], animated: false)
         self.modalPresentationStyle = .fullScreen
