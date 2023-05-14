@@ -11,6 +11,12 @@ class IssueListCollectionViewController: UIViewController {
 
     var collectionView: UICollectionView!
     let cellRatio: CGFloat = 150/375
+    var createIssueButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("+", for: .normal)
+        button.backgroundColor = .blue
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
