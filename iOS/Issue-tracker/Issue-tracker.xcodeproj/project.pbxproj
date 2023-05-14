@@ -17,6 +17,10 @@
 		DB4C5B982A0B82EC0064C242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4C5B962A0B82EC0064C242 /* Main.storyboard */; };
 		DB4C5B9A2A0B82ED0064C242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4C5B992A0B82ED0064C242 /* Assets.xcassets */; };
 		DB4C5B9D2A0B82ED0064C242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4C5B9B2A0B82ED0064C242 /* LaunchScreen.storyboard */; };
+		DB658E642A10D00B00D521C9 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E632A10D00B00D521C9 /* SF-Pro-Display-Semibold.otf */; };
+		DB658E662A10D06800D521C9 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E652A10D06800D521C9 /* SF-Pro-Display-Regular.otf */; };
+		DB658E682A10D10700D521C9 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E672A10D10700D521C9 /* SF-Pro-Display-Medium.otf */; };
+		DB658E6A2A10D11C00D521C9 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E692A10D11C00D521C9 /* SF-Pro-Display-Bold.otf */; };
 		E05346E5DBC8E9DFC642EE57 /* Pods_Issue_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +40,10 @@
 		DB4C5B992A0B82ED0064C242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB4C5B9C2A0B82ED0064C242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4C5B9E2A0B82ED0064C242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB658E632A10D00B00D521C9 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		DB658E652A10D06800D521C9 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		DB658E672A10D10700D521C9 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		DB658E692A10D11C00D521C9 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				DB658E622A10CF1900D521C9 /* Font */,
 				DB44AC012A0D1561004F3353 /* CollectionHeaderView.swift */,
 				DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */,
 				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
@@ -92,6 +101,18 @@
 				DB4C5B9E2A0B82ED0064C242 /* Info.plist */,
 			);
 			path = "Issue-tracker";
+			sourceTree = "<group>";
+		};
+		DB658E622A10CF1900D521C9 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				DB658E652A10D06800D521C9 /* SF-Pro-Display-Regular.otf */,
+				DB658E632A10D00B00D521C9 /* SF-Pro-Display-Semibold.otf */,
+				DB658E672A10D10700D521C9 /* SF-Pro-Display-Medium.otf */,
+				DB658E692A10D11C00D521C9 /* SF-Pro-Display-Bold.otf */,
+			);
+			name = Font;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E6A7D243D3EBD6C5CA2FCC04 /* Pods */ = {
@@ -163,8 +184,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB658E682A10D10700D521C9 /* SF-Pro-Display-Medium.otf in Resources */,
+				DB658E642A10D00B00D521C9 /* SF-Pro-Display-Semibold.otf in Resources */,
 				DB4C5B9D2A0B82ED0064C242 /* LaunchScreen.storyboard in Resources */,
 				DB4C5B9A2A0B82ED0064C242 /* Assets.xcassets in Resources */,
+				DB658E6A2A10D11C00D521C9 /* SF-Pro-Display-Bold.otf in Resources */,
+				DB658E662A10D06800D521C9 /* SF-Pro-Display-Regular.otf in Resources */,
 				DB4C5B982A0B82EC0064C242 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
