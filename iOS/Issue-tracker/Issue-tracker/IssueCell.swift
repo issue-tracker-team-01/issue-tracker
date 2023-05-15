@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import TagListView
+
 class IssueCell: UICollectionViewCell {
     static let identifier = "Cell"
     private let titleLabel: UILabel = {
