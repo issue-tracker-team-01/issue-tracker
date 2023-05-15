@@ -13,13 +13,14 @@ class CollectionHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.text = "이슈"
         label.font = UIFont(name: Font.semibold.rawValue, size: 32)
+        label.textColor = .neutralTextStrong
         return label
     }()
     
     private let filterButton: UIButton = {
         let filterButton = UIButton()
         filterButton.setTitle("필터", for: .normal)
-        filterButton.setTitleColor(.link, for: .normal)
+        filterButton.setTitleColor(.accentTextPrimary, for: .normal)
         filterButton.titleLabel?.font = UIFont(name: Font.medium.rawValue, size: 18) ?? UIFont()
         return filterButton
     }()
@@ -27,7 +28,7 @@ class CollectionHeaderView: UICollectionReusableView {
     private let choiceButton: UIButton = {
         let choiceButton = UIButton()
         choiceButton.setTitle("선택", for: .normal)
-        choiceButton.setTitleColor(.link, for: .normal)
+        choiceButton.setTitleColor(.accentTextPrimary, for: .normal)
         choiceButton.titleLabel?.font = UIFont(name: Font.medium.rawValue, size: 18) ?? UIFont()
         return choiceButton
     }()
