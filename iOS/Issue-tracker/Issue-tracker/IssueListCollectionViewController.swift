@@ -14,7 +14,8 @@ class IssueListCollectionViewController: UIViewController {
     var createIssueButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
-        button.backgroundColor = .link
+        button.titleLabel?.font = UIFont(name: Font.semibold.rawValue, size: 18) ?? UIFont()
+        button.backgroundColor = .accentBackgroundStrongPrimary
         button.frame = .init(x: UIScreen.main.bounds.size.width * 295/375, y: UIScreen.main.bounds.size.height * 650/812, width: 56, height: 56)
         button.layer.cornerRadius = button.layer.frame.size.width/2
         button.layer.masksToBounds = true
