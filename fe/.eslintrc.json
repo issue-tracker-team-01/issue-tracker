@@ -20,7 +20,7 @@
     "arrow-parens": ["error", "always"],
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "warn",
+    "react/prop-types": "off",
     "no-undef": "off",
     "brace-style": ["error", "stroustrup"],
     "comma-dangle": ["error", "always-multiline"],
