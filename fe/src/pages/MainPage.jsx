@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FilterBar from '../components/filterBar/FilterBar';
 import IssueTable from '../components/mainPage/issueTable/IssueTable';
 
 const PageLayout = styled.main`
@@ -10,6 +11,7 @@ const PageLayout = styled.main`
 const MainPage = () => {
   return (
     <PageLayout>
+      <FilterBar />
       <IssueTable></IssueTable>
     </PageLayout>
   );
