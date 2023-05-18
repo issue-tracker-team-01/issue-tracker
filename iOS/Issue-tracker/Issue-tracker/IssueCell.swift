@@ -27,19 +27,21 @@ class IssueCell: UICollectionViewCell {
         lbl.text = "설명(최대 두 줄까지 보여줄 수 있다)"
         return lbl
     }()
-    
-    private let milestones: UILabel = {
+
+    var milestones: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 22)
+        lbl.font = UIFont.mediumM
+        lbl.textColor = UIColor.neutralText
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "arrowshape.right")
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
-        imageAttachment.bounds = CGRect(x: 0, y: 0, width: 18, height: 18)
-        attributedString.append(NSAttributedString(string: "test"))
-        lbl.attributedText = attributedString
-        return lbl
+         imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
+         attributedString.append(NSAttributedString(attachment: imageAttachment))
+         imageAttachment.bounds = CGRect(x: 0, y: 0, width: 17, height: 18)
+         attributedString.append(NSAttributedString(string: "마일스톤"))
+         lbl.attributedText = attributedString
+         return lbl
     }()
+    
     private let tagLabel: TagListView = {
         let tags = TagListView()
         tags.bounds = CGRect(x: 0, y: 0, width: 335, height: 18)
