@@ -21,6 +21,7 @@ class FilterTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
 
         tableViewLayout()
     }
@@ -59,5 +60,33 @@ extension FilterTableViewController: UITableViewDataSource{
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
 
         return cell
+    }
+}
+
+extension FilterTableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44))
+
+        var label: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.semiBoldM
+            label.textColor = UIColor.neutralText
+            label.text = sectionKind[section]
+            headerView.addSubview(label)
+            return label
+        }()
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16)
+        ])
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 }
