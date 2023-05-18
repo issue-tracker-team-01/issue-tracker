@@ -10,14 +10,15 @@ import TagListView
 
 class IssueCell: UICollectionViewCell {
     static let identifier = "Cell"
-    private let titleLabel: UILabel = {
+    
+    var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 16)
-        lbl.textAlignment = .left
-        lbl.text = "test"
-        
+        lbl.font = UIFont.semiBoldL
+        lbl.textColor = UIColor.neutralTextStrong
+        lbl.text = "제목"
         return lbl
     }()
+    
     private let descriptionLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 10)
