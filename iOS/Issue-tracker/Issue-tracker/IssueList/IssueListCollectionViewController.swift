@@ -7,10 +7,11 @@
 
 import UIKit
 
-class IssueListCollectionViewController: UIViewController {
+class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     
     var collectionView: UICollectionView!
     let cellRatio: CGFloat = 150/375
+    let filterViewController = FilterTableViewController()
     var createIssueButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
@@ -42,6 +43,10 @@ class IssueListCollectionViewController: UIViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(createIssueButton)
     }
+    
+    func buttonTapped() {
+        self.present(filterViewController, animated: true, completion: nil)
+        }
 }
 
 extension IssueListCollectionViewController: UICollectionViewDataSource {
@@ -64,6 +69,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
         as? CollectionHeaderView else {return UICollectionReusableView()}
+        headerView.delegate = self
         return headerView
         }
     

@@ -11,7 +11,7 @@ protocol CustomViewDelegate: AnyObject {
 import UIKit
 
 class CollectionHeaderView: UICollectionReusableView {
-    static let identifier = "header"
+    weak var delegate: CustomViewDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +26,7 @@ class CollectionHeaderView: UICollectionReusableView {
         filterButton.setTitle("필터", for: .normal)
         filterButton.setTitleColor(.accentTextPrimary, for: .normal)
         filterButton.titleLabel?.font = UIFont.regularM
+        filterButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return filterButton
     }()
     
@@ -78,6 +79,10 @@ class CollectionHeaderView: UICollectionReusableView {
             titleLabel.widthAnchor.constraint(equalToConstant: 59)
         ]
         NSLayoutConstraint.activate(conArr)
+    }
+    
+    @objc private func buttonTapped() {
+            delegate?.buttonTapped()
     }
     
     required init?(coder: NSCoder) {
