@@ -58,6 +58,8 @@ extension FilterTableViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
+        let image = UIImage(systemName: "checkmark")
+        cell.accessoryView = UIImageView(image: image)
 
         return cell
     }
