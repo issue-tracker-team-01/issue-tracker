@@ -6,12 +6,13 @@ const IssueStatusButtonBlock = styled.button`
   align-items: center;
   gap: 8px;
   background-color: ${({ theme }) => theme.COLOR.GRAY100};
-  font-size: ${({ theme }) => theme.SIZE.M}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.M}px;
+  color: ${({ theme, issueState }) => (issueState ? theme.COLOR.GRAY900 : theme.COLOR.GRAY700)};
 `;
 
-const IssueStatusButton = ({ imgSrc, imgAlt, buttonName }) => {
+const IssueStatusButton = ({ imgSrc, imgAlt, buttonName, issueState, onClick }) => {
   return (
-    <IssueStatusButtonBlock>
+    <IssueStatusButtonBlock issueState={issueState} onClick={onClick}>
       <img src={imgSrc} alt={imgAlt} />
       {buttonName}
     </IssueStatusButtonBlock>

@@ -13,10 +13,14 @@ const IssueTableHeaderContainer = styled.div`
   background-color: ${({ theme }) => theme.COLOR.GRAY100};
 `;
 
-const IssueTableHeader = () => {
+const IssueTableHeader = ({ issueState, issues, onChangeIssueState }) => {
   return (
     <IssueTableHeaderContainer>
-      <IssueTableHeaderLeft />
+      <IssueTableHeaderLeft
+        issueState={issueState}
+        issues={issues}
+        onChangeIssueState={onChangeIssueState}
+      />
       <IssueTableHeaderRight />
     </IssueTableHeaderContainer>
   );
