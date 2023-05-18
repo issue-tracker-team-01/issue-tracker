@@ -5,6 +5,7 @@ import userImageLarge from '../../assets/images/userImageLarge.svg';
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 50px;
 `;
 
 const UserImage = styled.img`
