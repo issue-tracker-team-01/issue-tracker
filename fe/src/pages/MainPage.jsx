@@ -31,7 +31,7 @@ const MainPage = () => {
   const [issueState, setIssueState] = useState(true);
 
   const changeIssueStateHandler = () => {
-    setIssueState(!issueState);
+    setIssueState((prevIssueState) => !prevIssueState);
   };
 
   return (
