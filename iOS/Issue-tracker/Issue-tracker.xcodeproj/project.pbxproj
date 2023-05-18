@@ -91,18 +91,11 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				DB902B782A16B4D50007BEB9 /* IssueList */,
+				DB902B7A2A16B5190007BEB9 /* Resource */,
+				DB902B7C2A16B5EC0007BEB9 /* Help */,
 				DB658E622A10CF1900D521C9 /* Font */,
-				DB44AC012A0D1561004F3353 /* CollectionHeaderView.swift */,
-				DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */,
-				DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */,
-				DB902B762A16AF0F0007BEB9 /* UIFont+Extension.swift */,
-				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
 				DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */,
-				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
-				DB902B742A16AEE80007BEB9 /* IssueCell.swift */,
-				DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */,
-				DB4C5B962A0B82EC0064C242 /* Main.storyboard */,
-				DB4C5B992A0B82ED0064C242 /* Assets.xcassets */,
 				DB4C5B9B2A0B82ED0064C242 /* LaunchScreen.storyboard */,
 				DB4C5B9E2A0B82ED0064C242 /* Info.plist */,
 			);
@@ -119,6 +112,37 @@
 			);
 			name = Font;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		DB902B782A16B4D50007BEB9 /* IssueList */ = {
+			isa = PBXGroup;
+			children = (
+				DB44AC012A0D1561004F3353 /* CollectionHeaderView.swift */,
+				DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */,
+				DB902B742A16AEE80007BEB9 /* IssueCell.swift */,
+			);
+			path = IssueList;
+			sourceTree = "<group>";
+		};
+		DB902B7A2A16B5190007BEB9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DB4C5B962A0B82EC0064C242 /* Main.storyboard */,
+				DB4C5B992A0B82ED0064C242 /* Assets.xcassets */,
+				DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */,
+				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DB902B7C2A16B5EC0007BEB9 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
+				DB902B762A16AF0F0007BEB9 /* UIFont+Extension.swift */,
+				DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		E6A7D243D3EBD6C5CA2FCC04 /* Pods */ = {
