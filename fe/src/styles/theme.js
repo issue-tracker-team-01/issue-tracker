@@ -14,14 +14,14 @@ const THEME = {
     NAVY: '#0025E6',
     RED: '#FF3B30',
   },
-  SIZE: {
+  FONT_SIZE: {
     XXL: 32,
     XL: 24,
     L: 18,
     M: 16,
     S: 12,
   },
-  WEIGHT: {
+  FONT_WEIGHT: {
     BOLD: 700,
     REGULAR: 500,
   },
