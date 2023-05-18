@@ -20,6 +20,8 @@
 		DB658E662A10D06800D521C9 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E652A10D06800D521C9 /* SF-Pro-Display-Regular.otf */; };
 		DB658E682A10D10700D521C9 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E672A10D10700D521C9 /* SF-Pro-Display-Medium.otf */; };
 		DB658E6A2A10D11C00D521C9 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB658E692A10D11C00D521C9 /* SF-Pro-Display-Bold.otf */; };
+		DB902B752A16AEE80007BEB9 /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB902B742A16AEE80007BEB9 /* IssueCell.swift */; };
+		DB902B772A16AF0F0007BEB9 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB902B762A16AF0F0007BEB9 /* UIFont+Extension.swift */; };
 		DBCF80F72A11D1F8008BED58 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */; };
 		E05346E5DBC8E9DFC642EE57 /* Pods_Issue_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +45,8 @@
 		DB658E652A10D06800D521C9 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		DB658E672A10D10700D521C9 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		DB658E692A10D11C00D521C9 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		DB902B742A16AEE80007BEB9 /* IssueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
+		DB902B762A16AF0F0007BEB9 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,16 +91,11 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
+				DB902B782A16B4D50007BEB9 /* IssueList */,
+				DB902B7A2A16B5190007BEB9 /* Resource */,
+				DB902B7C2A16B5EC0007BEB9 /* Help */,
 				DB658E622A10CF1900D521C9 /* Font */,
-				DB44AC012A0D1561004F3353 /* CollectionHeaderView.swift */,
-				DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */,
-				DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */,
-				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
 				DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */,
-				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
-				DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */,
-				DB4C5B962A0B82EC0064C242 /* Main.storyboard */,
-				DB4C5B992A0B82ED0064C242 /* Assets.xcassets */,
 				DB4C5B9B2A0B82ED0064C242 /* LaunchScreen.storyboard */,
 				DB4C5B9E2A0B82ED0064C242 /* Info.plist */,
 			);
@@ -113,6 +112,37 @@
 			);
 			name = Font;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		DB902B782A16B4D50007BEB9 /* IssueList */ = {
+			isa = PBXGroup;
+			children = (
+				DB44AC012A0D1561004F3353 /* CollectionHeaderView.swift */,
+				DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */,
+				DB902B742A16AEE80007BEB9 /* IssueCell.swift */,
+			);
+			path = IssueList;
+			sourceTree = "<group>";
+		};
+		DB902B7A2A16B5190007BEB9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DB4C5B962A0B82EC0064C242 /* Main.storyboard */,
+				DB4C5B992A0B82ED0064C242 /* Assets.xcassets */,
+				DB4C5B922A0B82EC0064C242 /* SceneDelegate.swift */,
+				DB4C5B902A0B82EC0064C242 /* AppDelegate.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DB902B7C2A16B5EC0007BEB9 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */,
+				DB902B762A16AF0F0007BEB9 /* UIFont+Extension.swift */,
+				DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		E6A7D243D3EBD6C5CA2FCC04 /* Pods */ = {
@@ -136,6 +166,7 @@
 				DB4C5B8A2A0B82EC0064C242 /* Frameworks */,
 				DB4C5B8B2A0B82EC0064C242 /* Resources */,
 				DB3723EA2A0B849F009522E9 /* SwiftLint */,
+				60F9A00ECEFBC57335EF53C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,6 +250,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		60F9A00ECEFBC57335EF53C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DB3723EA2A0B849F009522E9 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,8 +295,10 @@
 				DBCF80F72A11D1F8008BED58 /* UIColor+Extension.swift in Sources */,
 				DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */,
 				DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */,
+				DB902B752A16AEE80007BEB9 /* IssueCell.swift in Sources */,
 				DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */,
 				DB44AC022A0D1561004F3353 /* CollectionHeaderView.swift in Sources */,
+				DB902B772A16AF0F0007BEB9 /* UIFont+Extension.swift in Sources */,
 				DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */,
 				DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */,
 			);
