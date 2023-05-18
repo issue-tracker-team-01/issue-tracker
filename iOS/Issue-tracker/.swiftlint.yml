@@ -1,7 +1,11 @@
 included:
   - Issue-tracker
+excluded:
+  - Pods
+  - Issue-tracker/IssueListCollectionViewController.swift
 disabled_rules:
   - todo
+  - trailing_whitespace
 indentation_width:
   indentation_width: 4
 force_unwrapping:
