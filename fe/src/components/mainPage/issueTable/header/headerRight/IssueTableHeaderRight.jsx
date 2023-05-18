@@ -6,7 +6,7 @@ import IssueFilterButton from './IssueFilterButton';
 const IssueTableHeaderRightBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
 `;
 
 const IssueTableHeaderRight = () => {
