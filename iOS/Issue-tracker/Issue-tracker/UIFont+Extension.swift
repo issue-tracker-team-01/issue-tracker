@@ -1,81 +1,40 @@
 //
-//  UIFont+Extestion.swift
-//  Issue-tracker
+// UIFont+Extestion.swift
+// Issue-tracker
 //
-//  Created by 김하림 on 2023/05/16.
+// Created by 김하림 on 2023/05/16.
 //
-
 import UIKit
-
 extension UIFont {
-    private static let sfProSemiBoldFontName = "SF-Pro-Display-Semibold"
-    private static let sfProMediumFontName = "SF-Pro-Display-Medium"
+    enum FontType: String {
+        case semibold = "SFProDisplay-Semibold"
+        case medium = "SFProDisplay-Medium"
+        case regular = "SFProDisplay-Regular"
+        case bold = "SFProDisplay-Bold"
+    }
     enum FontSize: CGFloat {
-        case doubleXLarge = 32
+        case XXL = 32
         case xLarge = 24
-        case large = 18
+        case large, regularM = 18
+        case mediumM, boldM = 16
         case semiBoldM = 15
-        case mediumM = 16
         case small = 12
     }
-    static func semiBoldXXL() -> UIFont {
-        let fontSize = FontSize.doubleXLarge.rawValue
-        let customFont = UIFont(name: Self.sfProSemiBoldFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        return customFont ?? systemFont
-    }
-    static func semiBoldXL() -> UIFont {
-        let fontSize = FontSize.xLarge.rawValue
-        let customFont = UIFont(name: Self.sfProSemiBoldFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        return customFont ?? systemFont
-    }
-    static func semiBoldLarge() -> UIFont {
-        let fontSize = FontSize.large.rawValue
-        let customFont = UIFont(name: Self.sfProSemiBoldFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        return customFont ?? systemFont
-    }
-    static func semiBoldM() -> UIFont {
-        let fontSize = FontSize.semiBoldM.rawValue
-        let customFont = UIFont(name: Self.sfProSemiBoldFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        return customFont ?? systemFont
-    }
-    static func semiBoldSamll() -> UIFont {
-        let fontSize = FontSize.small.rawValue
-        let customFont = UIFont(name: Self.sfProSemiBoldFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        return customFont ?? systemFont
-    }
-    static func mediumXXL() -> UIFont {
-        let fontSize = FontSize.doubleXLarge.rawValue
-        let customFont = UIFont(name: Self.sfProMediumFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        return customFont ?? systemFont
-    }
-    static func mediumXL() -> UIFont {
-        let fontSize = FontSize.xLarge.rawValue
-        let customFont = UIFont(name: Self.sfProMediumFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        return customFont ?? systemFont
-    }
-    static func mediumLarge() -> UIFont {
-        let fontSize = FontSize.large.rawValue
-        let customFont = UIFont(name: Self.sfProMediumFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        return customFont ?? systemFont
-    }
-    static func mediumM() -> UIFont {
-        let fontSize = FontSize.mediumM.rawValue
-        let customFont = UIFont(name: Self.sfProMediumFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        return customFont ?? systemFont
-    }
-    static func mediumSmall() -> UIFont {
-        let fontSize = FontSize.small.rawValue
-        let customFont = UIFont(name: Self.sfProMediumFontName, size: fontSize)
-        let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .medium)
-        return customFont ?? systemFont
-    }
+    static let semiBoldXXL = UIFont(name: FontType.semibold.rawValue, size: FontSize.XXL.rawValue)
+    static let semiBoldXL = UIFont(name: FontType.semibold.rawValue, size: FontSize.xLarge.rawValue)
+    static let semiBoldL = UIFont(name: FontType.semibold.rawValue, size: FontSize.large.rawValue)
+    static let semiBoldM = UIFont(name: FontType.semibold.rawValue, size: FontSize.semiBoldM.rawValue)
+    static let semiBoldS = UIFont(name: FontType.semibold.rawValue, size: FontSize.small.rawValue)
+    static let mediumXXL = UIFont(name: FontType.medium.rawValue, size: FontSize.XXL.rawValue)
+    static let mediumXL = UIFont(name: FontType.medium.rawValue, size: FontSize.xLarge.rawValue)
+    static let mediumL = UIFont(name: FontType.medium.rawValue, size: FontSize.large.rawValue)
+    static let mediumM = UIFont(name: FontType.medium.rawValue, size: FontSize.mediumM.rawValue)
+    static let mediumS = UIFont(name: FontType.medium.rawValue, size: FontSize.small.rawValue)
+    static let regularXXL = UIFont(name: FontType.regular.rawValue, size: FontSize.XXL.rawValue)
+    static let regularXL = UIFont(name: FontType.regular.rawValue, size: FontSize.xLarge.rawValue)
+    static let regularL = UIFont(name: FontType.regular.rawValue, size: FontSize.large.rawValue)
+    static let regularM = UIFont(name: FontType.regular.rawValue, size: FontSize.regularM.rawValue)
+    static let boldL = UIFont(name: FontType.bold.rawValue, size: FontSize.large.rawValue)
+    static let boldM = UIFont(name: FontType.bold.rawValue, size: FontSize.boldM.rawValue)
+    static let boldS = UIFont(name: FontType.bold.rawValue, size: FontSize.small.rawValue)
 }
