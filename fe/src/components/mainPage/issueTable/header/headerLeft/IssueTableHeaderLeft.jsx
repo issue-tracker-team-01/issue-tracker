@@ -18,7 +18,17 @@ const IssueStatusButtonBox = styled.div`
   margin-left: 20px;
 `;
 
-const IssueTableHeaderLeft = () => {
+const IssueTableHeaderLeft = ({ issueState, issues, onChangeIssueState }) => {
+  const openButtonHandler = () => {
+    if (issueState) return;
+    onChangeIssueState(false);
+  };
+
+  const closeButtonHandler = () => {
+    if (!issueState) return;
+    onChangeIssueState(true);
+  };
+
   return (
     <IssueTableHeaderLeftBox>
       <Checkbox />
@@ -27,11 +37,15 @@ const IssueTableHeaderLeft = () => {
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
+          issueState={issueState}
+          onClick={openButtonHandler}
         />
         <IssueStatusButton
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
+          issueState={!issueState}
+          onClick={closeButtonHandler}
         />
       </IssueStatusButtonBox>
     </IssueTableHeaderLeftBox>
