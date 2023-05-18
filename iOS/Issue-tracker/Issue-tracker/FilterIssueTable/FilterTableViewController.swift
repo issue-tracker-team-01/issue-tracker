@@ -20,6 +20,7 @@ class FilterTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
 
         tableViewLayout()
     }
@@ -40,5 +41,23 @@ class FilterTableViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
+}
 
+extension FilterTableViewController: UITableViewDataSource{
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+    return sectionKind.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filterMenu[section].count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
+
+        return cell
+    }
 }
