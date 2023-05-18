@@ -11,6 +11,13 @@ class FilterTableViewController: UIViewController {
 
     let tableView = UITableView()
     
+    let sectionKind = ["상태", "담당자", "레이블"]
+    let status = ["열린 이슈", "내가 작성한 이슈", "내가 댓글을 남긴 이슈", "닫힌 이슈"]
+    var manager = ["chloe", "head", "sam", "zello"]
+    var labelKind = ["레이블 없음", "그룹프로젝트:이슈트래커"]
+    
+    lazy var filterMenu = [status, manager, labelKind]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
