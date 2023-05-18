@@ -19,13 +19,15 @@ class IssueCell: UICollectionViewCell {
         return lbl
     }()
     
-    private let descriptionLabel: UILabel = {
+    var descriptionLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 10)
         lbl.numberOfLines = 2
-        lbl.text = "asdfadfasdffaddfadfsadsfasdggggasgadgggsdsdadfgkbjlasdfgasdghjkgsdhjkgahjkasdghjklasdghjkladggasdhjkl"
+        lbl.font = UIFont.mediumM
+        lbl.textColor = UIColor.neutralText
+        lbl.text = "설명(최대 두 줄까지 보여줄 수 있다)"
         return lbl
     }()
+    
     private let milestones: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 22)
