@@ -72,6 +72,20 @@ class IssueCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        [titleLabel, descriptionLabel, milestones, tagLabel].forEach {
+            addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview($0)
+        }
+        addSubview(stackView)
+        tagLabel.tagBackgroundColor = .blue
+        
+        let consArr : [NSLayoutConstraint] = [
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(consArr)
+        
     }
     
     required init?(coder: NSCoder) {
