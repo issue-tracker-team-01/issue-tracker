@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import filterButton from '../../assets/images/filterButton.svg';
+import filterButton from '../../../../assets/icons/DropdownIcon.svg';
 
 const FilterBarContainer = styled.div`
   display: flex;
@@ -8,6 +8,7 @@ const FilterBarContainer = styled.div`
   height: 40px;
   border-radius: 11px;
   border-collapse: collapse;
+  margin-bottom: 24px;
 `;
 
 const FilterButton = styled.summary`
