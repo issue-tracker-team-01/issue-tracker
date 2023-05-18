@@ -42,13 +42,20 @@ class IssueCell: UICollectionViewCell {
          return lbl
     }()
     
-    private let tagLabel: TagListView = {
+    var tagLabel: TagListView = {
         let tags = TagListView()
-        tags.bounds = CGRect(x: 0, y: 0, width: 335, height: 18)
-        tags.addTags(["Add", "two", "tags"])
-        tags.insertTag("This should be the second tag", at: 1)
-        tags.alignment = .leading
-        tags.textFont = UIFont.systemFont(ofSize: 12)
+        tags.textFont = UIFont.mediumS ?? UIFont()
+        tags.textColor = UIColor.accentTextStrong ?? UIColor()
+        let long = 355
+        let short = 18
+        tags.bounds = CGRect(x: 0, y: 0, width: long, height: short)
+        tags.cornerRadius = CGFloat(long*short/long/2)
+        tags.layer.masksToBounds = true
+        tags.addTag("라벨1")
+        tags.paddingX = 16
+        tags.paddingY = 4
+        tags.tagBackgroundColor = .orange
+        tags.insertTag("라벨 새치기", at: 0)
         return tags
     }()
     
