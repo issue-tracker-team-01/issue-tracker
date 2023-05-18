@@ -37,7 +37,7 @@ class IssueListCollectionViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(IssueCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         self.view.addSubview(collectionView)
         self.view.addSubview(createIssueButton)
@@ -55,13 +55,9 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath)
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3)
-        } else {
-            cell.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
-        }
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
+   
+         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

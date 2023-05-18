@@ -9,7 +9,7 @@ import UIKit
 import TagListView
 
 class IssueCell: UICollectionViewCell {
-    static let identifier = "Cell"
+    static let identifier = "cell"
     
     var titleLabel: UILabel = {
         let lbl = UILabel()
