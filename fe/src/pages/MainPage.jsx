@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import FilterBar from '../components/mainPage/nav/filterBar/FilterBar';
 import IssueTable from '../components/mainPage/issueTable/IssueTable';
+import Nav from '../components/mainPage/nav/Nav';
 
 const PageLayout = styled.main`
   display: flex;
@@ -34,13 +34,13 @@ const MainPage = () => {
 
   return (
     <PageLayout>
-      <FilterBar />
+      <Nav />
       {issuePageData && (
         <IssueTable
           issueState={issueState}
           issuePageData={issuePageData}
           onChangeIssueState={changeIssueStateHandler}
-        ></IssueTable>
+        />
       )}
     </PageLayout>
   );
