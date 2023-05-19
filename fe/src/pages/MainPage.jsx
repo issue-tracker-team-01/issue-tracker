@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import FilterBar from '../components/filterBar/FilterBar';
 import IssueTable from '../components/mainPage/issueTable/IssueTable';
+import Nav from '../components/mainPage/nav/Nav';
 
 const PageLayout = styled.main`
   display: flex;
@@ -11,7 +11,7 @@ const PageLayout = styled.main`
 const MainPage = () => {
   return (
     <PageLayout>
-      <FilterBar />
+      <Nav />
       <IssueTable></IssueTable>
     </PageLayout>
   );
