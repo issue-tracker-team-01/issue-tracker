@@ -26,7 +26,7 @@ class CollectionHeaderView: UICollectionReusableView {
         filterButton.setTitle("필터", for: .normal)
         filterButton.setTitleColor(.accentTextPrimary, for: .normal)
         filterButton.titleLabel?.font = UIFont.regularM
-        filterButton.addTarget(CollectionHeaderView.self, action: #selector(buttonTapped), for: .touchUpInside)
+        filterButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return filterButton
     }()
     
