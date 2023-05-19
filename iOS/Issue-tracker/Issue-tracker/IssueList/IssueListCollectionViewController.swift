@@ -62,7 +62,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
    
-         return cell ?? UICollectionViewCell()
+        return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -78,7 +78,6 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         let headerRatio: CGFloat = 94/375
         
         return CGSize(width: width, height: width * headerRatio)
-
     }
 }
 

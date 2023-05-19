@@ -44,7 +44,7 @@ class FilterTableViewController: UIViewController {
     }
 }
 
-extension FilterTableViewController: UITableViewDataSource{
+extension FilterTableViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
     return sectionKind.count
@@ -69,7 +69,7 @@ extension FilterTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44))
 
-        var label: UILabel = {
+        let label: UILabel = {
             let label = UILabel()
             label.font = UIFont.semiBoldM
             label.textColor = UIColor.neutralText
