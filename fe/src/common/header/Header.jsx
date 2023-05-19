@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import logo from '../../assets/images/logo.svg';
-import userImageLarge from '../../assets/images/userImageLarge.svg';
+import Logo from '../../assets/images/Logo.svg';
+import UserImageLarge from '../../assets/images/UserImageLarge.svg';
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -15,8 +15,8 @@ const UserImage = styled.img`
 const Header = () => {
   return (
     <HeaderContainer>
-      <img src={logo} />
-      <UserImage src={userImageLarge} />
+      <img src={Logo} />
+      <UserImage src={UserImageLarge} />
     </HeaderContainer>
   );
 };
