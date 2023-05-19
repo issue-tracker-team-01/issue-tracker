@@ -6,7 +6,7 @@ const IssueTableListBox = styled.ul`
   flex-direction: column;
 `;
 
-const IssueTableList = ({ issues }) => {
+const IssueTableList = ({ issuePageData: { issues } }) => {
   return (
     <IssueTableListBox>
       {issues.map((issue) => (

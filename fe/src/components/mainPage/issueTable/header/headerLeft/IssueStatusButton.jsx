@@ -10,11 +10,11 @@ const IssueStatusButtonBlock = styled.button`
   color: ${({ theme, issueState }) => (issueState ? theme.COLOR.GRAY900 : theme.COLOR.GRAY700)};
 `;
 
-const IssueStatusButton = ({ imgSrc, imgAlt, buttonName, issueState, onClick }) => {
+const IssueStatusButton = ({ imgSrc, imgAlt, buttonName, issuesCount, issueState, onClick }) => {
   return (
     <IssueStatusButtonBlock issueState={issueState} onClick={onClick}>
       <img src={imgSrc} alt={imgAlt} />
-      {buttonName}
+      {buttonName} ({issuesCount})
     </IssueStatusButtonBlock>
   );
 };

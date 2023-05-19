@@ -8,15 +8,15 @@ const IssueTableContainer = styled.div`
   border-radius: 16px;
 `;
 
-const IssueTable = ({ issueState, issues, onChangeIssueState }) => {
+const IssueTable = ({ issueState, issuePageData, onChangeIssueState }) => {
   return (
     <IssueTableContainer>
       <IssueTableHeader
         issueState={issueState}
-        issues={issues}
+        issuePageData={issuePageData}
         onChangeIssueState={onChangeIssueState}
       ></IssueTableHeader>
-      <IssueTableList issueState={issueState} issues={issues}></IssueTableList>
+      <IssueTableList issuePageData={issuePageData}></IssueTableList>
     </IssueTableContainer>
   );
 };

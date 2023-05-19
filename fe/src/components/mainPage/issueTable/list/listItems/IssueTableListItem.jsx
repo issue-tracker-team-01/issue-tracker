@@ -54,6 +54,12 @@ const IssueTitle = styled.div`
   line-height: 32px;
 `;
 
+const IssueLabelBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+`;
+
 const IssueInfo = styled.div`
   display: flex;
   gap: 3px;
@@ -69,7 +75,9 @@ const UserIcon = styled.div`
   background-image: url(${UserImage});
 `;
 
-const IssueTableListItem = ({ issue: { id, title, author } }) => {
+const IssueTableListItem = ({
+  issue: { id, title, createdDateTime, labels, milestone, author },
+}) => {
   return (
     <IssueTableListItemBlock>
       <IssueTableListItemLeft>
@@ -78,15 +86,22 @@ const IssueTableListItem = ({ issue: { id, title, author } }) => {
           <ListItemLeftContentTop>
             <img src={OpenIssueStatusIcon} />
             <IssueTitle>{title}</IssueTitle>
-            <Label>document</Label>
+            <IssueLabelBox>
+              {labels.length > 0 &&
+                labels.map((label) => <Label key={label.id} labelName={label}></Label>)}
+            </IssueLabelBox>
           </ListItemLeftContentTop>
           <ListItemLeftContentBottom>
             <IssueInfo>#{id}</IssueInfo>
-            <IssueInfo>이 이슈가 8분 전, {author}님에 의해 작성되었습니다</IssueInfo>
             <IssueInfo>
-              <img src={MilestoneIcon} />
-              그룹프로젝트
+              이 이슈가 {createdDateTime}분 전, {author}님에 의해 작성되었습니다
             </IssueInfo>
+            {milestone && (
+              <IssueInfo>
+                <img src={MilestoneIcon} />
+                {milestone}
+              </IssueInfo>
+            )}
           </ListItemLeftContentBottom>
         </IssueTableListItemLeftContent>
       </IssueTableListItemLeft>
