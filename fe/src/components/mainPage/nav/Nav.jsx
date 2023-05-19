@@ -11,15 +11,23 @@ const NavContainer = styled.div`
   margin-bottom: 24px;
 `;
 
+const SubNavBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+`;
+
 const Nav = () => {
   return (
     <NavContainer>
       <FilterBar />
-      <Tab></Tab>
-      <Button type="container" size="medium">
-        <img src={PlusIcon} />
-        이슈 작성
-      </Button>
+      <SubNavBlock>
+        <Tab></Tab>
+        <Button type="container" size="medium">
+          <img src={PlusIcon} />
+          이슈 작성
+        </Button>
+      </SubNavBlock>
     </NavContainer>
   );
 };
