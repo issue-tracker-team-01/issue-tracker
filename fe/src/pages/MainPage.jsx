@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import FilterBar from '../components/mainPage/nav/filterBar/FilterBar';
 import IssueTable from '../components/mainPage/issueTable/IssueTable';
@@ -8,27 +8,25 @@ const PageLayout = styled.main`
   flex-direction: column;
 `;
 
-const issues = [
-  {
-    id: 1,
-    title: '집가고 싶다',
-    createdDateTime: '2023-05-10 10:10:10',
-    labels: ['BE', 'bug'],
-    milestone: '테스크01',
-    author: '코어',
-  },
-  {
-    id: 3,
-    title: '살려주세요',
-    createDate: '2023-05-10 14:35:10',
-    labels: [],
-    milestone: '',
-    author: 'ManJu',
-  },
-];
-
 const MainPage = () => {
   const [issueState, setIssueState] = useState(true);
+  const [issuePageData, setIssuePageData] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const url = issueState ? 'api/openedIssuePage' : 'api/closedIssuePage';
+      const response = await fetch(url);
+      const IssuePageData = await response.json();
+      setIssuePageData(IssuePageData);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [issueState]);
 
   const changeIssueStateHandler = () => {
     setIssueState((prevIssueState) => !prevIssueState);
@@ -37,11 +35,13 @@ const MainPage = () => {
   return (
     <PageLayout>
       <FilterBar />
-      <IssueTable
-        issueState={issueState}
-        issues={issues}
-        onChangeIssueState={changeIssueStateHandler}
-      ></IssueTable>
+      {issuePageData && (
+        <IssueTable
+          issueState={issueState}
+          issuePageData={issuePageData}
+          onChangeIssueState={changeIssueStateHandler}
+        ></IssueTable>
+      )}
     </PageLayout>
   );
 };
