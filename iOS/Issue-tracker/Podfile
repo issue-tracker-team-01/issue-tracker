@@ -6,6 +6,17 @@ target 'Issue-tracker' do
   use_frameworks!
 
   pod 'SwiftLint'
+  pod 'TagListView', '~> 1.0'
   # Pods for Issue-tracker
   
+end
+
+post_install do |installer|
+    installer.generated_projects.each do |project|
+          project.targets.each do |target|
+              target.build_configurations.each do |config|
+                  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'
+               end
+          end
+   end
 end
