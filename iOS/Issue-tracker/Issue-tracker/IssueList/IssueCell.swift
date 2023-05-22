@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import TagListView
 
 class IssueCell: UICollectionViewCell {
@@ -34,12 +35,12 @@ class IssueCell: UICollectionViewCell {
         lbl.textColor = UIColor.neutralText
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
-         imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
-         attributedString.append(NSAttributedString(attachment: imageAttachment))
-         imageAttachment.bounds = CGRect(x: 0, y: 0, width: 17, height: 18)
-         attributedString.append(NSAttributedString(string: "마일스톤"))
-         lbl.attributedText = attributedString
-         return lbl
+        imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        imageAttachment.bounds = CGRect(x: 0, y: 0, width: 17, height: 18)
+        attributedString.append(NSAttributedString(string: "마일스톤"))
+        lbl.attributedText = attributedString
+        return lbl
     }()
     
     var tagLabel: TagListView = {
@@ -80,7 +81,7 @@ class IssueCell: UICollectionViewCell {
         addSubview(stackView)
         tagLabel.tagBackgroundColor = .blue
         
-        let consArr : [NSLayoutConstraint] = [
+        let consArr: [NSLayoutConstraint] = [
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ]

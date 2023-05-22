@@ -7,10 +7,11 @@
 
 import UIKit
 
-class IssueListCollectionViewController: UIViewController {
+class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     
     var collectionView: UICollectionView!
     let cellRatio: CGFloat = 150/375
+    let filterViewController = FilterTableViewController()
     var createIssueButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
@@ -42,6 +43,10 @@ class IssueListCollectionViewController: UIViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(createIssueButton)
     }
+    
+    func buttonTapped() {
+        self.present(filterViewController, animated: true, completion: nil)
+        }
 }
 
 extension IssueListCollectionViewController: UICollectionViewDataSource {
@@ -57,13 +62,14 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
    
-         return cell ?? UICollectionViewCell()
+        return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
         as? CollectionHeaderView else {return UICollectionReusableView()}
+        headerView.delegate = self
         return headerView
         }
     
@@ -72,7 +78,6 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         let headerRatio: CGFloat = 94/375
         
         return CGSize(width: width, height: width * headerRatio)
-
     }
 }
 
