@@ -70,7 +70,7 @@ extension FilterTableViewController: UITableViewDataSource {
 
 extension FilterTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44))
+        let headerView = UIView()
 
         let label: UILabel = {
             let label = UILabel()
