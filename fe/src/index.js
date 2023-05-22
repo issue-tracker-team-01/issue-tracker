@@ -5,6 +5,7 @@ import App from './App';
 import GlobalStyle from './styles/GlobalStyle';
 import THEME from './styles/theme';
 import { worker } from './mocks/worker';
+import { BrowserRouter } from 'react-router-dom';
 
 if (process.env.NODE_ENV === 'development') {
   worker.start();
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={THEME}>
       <GlobalStyle />
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
 );
