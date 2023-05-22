@@ -18,6 +18,9 @@ class FilterTableViewController: UIViewController {
     
     private lazy var filterMenu = [status, manager, labelKind]
     
+    private let filterListCellIdentifier = "filterListCell"
+    private let filterListHeaderIdentifier = "filterListHeader"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -28,8 +31,8 @@ class FilterTableViewController: UIViewController {
     
     func tableViewLayout() {
         tableView.rowHeight = 44
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.filterListCellIdentifier)
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.filterListHeaderIdentifier)
         
         view.addSubview(tableView)
         
@@ -55,7 +58,7 @@ extension FilterTableViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
         let image = UIImage(systemName: "checkmark")
