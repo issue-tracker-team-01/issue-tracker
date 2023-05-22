@@ -9,14 +9,17 @@ import UIKit
 
 class FilterTableViewController: UIViewController {
 
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
-    let sectionKind = ["상태", "담당자", "레이블"]
-    let status = ["열린 이슈", "내가 작성한 이슈", "내가 댓글을 남긴 이슈", "닫힌 이슈"]
-    var manager = ["chloe", "head", "sam", "zello"]
-    var labelKind = ["레이블 없음", "그룹프로젝트:이슈트래커"]
+    private let sectionKind = ["상태", "담당자", "레이블"]
+    private let status = ["열린 이슈", "내가 작성한 이슈", "내가 댓글을 남긴 이슈", "닫힌 이슈"]
+    private var manager = ["chloe", "head", "sam", "zello"]
+    private var labelKind = ["레이블 없음", "그룹프로젝트:이슈트래커"]
     
-    lazy var filterMenu = [status, manager, labelKind]
+    private lazy var filterMenu = [status, manager, labelKind]
+    
+    private let filterListCellIdentifier = "filterListCell"
+    private let filterListHeaderIdentifier = "filterListHeader"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,8 @@ class FilterTableViewController: UIViewController {
     
     func tableViewLayout() {
         tableView.rowHeight = 44
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.filterListCellIdentifier)
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.filterListHeaderIdentifier)
         
         view.addSubview(tableView)
         
@@ -55,7 +58,7 @@ extension FilterTableViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
         let image = UIImage(systemName: "checkmark")
@@ -67,7 +70,7 @@ extension FilterTableViewController: UITableViewDataSource {
 
 extension FilterTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 44))
+        let headerView = UIView()
 
         let label: UILabel = {
             let label = UILabel()
