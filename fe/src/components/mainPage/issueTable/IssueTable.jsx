@@ -22,3 +22,5 @@ const IssueTable = ({ issueState, issuePageData, onChangeIssueState }) => {
 };
 
 export default IssueTable;
+
+
