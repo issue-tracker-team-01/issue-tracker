@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import IssueStateFilter from './headerLeft/IssueStateFilter';
-import IssueFilterOptions from './headerRight/IssueFilterOptions';
+import IssueStateFilter from './issueStateFilter/IssueStateFilter';
+import IssueFilterOptions from './issueFilterOptions/IssueFilterOptions';
 
 const IssueTableHeaderContainer = styled.div`
   display: flex;
