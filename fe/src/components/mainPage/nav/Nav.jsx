@@ -1,8 +1,8 @@
 import FilterBar from './filterBar/FilterBar';
 import styled from 'styled-components';
-import Button from '../../../common/button/Button';
+import Button from '../../../components/common/button/Button';
 import PlusIcon from '../../../assets/icons/PlusIcon.svg';
-import Tab from '../../../common/tabs/Tabs';
+import Tab from '../../../components/common/tabs/Tabs';
 
 const NavContainer = styled.div`
   display: flex;
