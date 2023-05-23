@@ -15,8 +15,8 @@ const IssueTable = ({ issueState, issuePageData, onChangeIssueState }) => {
         issueState={issueState}
         issuePageData={issuePageData}
         onChangeIssueState={onChangeIssueState}
-      ></IssueTableHeader>
-      <IssueTableList issuePageData={issuePageData}></IssueTableList>
+      />
+      <IssueTableList issuePageData={issuePageData} />
     </IssueTableContainer>
   );
 };
