@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DropdownIcon from '../../../../../assets/icons/DropdownIcon.svg';
 
 const IssueFilterButtonBlock = styled.button`
   display: flex;
@@ -8,11 +9,11 @@ const IssueFilterButtonBlock = styled.button`
   background-color: ${({ theme }) => theme.COLOR.GRAY100};
 `;
 
-const IssueFilterButton = ({ imgSrc, imgAlt, buttonName }) => {
+const IssueFilterButton = ({ buttonName }) => {
   return (
     <IssueFilterButtonBlock>
       {buttonName}
-      <img src={imgSrc} alt={imgAlt} />
+      <img src={DropdownIcon} alt={DropdownIcon} />
     </IssueFilterButtonBlock>
   );
 };

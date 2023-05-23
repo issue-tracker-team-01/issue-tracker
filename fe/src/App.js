@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/common/header/Header';
 import MainPage from './pages/MainPage';
@@ -5,13 +6,13 @@ import NewIssuePage from './pages/NewIssuePage';
 
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/newIssue" element={<NewIssuePage />} />
       </Routes>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -1,24 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import Checkbox from '../../../../common/checkbox/Checkbox';
-import IssueStatusButton from './IssueStatusButton';
+import Checkbox from '../../../../../common/Checkbox';
+import IssueStateButton from './IssueStateButton';
 import OpenIssueStatusIcon from '../../../../../assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '../../../../../assets/icons/CloseIssueStatusIcon.svg';
 
-const IssueTableHeaderLeftBox = styled.div`
+const IssueStateFilterBox = styled.div`
   display: flex;
   width: 300px;
   padding: 10px;
 `;
 
-const IssueStatusButtonBox = styled.div`
+const IssueStateButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
   margin-left: 20px;
 `;
 
-const IssueTableHeaderLeft = ({ issueState, onChangeIssueState, issuePageData: { issues } }) => {
+const IssueStateFilter = ({
+  issueState,
+  onChangeIssueState,
+  issuePageData: { openedIssueCount, closedIssueCount, issues },
+}) => {
   const openButtonHandler = () => {
     if (issueState) return;
     onChangeIssueState(false);
@@ -30,28 +34,28 @@ const IssueTableHeaderLeft = ({ issueState, onChangeIssueState, issuePageData: {
   };
 
   return (
-    <IssueTableHeaderLeftBox>
+    <IssueStateFilterBox>
       <Checkbox />
-      <IssueStatusButtonBox>
-        <IssueStatusButton
+      <IssueStateButtonBox>
+        <IssueStateButton
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
-          issuesCount={issues.length}
+          issuesCount={issueState ? issues.length : openedIssueCount}
           issueState={issueState}
           onClick={openButtonHandler}
         />
-        <IssueStatusButton
+        <IssueStateButton
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
-          issuesCount={issues.length}
+          issuesCount={issueState ? closedIssueCount : issues.length}
           issueState={!issueState}
           onClick={closeButtonHandler}
         />
-      </IssueStatusButtonBox>
-    </IssueTableHeaderLeftBox>
+      </IssueStateButtonBox>
+    </IssueStateFilterBox>
   );
 };
 
-export default IssueTableHeaderLeft;
+export default IssueStateFilter;
