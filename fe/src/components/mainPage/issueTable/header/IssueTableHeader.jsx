@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import IssueTableHeaderLeft from './headerLeft/IssueTableHeaderLeft';
-import IssueTableHeaderRight from './headerRight/IssueTableHeaderRight';
+import IssueStateFilter from './headerLeft/IssueStateFilter';
+import IssueFilterOptions from './headerRight/IssueFilterOptions';
 
 const IssueTableHeaderContainer = styled.div`
   display: flex;
@@ -16,12 +16,12 @@ const IssueTableHeaderContainer = styled.div`
 const IssueTableHeader = ({ issueState, issuePageData, onChangeIssueState }) => {
   return (
     <IssueTableHeaderContainer>
-      <IssueTableHeaderLeft
+      <IssueStateFilter
         issueState={issueState}
         issuePageData={issuePageData}
         onChangeIssueState={onChangeIssueState}
       />
-      <IssueTableHeaderRight />
+      <IssueFilterOptions />
     </IssueTableHeaderContainer>
   );
 };

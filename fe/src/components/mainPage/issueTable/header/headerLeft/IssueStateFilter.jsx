@@ -1,24 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import Checkbox from '../../../../../common/Checkbox';
-import IssueStatusButton from './IssueStatusButton';
+import IssueStateButton from './IssueStateButton';
 import OpenIssueStatusIcon from '../../../../../assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '../../../../../assets/icons/CloseIssueStatusIcon.svg';
 
-const IssueTableHeaderLeftBox = styled.div`
+const IssueStateFilterBox = styled.div`
   display: flex;
   width: 300px;
   padding: 10px;
 `;
 
-const IssueStatusButtonBox = styled.div`
+const IssueStateButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
   margin-left: 20px;
 `;
 
-const IssueTableHeaderLeft = ({
+const IssueStateFilter = ({
   issueState,
   onChangeIssueState,
   issuePageData: { openedIssueCount, closedIssueCount, issues },
@@ -34,10 +34,10 @@ const IssueTableHeaderLeft = ({
   };
 
   return (
-    <IssueTableHeaderLeftBox>
+    <IssueStateFilterBox>
       <Checkbox />
-      <IssueStatusButtonBox>
-        <IssueStatusButton
+      <IssueStateButtonBox>
+        <IssueStateButton
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
@@ -45,7 +45,7 @@ const IssueTableHeaderLeft = ({
           issueState={issueState}
           onClick={openButtonHandler}
         />
-        <IssueStatusButton
+        <IssueStateButton
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
@@ -53,9 +53,9 @@ const IssueTableHeaderLeft = ({
           issueState={!issueState}
           onClick={closeButtonHandler}
         />
-      </IssueStatusButtonBox>
-    </IssueTableHeaderLeftBox>
+      </IssueStateButtonBox>
+    </IssueStateFilterBox>
   );
 };
 
-export default IssueTableHeaderLeft;
+export default IssueStateFilter;

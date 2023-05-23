@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import IssueFilterButton from './IssueFilterButton';
 
-const IssueTableHeaderRightBox = styled.div`
+const IssueFilterOptionsBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 400px;
 `;
 
-const IssueTableHeaderRight = () => {
+const IssueFilterOptions = () => {
   const issueFilterButtons = [
     { buttonName: '담당자', id: 'assignees' },
     { buttonName: '레이블', id: 'labels' },
@@ -16,12 +16,12 @@ const IssueTableHeaderRight = () => {
     { buttonName: '작성자', id: 'writers' },
   ];
   return (
-    <IssueTableHeaderRightBox>
+    <IssueFilterOptionsBox>
       {issueFilterButtons.map((button) => (
         <IssueFilterButton key={button.id} buttonName={button.buttonName} />
       ))}
-    </IssueTableHeaderRightBox>
+    </IssueFilterOptionsBox>
   );
 };
 
-export default IssueTableHeaderRight;
+export default IssueFilterOptions;
