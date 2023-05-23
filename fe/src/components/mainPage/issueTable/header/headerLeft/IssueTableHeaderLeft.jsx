@@ -18,7 +18,11 @@ const IssueStatusButtonBox = styled.div`
   margin-left: 20px;
 `;
 
-const IssueTableHeaderLeft = ({ issueState, onChangeIssueState, issuePageData: { issues } }) => {
+const IssueTableHeaderLeft = ({
+  issueState,
+  onChangeIssueState,
+  issuePageData: { openedIssueCount, closedIssueCount, issues },
+}) => {
   const openButtonHandler = () => {
     if (issueState) return;
     onChangeIssueState(false);
@@ -37,7 +41,7 @@ const IssueTableHeaderLeft = ({ issueState, onChangeIssueState, issuePageData: {
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
-          issuesCount={issues.length}
+          issuesCount={issueState ? issues.length : openedIssueCount}
           issueState={issueState}
           onClick={openButtonHandler}
         />
@@ -45,7 +49,7 @@ const IssueTableHeaderLeft = ({ issueState, onChangeIssueState, issuePageData: {
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
-          issuesCount={issues.length}
+          issuesCount={issueState ? closedIssueCount : issues.length}
           issueState={!issueState}
           onClick={closeButtonHandler}
         />
