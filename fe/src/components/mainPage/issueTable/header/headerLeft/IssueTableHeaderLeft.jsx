@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Checkbox from '../../../../../common/Checkbox';
+import Checkbox from '../../../../common/checkbox/Checkbox';
 import IssueStatusButton from './IssueStatusButton';
 import OpenIssueStatusIcon from '../../../../../assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '../../../../../assets/icons/CloseIssueStatusIcon.svg';
