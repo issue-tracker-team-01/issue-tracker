@@ -2,7 +2,7 @@ import { rest } from 'msw';
 
 const openedIssuePageData = {
   labelCount: 3,
-  closedIssueCount: 4,
+  closedIssueCount: 2,
   milestoneCount: 1,
   issues: [
     {
@@ -47,8 +47,6 @@ const closedIssuePageData = {
     },
   ],
 };
-
-const data = [1, 2, 3];
 
 export const handlers = [
   rest.get('/api/openedIssuePage', (req, res, ctx) => {
