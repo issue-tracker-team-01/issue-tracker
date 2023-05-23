@@ -16,8 +16,8 @@ const MainPage = () => {
     try {
       const url = issueState ? 'api/openedIssuePage' : 'api/closedIssuePage';
       const response = await fetch(url);
-      const IssuePageData = await response.json();
-      setIssuePageData(IssuePageData);
+      const issuePageData = await response.json();
+      setIssuePageData(issuePageData);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error fetching data:', error);
