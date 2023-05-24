@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Checkbox from '../../../../../common/Checkbox';
+import Checkbox from '../../../../common/checkbox/Checkbox';
 import IssueStateButton from './IssueStateButton';
 import OpenIssueStatusIcon from '../../../../../assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '../../../../../assets/icons/CloseIssueStatusIcon.svg';
+import { MainPageInfoContext } from '../../../../../pages/MainPage';
 
 const IssueStateFilterBox = styled.div`
   display: flex;
@@ -18,19 +19,21 @@ const IssueStateButtonBox = styled.div`
   margin-left: 20px;
 `;
 
-const IssueStateFilter = ({
-  issueState,
-  onChangeIssueState,
-  issuePageData: { openedIssueCount, closedIssueCount, issues },
-}) => {
+const IssueStateFilter = () => {
+  const {
+    isIssueOpen,
+    setIssueState,
+    issuePageData: { openedIssueCount, closedIssueCount, issues },
+  } = useContext(MainPageInfoContext);
+
   const openButtonHandler = () => {
-    if (issueState) return;
-    onChangeIssueState(false);
+    if (isIssueOpen) return;
+    setIssueState((prevState) => !prevState);
   };
 
   const closeButtonHandler = () => {
-    if (!issueState) return;
-    onChangeIssueState(true);
+    if (!isIssueOpen) return;
+    setIssueState((prevState) => !prevState);
   };
 
   return (
@@ -41,16 +44,16 @@ const IssueStateFilter = ({
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
-          issuesCount={issueState ? issues.length : openedIssueCount}
-          issueState={issueState}
+          issuesCount={isIssueOpen ? issues.length : openedIssueCount}
+          issueState={isIssueOpen}
           onClick={openButtonHandler}
         />
         <IssueStateButton
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
-          issuesCount={issueState ? closedIssueCount : issues.length}
-          issueState={!issueState}
+          issuesCount={isIssueOpen ? closedIssueCount : issues.length}
+          issueState={!isIssueOpen}
           onClick={closeButtonHandler}
         />
       </IssueStateButtonBox>

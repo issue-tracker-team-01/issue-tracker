@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Checkbox from '../../../../../../common/Checkbox';
+import Checkbox from '../../../../../common/checkbox/Checkbox';
 import ListItemLeftContent from './listItemLeftContent/ListItemLeftContent';
 
 const ListItemLeftContainer = styled.div`
