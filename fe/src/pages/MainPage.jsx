@@ -1,12 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
-import styled from 'styled-components';
 import IssueTable from '../components/mainPage/issueTable/IssueTable';
 import Nav from '../components/mainPage/nav/Nav';
-
-const PageLayout = styled.main`
-  display: flex;
-  flex-direction: column;
-`;
+import PageLayout from '../components/common/layout/PageLayout';
 
 export const MainPageInfoContext = createContext();
 
