@@ -7,8 +7,6 @@
 
 import UIKit
 
-import TagListView
-
 class IssueCell: UICollectionViewCell {
     static let identifier = "cell"
     
