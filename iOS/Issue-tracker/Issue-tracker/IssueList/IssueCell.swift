@@ -55,11 +55,13 @@ class IssueCell: UICollectionViewCell {
         
         tags.translatesAutoresizingMaskIntoConstraints = false
         tags.backgroundColor = .red
+        tags.textColor = UIColor.accentTextStrong
         
         let tags2 = PaddingLabel(withInsets: 4, 4, 16, 16)
 
         tags2.font = UIFont.mediumS
-        tags2.text = "쀼쀼쀼아아아ㅏ앙아ㅏ아"
+        tags2.text = "테스트테스트테스트"
+        tags2.textColor = UIColor.accentTextStrong
         tags2.translatesAutoresizingMaskIntoConstraints = false
        
         tags2.backgroundColor = .orange
