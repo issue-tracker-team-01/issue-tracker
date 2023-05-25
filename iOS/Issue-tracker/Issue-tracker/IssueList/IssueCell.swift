@@ -35,41 +35,12 @@ class IssueCell: UICollectionViewCell {
     }()
     
     var tagLabelStackView: UIStackView = {
-        let tags = PaddingLabel(withInsets: 4, 4, 16, 16)
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         stackView.spacing = 4
-        
-        tags.font = UIFont.mediumS
-        tags.text = "라라라"
-        
-        tags.translatesAutoresizingMaskIntoConstraints = false
-        tags.backgroundColor = .red
-        tags.textColor = UIColor.accentTextStrong
-        
-        let tags2 = PaddingLabel(withInsets: 4, 4, 16, 16)
-
-        tags2.font = UIFont.mediumS
-        tags2.text = "테스트테스트테스트"
-        tags2.textColor = UIColor.accentTextStrong
-        tags2.translatesAutoresizingMaskIntoConstraints = false
-       
-        tags2.backgroundColor = .orange
-        let long = 355
-        let short = 18
-        let labelTextSize = tags2.intrinsicContentSize
-        
-        tags2.layer.masksToBounds = true
-        tags2.layer.cornerRadius = CGFloat(long*short/long/2)
-        tags.layer.masksToBounds = true
-        tags.layer.cornerRadius = CGFloat(long*short/long/2)
-        
-        stackView.addArrangedSubview(tags)
-        stackView.addArrangedSubview(tags2)
-        
         return stackView
     }()
     
