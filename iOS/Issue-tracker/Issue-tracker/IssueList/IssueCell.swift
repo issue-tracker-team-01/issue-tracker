@@ -31,13 +31,6 @@ class IssueCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.font = UIFont.mediumM
         lbl.textColor = UIColor.neutralText
-        let attributedString = NSMutableAttributedString(string: "")
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
-        imageAttachment.bounds = CGRect(x: 0, y: 0, width: 17, height: 18)
-        attributedString.append(NSAttributedString(string: "마일스톤"))
-        lbl.attributedText = attributedString
         return lbl
     }()
     

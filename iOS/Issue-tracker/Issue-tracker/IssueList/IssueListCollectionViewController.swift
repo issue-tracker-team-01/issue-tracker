@@ -82,6 +82,13 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         
         cell?.titleLabel.text = issueArrays[indexPath.row].title
         cell?.descriptionLabel.text = "두줄까지 가능 ~"
+        //마일스톤
+        let attributedString = NSMutableAttributedString(string: "")
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: issueArrays[indexPath.row].milestone ?? String()))
+        cell?.milestones.attributedText = attributedString
         return cell ?? UICollectionViewCell()
     }
     
