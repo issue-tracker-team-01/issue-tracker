@@ -79,7 +79,8 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
-   
+        
+        cell?.titleLabel.text = issueArrays[indexPath.row].title
         return cell ?? UICollectionViewCell()
     }
     
