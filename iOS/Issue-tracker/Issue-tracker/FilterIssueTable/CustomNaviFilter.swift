@@ -24,4 +24,11 @@ class CustomNaviFilter: UIView {
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 18)
         return button
     }()
+    
+    private lazy var filterLabel: UILabel = {
+        let label = UILabel()
+        label.text = "필터"
+        label.font = UIFont(name: "SFProDisplay-Semibold", size: 18)
+        return label
+    }()
 }
