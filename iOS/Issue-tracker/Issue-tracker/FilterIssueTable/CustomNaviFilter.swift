@@ -1,12 +1,19 @@
 import UIKit
 
+protocol CustomNaviDelegate: AnyObject {
+    func cancelButtonTapped()
+    func saveButtonTapped()
+}
+
 class CustomNaviFilter: UIView {
+    weak var delegate: CustomNaviDelegate?
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("< 취소", for: .normal)
         button.setTitleColor(UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 18)
+        button.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -15,6 +22,7 @@ class CustomNaviFilter: UIView {
         button.setTitle("저장", for: .normal)
         button.setTitleColor(UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 18)
+        button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -49,8 +57,16 @@ class CustomNaviFilter: UIView {
             filterLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             filterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -17)
         ])
-        
     }
+    
+    @objc func cancelButtonTapped(){
+        delegate?.cancelButtonTapped()
+    }
+    
+    @objc func saveButtonTapped(){
+        delegate?.saveButtonTapped()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
