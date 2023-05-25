@@ -16,7 +16,7 @@ const IssueTableListItem = ({ issue }) => {
   return (
     <IssueTableListItemBlock>
       <ListItemLeft issue={issue} />
-      <ListItemRight />
+      <ListItemRight issue={issue} />
     </IssueTableListItemBlock>
   );
 };

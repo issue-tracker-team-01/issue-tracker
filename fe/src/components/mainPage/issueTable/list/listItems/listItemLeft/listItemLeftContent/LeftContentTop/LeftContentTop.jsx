@@ -19,7 +19,10 @@ const LeftContentTop = ({ issue: { title, labels } }) => {
     <LeftContentTopBox>
       <img src={OpenIssueStatusIcon} />
       <IssueTitle>{title}</IssueTitle>
-      {labels.length > 0 && labels.map((label) => <Label key={label} labelName={label}></Label>)}
+      {labels.length > 0 &&
+        labels.map(({ title, bgColorCode }) => (
+          <Label key={title} labelName={title} bgColorCode={bgColorCode}></Label>
+        ))}
     </LeftContentTopBox>
   );
 };

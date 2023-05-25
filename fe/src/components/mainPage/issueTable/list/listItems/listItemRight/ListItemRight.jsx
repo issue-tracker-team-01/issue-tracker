@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import UserIcon from './UserIcon';
+import { MainPageInfoContext } from '../../../../../../pages/MainPage';
 
 const ListItemRightBox = styled.div`
   margin-right: 10px;
 `;
 
-const ListItemRight = () => {
+const ListItemRight = ({ issue: { authorUrl } }) => {
   return (
     <ListItemRightBox>
-      <UserIcon />
+      <UserIcon authorUrl={authorUrl} />
     </ListItemRightBox>
   );
 };
