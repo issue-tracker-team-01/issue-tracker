@@ -67,7 +67,7 @@ class FilterTableViewController: UIViewController, CustomNaviDelegate {
     }
     
     func saveButtonTapped() {
-        print("dd")
+        print("저장은 추후 구현")
     }
 }
 
