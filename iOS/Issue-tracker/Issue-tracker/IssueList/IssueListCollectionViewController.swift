@@ -89,6 +89,8 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         attributedString.append(NSAttributedString(string: issueArrays[indexPath.row].milestone ?? String()))
         cell?.milestones.attributedText = attributedString
+        
+        cell?.makeLabel(labels: issueArrays[indexPath.row].labels)
         return cell ?? UICollectionViewCell()
     }
     

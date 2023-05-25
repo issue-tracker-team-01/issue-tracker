@@ -54,6 +54,33 @@ class IssueCell: UICollectionViewCell {
         return stackView
     }()
     
+    func makeLabel(labels: [Label]) {
+        for label in labels {
+            var tagLabel: UILabel = {
+                let tags = PaddingLabel(withInsets: 4, 4, 16, 16)
+                tags.font = UIFont.mediumS
+                tags.text = label.title
+                tags.translatesAutoresizingMaskIntoConstraints = false
+                
+                //컬러 관련
+                if let color = UIColor(hex: label.bgColorCode ?? "FFFFFF") {
+                    tags.backgroundColor = color
+                } else {
+                    tags.backgroundColor = UIColor.black
+                }
+                
+                tags.textColor = UIColor.accentTextStrong
+                let long = 355
+                let short = 18
+                tags.layer.masksToBounds = true
+                tags.layer.cornerRadius = CGFloat(long*short/long/2)
+                
+                return tags
+            }()
+            tagLabelStackView.addArrangedSubview(tagLabel)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
