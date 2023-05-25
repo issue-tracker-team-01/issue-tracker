@@ -1,10 +1,3 @@
-//
-//  CustomNaviFilter.swift
-//  Issue-tracker
-//
-//  Created by leehwajin on 2023/05/25.
-//
-
 import UIKit
 
 class CustomNaviFilter: UIView {
@@ -37,6 +30,7 @@ class CustomNaviFilter: UIView {
     override init(frame: CGRect) {
         super .init(frame: frame)
         self.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
+        layout()
     }
     
     func layout() {
@@ -55,9 +49,10 @@ class CustomNaviFilter: UIView {
             filterLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             filterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -17)
         ])
+        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
