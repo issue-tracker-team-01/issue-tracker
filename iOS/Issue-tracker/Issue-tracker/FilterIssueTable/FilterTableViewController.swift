@@ -7,8 +7,7 @@
 
 import UIKit
 
-class FilterTableViewController: UIViewController {
-    
+class FilterTableViewController: UIViewController, CustomNaviDelegate {
     private let customView = CustomNaviFilter()
     private let tableView = UITableView()
     
@@ -26,6 +25,8 @@ class FilterTableViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        customView.delegate = self
+        
         customViewLayout()
         tableViewLayout()
     }
@@ -59,6 +60,14 @@ class FilterTableViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
+    }
+    
+    func cancelButtonTapped() {
+        self.dismiss(animated: true)
+    }
+    
+    func saveButtonTapped() {
+        print("dd")
     }
 }
 
