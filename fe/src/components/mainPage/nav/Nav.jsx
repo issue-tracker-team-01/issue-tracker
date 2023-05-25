@@ -23,8 +23,8 @@ const Nav = () => {
     <NavContainer>
       <FilterBar />
       <SubNavBlock>
-        <Tab></Tab>
-        <Link to="/newIssue">
+        <Tab />
+        <Link to="/addIssue">
           <Button type="container" size="medium">
             <img src={PlusIcon} />
             이슈 작성
