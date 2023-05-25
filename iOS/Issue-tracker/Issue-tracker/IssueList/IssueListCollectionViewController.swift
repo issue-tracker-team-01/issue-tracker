@@ -51,7 +51,6 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     
     func setupDatas() {
         networkManager.fetchIssue(searchTerm: "open") { result in
-            print(#function)
             switch result {
             case .success(let issueDatas):
                 self.issueArrays = issueDatas
@@ -71,8 +70,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
 
 extension IssueListCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // test를 위한 리턴값 100
-        return 100
+        return issueArrays.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
