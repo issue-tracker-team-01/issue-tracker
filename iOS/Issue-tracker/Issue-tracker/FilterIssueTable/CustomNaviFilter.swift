@@ -31,4 +31,6 @@ class CustomNaviFilter: UIView {
         label.font = UIFont(name: "SFProDisplay-Semibold", size: 18)
         return label
     }()
+    
+    lazy var component = [self.cancelButton, self.filterLabel, self.saveButton]
 }
