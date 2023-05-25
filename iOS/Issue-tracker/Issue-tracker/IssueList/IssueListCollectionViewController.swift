@@ -12,6 +12,10 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     var collectionView: UICollectionView!
     let cellRatio: CGFloat = 150/375
     let filterViewController = FilterTableViewController()
+    
+    let networkManager = NetworkManager.shared
+    var issueArrays: [Issue] = []
+    
     var createIssueButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
