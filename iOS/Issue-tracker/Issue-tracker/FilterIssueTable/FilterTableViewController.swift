@@ -10,6 +10,7 @@ import UIKit
 class FilterTableViewController: UIViewController {
 
     private let tableView = UITableView()
+    private let customView = CustomNaviFilter()
     
     private let sectionKind = ["상태", "담당자", "레이블"]
     private let status = ["열린 이슈", "내가 작성한 이슈", "내가 댓글을 남긴 이슈", "닫힌 이슈"]
