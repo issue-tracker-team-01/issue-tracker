@@ -91,17 +91,14 @@ class IssueCell: UICollectionViewCell {
         addSubview(tagLabelStackView)
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackView.widthAnchor.constraint(equalToConstant: 335)
-        ])
-        
-        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            stackView.widthAnchor.constraint(equalToConstant: 335),
+            
             tagLabelStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 4),
             tagLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             tagLabelStackView.heightAnchor.constraint(equalToConstant: 24)
         ])
-
     }
     
     required init?(coder: NSCoder) {
