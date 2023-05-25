@@ -23,7 +23,10 @@ const IssueStateFilter = () => {
   const {
     isIssueOpen,
     setIssueState,
-    issuePageData: { openedIssueCount, closedIssueCount, issues },
+    issuePageData: {
+      count: { opened, closed },
+      issues,
+    },
   } = useContext(MainPageInfoContext);
 
   const openButtonHandler = () => {
@@ -44,7 +47,7 @@ const IssueStateFilter = () => {
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
-          issuesCount={isIssueOpen ? issues.length : openedIssueCount}
+          issuesCount={isIssueOpen ? issues.length : opened}
           issueState={isIssueOpen}
           onClick={openButtonHandler}
         />
@@ -52,7 +55,7 @@ const IssueStateFilter = () => {
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
-          issuesCount={isIssueOpen ? closedIssueCount : issues.length}
+          issuesCount={isIssueOpen ? closed : issues.length}
           issueState={!isIssueOpen}
           onClick={closeButtonHandler}
         />
