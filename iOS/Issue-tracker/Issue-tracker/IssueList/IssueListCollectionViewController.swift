@@ -81,6 +81,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
         
         cell?.titleLabel.text = issueArrays[indexPath.row].title
+        cell?.descriptionLabel.text = "두줄까지 가능 ~"
         return cell ?? UICollectionViewCell()
     }
     
