@@ -36,6 +36,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         
         setUI()
+        setupDatas()
         
     }
     func setUI() {
@@ -46,6 +47,21 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         self.view.addSubview(collectionView)
         self.view.addSubview(createIssueButton)
+    }
+    
+    func setupDatas() {
+        networkManager.fetchIssue(searchTerm: "open") { result in
+            print(#function)
+            switch result {
+            case .success(let issueDatas):
+                self.issueArrays = issueDatas
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func buttonTapped() {
