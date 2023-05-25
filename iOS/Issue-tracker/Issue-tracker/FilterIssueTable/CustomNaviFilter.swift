@@ -33,4 +33,31 @@ class CustomNaviFilter: UIView {
     }()
     
     lazy var component = [self.cancelButton, self.filterLabel, self.saveButton]
+    
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        self.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
+    }
+    
+    func layout() {
+        for item in component {
+            self.addSubview(item)
+            item.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        NSLayoutConstraint.activate([
+            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            
+            filterLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            filterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -17)
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
