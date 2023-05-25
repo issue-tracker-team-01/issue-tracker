@@ -41,21 +41,41 @@ class IssueCell: UICollectionViewCell {
         return lbl
     }()
     
-    var tagLabel: TagListView = {
-        let tags = TagListView()
-        tags.textFont = UIFont.mediumS ?? UIFont()
-        tags.textColor = UIColor.accentTextStrong ?? UIColor()
+    var tagLabelStackView: UIStackView = {
+        let tags = PaddingLabel(withInsets: 4, 4, 16, 16)
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 4
+        
+        tags.font = UIFont.mediumS
+        tags.text = "라라라"
+        
+        tags.translatesAutoresizingMaskIntoConstraints = false
+        tags.backgroundColor = .red
+        
+        let tags2 = PaddingLabel(withInsets: 4, 4, 16, 16)
+
+        tags2.font = UIFont.mediumS
+        tags2.text = "쀼쀼쀼아아아ㅏ앙아ㅏ아"
+        tags2.translatesAutoresizingMaskIntoConstraints = false
+       
+        tags2.backgroundColor = .orange
         let long = 355
         let short = 18
-        tags.bounds = CGRect(x: 0, y: 0, width: long, height: short)
-        tags.cornerRadius = CGFloat(long*short/long/2)
+        let labelTextSize = tags2.intrinsicContentSize
+        
+        tags2.layer.masksToBounds = true
+        tags2.layer.cornerRadius = CGFloat(long*short/long/2)
         tags.layer.masksToBounds = true
-        tags.addTag("라벨1")
-        tags.paddingX = 16
-        tags.paddingY = 4
-        tags.tagBackgroundColor = .orange
-        tags.insertTag("라벨 새치기", at: 0)
-        return tags
+        tags.layer.cornerRadius = CGFloat(long*short/long/2)
+        
+        stackView.addArrangedSubview(tags)
+        stackView.addArrangedSubview(tags2)
+        
+        return stackView
     }()
     
     let stackView: UIStackView = {
@@ -63,7 +83,7 @@ class IssueCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fill
         stackView.spacing = 4
         return stackView
     }()
@@ -71,20 +91,24 @@ class IssueCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        [titleLabel, descriptionLabel, milestones, tagLabel].forEach {
-            addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+        [titleLabel, descriptionLabel, milestones].forEach {
             stackView.addArrangedSubview($0)
         }
         addSubview(stackView)
-        tagLabel.tagBackgroundColor = .blue
+        addSubview(tagLabelStackView)
         
-        let consArr: [NSLayoutConstraint] = [
+        NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ]
-        NSLayoutConstraint.activate(consArr)
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 335)
+        ])
         
+        NSLayoutConstraint.activate([
+            tagLabelStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 4),
+            tagLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            tagLabelStackView.heightAnchor.constraint(equalToConstant: 24)
+        ])
+
     }
     
     required init?(coder: NSCoder) {
