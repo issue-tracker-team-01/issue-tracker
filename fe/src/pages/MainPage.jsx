@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, createContext } from 'react';
 import IssueTable from '../components/mainPage/issueTable/IssueTable';
 import Nav from '../components/mainPage/nav/Nav';
+import PageLayout from '../components/common/layout/PageLayout';
+import apiUrl from '../utils/api/api';
 
-const PageLayout = styled.main`
-  display: flex;
-  flex-direction: column;
-`;
+export const MainPageInfoContext = createContext();
 
 const MainPage = () => {
-  const [issueState, setIssueState] = useState(true);
+  const [isIssueOpen, setIssueState] = useState(true);
   const [issuePageData, setIssuePageData] = useState(null);
 
   const fetchData = async () => {
     try {
-      const url = issueState ? 'api/openedIssuePage' : 'api/closedIssuePage';
+      const url = isIssueOpen ? `${apiUrl}/issues?status=open` : `${apiUrl}/issues?status=closed`;
       const response = await fetch(url);
       const issuePageData = await response.json();
+      console.log(issuePageData);
       setIssuePageData(issuePageData);
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -26,22 +25,14 @@ const MainPage = () => {
 
   useEffect(() => {
     fetchData();
-  }, [issueState]);
-
-  const changeIssueStateHandler = () => {
-    setIssueState((prevIssueState) => !prevIssueState);
-  };
+  }, [isIssueOpen]);
 
   return (
     <PageLayout>
-      <Nav />
-      {issuePageData && (
-        <IssueTable
-          issueState={issueState}
-          issuePageData={issuePageData}
-          onChangeIssueState={changeIssueStateHandler}
-        />
-      )}
+      <MainPageInfoContext.Provider value={{ isIssueOpen, setIssueState, issuePageData }}>
+        <Nav />
+        {issuePageData && <IssueTable />}
+      </MainPageInfoContext.Provider>
     </PageLayout>
   );
 };

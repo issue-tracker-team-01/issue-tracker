@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/common/header/Header';
 import MainPage from './pages/MainPage';
-import NewIssuePage from './pages/NewIssuePage';
+import AddIssuePage from './pages/AddIssuePage';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/newIssue" element={<NewIssuePage />} />
+        <Route path="/addIssue" element={<AddIssuePage />} />
       </Routes>
     </React.Fragment>
   );

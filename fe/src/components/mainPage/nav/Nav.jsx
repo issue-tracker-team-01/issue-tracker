@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../../../components/common/button/Button';
 import PlusIcon from '../../../assets/icons/PlusIcon.svg';
 import Tab from '../../../components/common/tabs/Tabs';
+import { Link } from 'react-router-dom';
 
 const NavContainer = styled.div`
   display: flex;
@@ -22,11 +23,13 @@ const Nav = () => {
     <NavContainer>
       <FilterBar />
       <SubNavBlock>
-        <Tab></Tab>
-        <Button type="container" size="medium">
-          <img src={PlusIcon} />
-          이슈 작성
-        </Button>
+        <Tab />
+        <Link to="/addIssue">
+          <Button type="container" size="medium">
+            <img src={PlusIcon} />
+            이슈 작성
+          </Button>
+        </Link>
       </SubNavBlock>
     </NavContainer>
   );

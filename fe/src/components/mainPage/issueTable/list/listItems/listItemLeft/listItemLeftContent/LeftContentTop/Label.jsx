@@ -10,7 +10,7 @@ const IssueLabelBox = styled.div`
 const LabelBox = styled.div`
   display: inline-block;
   width: auto;
-  background-color: red;
+  background-color: ${({ bgColorCode }) => bgColorCode};
   padding: 5px 18px;
   border-radius: 50px;
   color: ${({ theme }) => theme.COLOR.GRAY50};
@@ -19,10 +19,10 @@ const LabelBox = styled.div`
   line-height: 20px;
 `;
 
-const Label = ({ labelName }) => {
+const Label = ({ labelName, bgColorCode }) => {
   return (
     <IssueLabelBox>
-      <LabelBox>{labelName}</LabelBox>
+      <LabelBox bgColorCode={bgColorCode}>{labelName}</LabelBox>
     </IssueLabelBox>
   );
 };
