@@ -12,6 +12,10 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     var collectionView: UICollectionView!
     let cellRatio: CGFloat = 150/375
     let filterViewController = FilterTableViewController()
+    
+    let networkManager = NetworkManager.shared
+    var issueArrays: [Issue] = []
+    
     var createIssueButton: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
@@ -32,6 +36,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         
         setUI()
+        setupDatas()
         
     }
     func setUI() {
@@ -44,6 +49,20 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         self.view.addSubview(createIssueButton)
     }
     
+    func setupDatas() {
+        networkManager.fetchIssue(searchTerm: "open") { result in
+            switch result {
+            case .success(let issueDatas):
+                self.issueArrays = issueDatas
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func buttonTapped() {
         self.present(filterViewController, animated: true, completion: nil)
         }
@@ -51,8 +70,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
 
 extension IssueListCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // test를 위한 리턴값 100
-        return 100
+        return issueArrays.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -61,7 +79,18 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
-   
+        
+        cell?.titleLabel.text = issueArrays[indexPath.row].title
+        cell?.descriptionLabel.text = "두줄까지 가능 ~"
+        //마일스톤
+        let attributedString = NSMutableAttributedString(string: "")
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: issueArrays[indexPath.row].milestone ?? String()))
+        cell?.milestones.attributedText = attributedString
+        
+        cell?.makeLabel(labels: issueArrays[indexPath.row].labels)
         return cell ?? UICollectionViewCell()
     }
     
