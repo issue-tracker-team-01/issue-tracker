@@ -27,6 +27,7 @@
 		DBFACA962A1F1AA800D60438 /* CustomNaviFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACA952A1F1AA800D60438 /* CustomNaviFilter.swift */; };
 		DBFACA982A1F2F2F00D60438 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACA972A1F2F2F00D60438 /* PaddingLabel.swift */; };
 		DBFACAA62A1FBD5900D60438 /* IssueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACAA52A1FBD5900D60438 /* IssueData.swift */; };
+		DBFACAA82A1FBE4600D60438 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACAA72A1FBE4600D60438 /* NetworkManager.swift */; };
 		E05346E5DBC8E9DFC642EE57 /* Pods_Issue_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		DBFACA952A1F1AA800D60438 /* CustomNaviFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviFilter.swift; sourceTree = "<group>"; };
 		DBFACA972A1F2F2F00D60438 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		DBFACAA52A1FBD5900D60438 /* IssueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IssueData.swift; path = ../../../../../../IssueData.swift; sourceTree = "<group>"; };
+		DBFACAA72A1FBE4600D60438 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ../../../../../../NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				DBFACAA52A1FBD5900D60438 /* IssueData.swift */,
+				DBFACAA72A1FBE4600D60438 /* NetworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				DB902B752A16AEE80007BEB9 /* IssueCell.swift in Sources */,
 				DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */,
 				DB44AC022A0D1561004F3353 /* CollectionHeaderView.swift in Sources */,
+				DBFACAA82A1FBE4600D60438 /* NetworkManager.swift in Sources */,
 				DB902B772A16AF0F0007BEB9 /* UIFont+Extension.swift in Sources */,
 				DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */,
 				DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */,
