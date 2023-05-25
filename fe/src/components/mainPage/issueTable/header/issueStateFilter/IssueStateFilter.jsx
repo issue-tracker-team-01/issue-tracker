@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Checkbox from '../../../../common/checkbox/Checkbox';
+import Checkbox from '../../../../../components/common/checkbox/Checkbox';
 import IssueStateButton from './IssueStateButton';
 import OpenIssueStatusIcon from '../../../../../assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '../../../../../assets/icons/CloseIssueStatusIcon.svg';
