@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import IssueInfo from './IssueInfo';
 import MilestoneIcon from '../../../../../../../../assets/icons/MilestoneIcon.svg';
+import getTimeElapsed from '../../../../../../../../utils/api/timeElapsed';
 
 const LeftContentBottomContainer = styled.div`
   display: flex;
@@ -9,11 +10,12 @@ const LeftContentBottomContainer = styled.div`
 `;
 
 const LeftContentBottom = ({ issue: { id, createdDateTime, milestone, author } }) => {
+  const timeElapsed = getTimeElapsed(createdDateTime);
   return (
     <LeftContentBottomContainer>
       <IssueInfo>#{id}</IssueInfo>
       <IssueInfo>
-        이 이슈가 {createdDateTime}분 전, {author}님에 의해 작성되었습니다
+        이 이슈가 {timeElapsed}, {author}님에 의해 작성되었습니다
       </IssueInfo>
       {milestone && (
         <IssueInfo>
