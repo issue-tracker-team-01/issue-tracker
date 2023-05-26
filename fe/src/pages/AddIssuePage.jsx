@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import AddIssueMainContent from '../components/addIssuePage/addIssueMainContent/AddIssueMainContent';
 import PageLayout from '../components/common/layout/PageLayout';
+import Buttons from '../components/addIssuePage/addIssueButtons/Buttons';
 
 const AddIssuePageTitle = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.XXL}px;
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.REGULAR};
-  ling-height: 48px;
+  line-height: 48px;
 `;
 
 const DividingLine = styled.div`
@@ -22,6 +23,7 @@ const AddIssuePage = () => {
       <DividingLine />
       <AddIssueMainContent />
       <DividingLine />
+      <Buttons />
     </PageLayout>
   );
 };
