@@ -7,7 +7,7 @@ const DropdownContainer = styled.div`
   position: relative;
 `;
 
-const Dropdown = ({ title, fetchDropdownContent }) => {
+const Dropdown = ({ contentKey, title, fetchDropdownContent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownContent, setDropdownContent] = useState([]);
   const ref = useRef();
@@ -44,7 +44,7 @@ const Dropdown = ({ title, fetchDropdownContent }) => {
   return (
     <DropdownContainer ref={ref}>
       <DropdownButton buttonName={title} onClick={handleToggleDropdown} />
-      {isOpen && <DropdownPanel content={dropdownContent} />}
+      {isOpen && <DropdownPanel contentkey={contentKey} content={dropdownContent} />}
     </DropdownContainer>
   );
 };
