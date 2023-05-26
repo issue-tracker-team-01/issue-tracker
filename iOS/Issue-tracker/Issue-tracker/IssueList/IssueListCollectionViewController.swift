@@ -30,14 +30,21 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: width, height: width * cellRatio)
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        
+        self.view.backgroundColor = .white
         setUI()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            changeStatusBarBgColor(bgColor: UIColor.white)
+        }
+    
     func setUI() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        collectionView.backgroundColor = UIColor.neutralBackgroundStrong
+
         collectionView.register(IssueCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         self.view.addSubview(collectionView)
@@ -46,6 +53,21 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     
     func buttonTapped() {
         self.present(filterViewController, animated: true, completion: nil)
+        }
+    
+    func changeStatusBarBgColor(bgColor: UIColor?) {
+            if #available(iOS 13.0, *) {
+                let window = UIApplication.shared.windows.first
+                let statusBarManager = window?.windowScene?.statusBarManager
+                
+                let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
+                statusBarView.backgroundColor = bgColor
+                
+                window?.addSubview(statusBarView)
+            } else {
+                let statusBarView = UIApplication.shared.value(forKey: "statusBar") as? UIView
+                statusBarView?.backgroundColor = bgColor
+            }
         }
 }
 
@@ -61,7 +83,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
-   
+        cell?.backgroundColor = UIColor.neutralBackground
         return cell ?? UICollectionViewCell()
     }
     
@@ -79,6 +101,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         
         return CGSize(width: width, height: width * headerRatio)
     }
+    
 }
 
 extension IssueListCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -87,6 +110,6 @@ extension IssueListCollectionViewController: UICollectionViewDelegateFlowLayout 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 2
     }
 }

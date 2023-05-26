@@ -52,6 +52,7 @@ class CollectionHeaderView: UICollectionReusableView {
         setFilterButtonConstraint()
         setChioceButtonConstraint()
         setTitleLabelConstraint()
+        self.backgroundColor = UIColor.neutralBackground
     }
     func setFilterButtonConstraint() {
         let conArr: [NSLayoutConstraint] = [
