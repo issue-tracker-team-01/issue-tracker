@@ -38,9 +38,9 @@ class FilterTableViewController: UIViewController, CustomNaviDelegate {
         customView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            customView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            customView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            customView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
+            customView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            customView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
             customView.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
@@ -50,15 +50,15 @@ class FilterTableViewController: UIViewController, CustomNaviDelegate {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.filterListCellIdentifier)
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.filterListHeaderIdentifier)
         
-        view.addSubview(tableView)
+        self.view.addSubview(tableView)
         tableView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 0),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
         ])
     }
     
