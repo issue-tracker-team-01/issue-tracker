@@ -101,16 +101,16 @@ class IssueCell: UICollectionViewCell {
         }
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             stackView.widthAnchor.constraint(equalToConstant: 335),
             
             tagLabelStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 4),
-            tagLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            tagLabelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             tagLabelStackView.heightAnchor.constraint(equalToConstant: 24),
             
             detailLabel.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 0),
-            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            detailLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             detailLabel.heightAnchor.constraint(equalToConstant: 30),
             detailLabel.widthAnchor.constraint(equalToConstant: 30)
         ])
