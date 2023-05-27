@@ -8,7 +8,7 @@
 import UIKit
 
 class IssueCell: UICollectionViewCell {
-    static let identifier = "cell"
+    static let identifier = "IssueCell"
     
     var titleLabel: UILabel = {
         let lbl = UILabel()

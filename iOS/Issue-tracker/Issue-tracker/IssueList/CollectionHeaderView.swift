@@ -12,6 +12,7 @@ import UIKit
 
 class CollectionHeaderView: UICollectionReusableView {
     weak var delegate: CustomViewDelegate?
+    static let identifier = "IssueHeader"
     
     private let titleLabel: UILabel = {
         let label = UILabel()

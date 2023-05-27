@@ -48,8 +48,8 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.neutralBackgroundStrong
 
-        collectionView.register(IssueCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        collectionView.register(IssueCell.self, forCellWithReuseIdentifier: IssueCell.identifier)
+        collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderView.identifier)
         self.view.addSubview(collectionView)
         self.view.addSubview(createIssueButton)
     }
@@ -119,7 +119,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderView.identifier, for: indexPath)
         as? CollectionHeaderView else {return UICollectionReusableView()}
         headerView.delegate = self
         return headerView
