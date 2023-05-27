@@ -38,7 +38,7 @@ class IssueCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.font = UIFont.mediumM
         lbl.textColor = UIColor.neutralTextWeak
-        lbl.text = ">"
+        lbl.text = "〉"
         return lbl
     }()
     
@@ -95,8 +95,11 @@ class IssueCell: UICollectionViewCell {
         [titleLabel, descriptionLabel, milestones].forEach {
             stackView.addArrangedSubview($0)
         }
+        
+        detailLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
         addSubview(tagLabelStackView)
+        addSubview(detailLabel)
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
@@ -105,7 +108,12 @@ class IssueCell: UICollectionViewCell {
             
             tagLabelStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 4),
             tagLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            tagLabelStackView.heightAnchor.constraint(equalToConstant: 24)
+            tagLabelStackView.heightAnchor.constraint(equalToConstant: 24),
+            
+            detailLabel.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 0),
+            detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            detailLabel.heightAnchor.constraint(equalToConstant: 30),
+            detailLabel.widthAnchor.constraint(equalToConstant: 30)
         ])
     }
     
