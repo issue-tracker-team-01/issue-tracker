@@ -42,9 +42,9 @@ class CustomNaviFilter: UIView {
     }
     
     func layout() {
-        for item in component {
-            self.addSubview(item)
-            item.translatesAutoresizingMaskIntoConstraints = false
+        [self.cancelButton, self.filterLabel, self.saveButton].forEach {
+            self.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
