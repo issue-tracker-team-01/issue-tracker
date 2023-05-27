@@ -57,26 +57,26 @@ class CollectionHeaderView: UICollectionReusableView {
     }
     func setFilterButtonConstraint() {
         NSLayoutConstraint.activate([
-            filterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            filterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -325),
-            filterButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            filterButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -62)
+            filterButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            filterButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -325),
+            filterButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            filterButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -62)
         ])
     }
     
     func setChioceButtonConstraint() {
         NSLayoutConstraint.activate([
-            choiceButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 325),
-            choiceButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            choiceButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            choiceButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -62)
+            choiceButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 325),
+            choiceButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            choiceButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            choiceButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -62)
         ])
     }
     
     func setTitleLabelConstraint() {
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             titleLabel.heightAnchor.constraint(equalToConstant: 48),
             titleLabel.widthAnchor.constraint(equalToConstant: 59)
         ])
