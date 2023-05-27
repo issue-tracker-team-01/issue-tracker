@@ -102,7 +102,6 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
       
         cell?.backgroundColor = UIColor.neutralBackground
 
-        
         cell?.titleLabel.text = issueArrays[indexPath.row].title
         cell?.descriptionLabel.text = "두줄까지 가능 ~"
         //마일스톤

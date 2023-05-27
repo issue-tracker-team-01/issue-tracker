@@ -68,8 +68,7 @@ class IssueCell: UICollectionViewCell {
                 let tags = PaddingLabel(withInsets: 4, 4, 16, 16)
                 tags.font = UIFont.mediumS
                 tags.text = label.title
-                tags.translatesAutoresizingMaskIntoConstraints = false
-                
+            
                 //컬러 관련
                 if let color = UIColor(hex: label.bgColorCode ?? "FFFFFF") {
                     tags.backgroundColor = color
@@ -96,10 +95,10 @@ class IssueCell: UICollectionViewCell {
             stackView.addArrangedSubview($0)
         }
         
-        detailLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stackView)
-        addSubview(tagLabelStackView)
-        addSubview(detailLabel)
+        [tagLabelStackView, stackView, detailLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
