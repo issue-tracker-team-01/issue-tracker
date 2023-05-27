@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0C2AE32A226C6900D4D0F2 /* IssueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C2AE22A226C6900D4D0F2 /* IssueData.swift */; };
+		DB0C2AE52A226C8700D4D0F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C2AE42A226C8700D4D0F2 /* NetworkManager.swift */; };
 		DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */; };
 		DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */; };
 		DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */; };
@@ -26,8 +28,6 @@
 		DBCF80F72A11D1F8008BED58 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */; };
 		DBFACA962A1F1AA800D60438 /* CustomNaviFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACA952A1F1AA800D60438 /* CustomNaviFilter.swift */; };
 		DBFACA982A1F2F2F00D60438 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACA972A1F2F2F00D60438 /* PaddingLabel.swift */; };
-		DBFACAA62A1FBD5900D60438 /* IssueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACAA52A1FBD5900D60438 /* IssueData.swift */; };
-		DBFACAA82A1FBE4600D60438 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFACAA72A1FBE4600D60438 /* NetworkManager.swift */; };
 		E05346E5DBC8E9DFC642EE57 /* Pods_Issue_tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +35,8 @@
 		0F66FA94D9D4EA16348D14FB /* Pods-Issue-tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Issue-tracker.release.xcconfig"; path = "Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker.release.xcconfig"; sourceTree = "<group>"; };
 		94811935BE967F35A55CF893 /* Pods-Issue-tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Issue-tracker.debug.xcconfig"; path = "Target Support Files/Pods-Issue-tracker/Pods-Issue-tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Issue_tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB0C2AE22A226C6900D4D0F2 /* IssueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueData.swift; sourceTree = "<group>"; };
+		DB0C2AE42A226C8700D4D0F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
 		DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionViewController.swift; sourceTree = "<group>"; };
@@ -56,8 +58,6 @@
 		DBCF80F62A11D1F5008BED58 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DBFACA952A1F1AA800D60438 /* CustomNaviFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviFilter.swift; sourceTree = "<group>"; };
 		DBFACA972A1F2F2F00D60438 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		DBFACAA52A1FBD5900D60438 /* IssueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IssueData.swift; path = ../../../../../../IssueData.swift; sourceTree = "<group>"; };
-		DBFACAA72A1FBE4600D60438 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = ../../../../../../NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +78,15 @@
 				B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB0C2AE12A226C4A00D4D0F2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DB0C2AE22A226C6900D4D0F2 /* IssueData.swift */,
+				DB0C2AE42A226C8700D4D0F2 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		DB4C5B842A0B82EC0064C242 = {
@@ -101,7 +110,7 @@
 		DB4C5B8F2A0B82EC0064C242 /* Issue-tracker */ = {
 			isa = PBXGroup;
 			children = (
-				DBFACAA42A1FBD2F00D60438 /* Networking */,
+				DB0C2AE12A226C4A00D4D0F2 /* Network */,
 				DB902B812A16BEF00007BEB9 /* FilterIssueTable */,
 				DB902B782A16B4D50007BEB9 /* IssueList */,
 				DB902B7A2A16B5190007BEB9 /* Resource */,
@@ -165,15 +174,6 @@
 				DBFACA952A1F1AA800D60438 /* CustomNaviFilter.swift */,
 			);
 			path = FilterIssueTable;
-			sourceTree = "<group>";
-		};
-		DBFACAA42A1FBD2F00D60438 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				DBFACAA52A1FBD5900D60438 /* IssueData.swift */,
-				DBFACAA72A1FBE4600D60438 /* NetworkManager.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		E6A7D243D3EBD6C5CA2FCC04 /* Pods */ = {
@@ -308,14 +308,14 @@
 				DBFACA982A1F2F2F00D60438 /* PaddingLabel.swift in Sources */,
 				DB902B832A16BF540007BEB9 /* FilterTableViewController.swift in Sources */,
 				DBCF80F72A11D1F8008BED58 /* UIColor+Extension.swift in Sources */,
-				DBFACAA62A1FBD5900D60438 /* IssueData.swift in Sources */,
+				DB0C2AE32A226C6900D4D0F2 /* IssueData.swift in Sources */,
 				DBFACA962A1F1AA800D60438 /* CustomNaviFilter.swift in Sources */,
 				DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */,
 				DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */,
 				DB902B752A16AEE80007BEB9 /* IssueCell.swift in Sources */,
 				DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */,
 				DB44AC022A0D1561004F3353 /* CollectionHeaderView.swift in Sources */,
-				DBFACAA82A1FBE4600D60438 /* NetworkManager.swift in Sources */,
+				DB0C2AE52A226C8700D4D0F2 /* NetworkManager.swift in Sources */,
 				DB902B772A16AF0F0007BEB9 /* UIFont+Extension.swift in Sources */,
 				DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */,
 				DB4C5B932A0B82EC0064C242 /* SceneDelegate.swift in Sources */,
