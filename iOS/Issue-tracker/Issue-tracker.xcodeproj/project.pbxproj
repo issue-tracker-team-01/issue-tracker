@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DB0C2AE32A226C6900D4D0F2 /* IssueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C2AE22A226C6900D4D0F2 /* IssueData.swift */; };
 		DB0C2AE52A226C8700D4D0F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C2AE42A226C8700D4D0F2 /* NetworkManager.swift */; };
+		DB0C2AE72A227D5800D4D0F2 /* PrivateURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0C2AE62A227D5800D4D0F2 /* PrivateURL.swift */; };
 		DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */; };
 		DB44ABF82A0CB0D5004F3353 /* NameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */; };
 		DB44AC002A0CBEF1004F3353 /* IssueListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */; };
@@ -37,6 +38,7 @@
 		B94F74D84E2128C77C308753 /* Pods_Issue_tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Issue_tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0C2AE22A226C6900D4D0F2 /* IssueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueData.swift; sourceTree = "<group>"; };
 		DB0C2AE42A226C8700D4D0F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DB0C2AE62A227D5800D4D0F2 /* PrivateURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateURL.swift; sourceTree = "<group>"; };
 		DB44ABF52A0CA8C9004F3353 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DB44ABF72A0CB0D5004F3353 /* NameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSpace.swift; sourceTree = "<group>"; };
 		DB44ABFF2A0CBEF1004F3353 /* IssueListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				DB0C2AE22A226C6900D4D0F2 /* IssueData.swift */,
 				DB0C2AE42A226C8700D4D0F2 /* NetworkManager.swift */,
+				DB0C2AE62A227D5800D4D0F2 /* PrivateURL.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				DBCF80F72A11D1F8008BED58 /* UIColor+Extension.swift in Sources */,
 				DB0C2AE32A226C6900D4D0F2 /* IssueData.swift in Sources */,
 				DBFACA962A1F1AA800D60438 /* CustomNaviFilter.swift in Sources */,
+				DB0C2AE72A227D5800D4D0F2 /* PrivateURL.swift in Sources */,
 				DB44ABF62A0CA8C9004F3353 /* TabBarViewController.swift in Sources */,
 				DB4C5B912A0B82EC0064C242 /* AppDelegate.swift in Sources */,
 				DB902B752A16AEE80007BEB9 /* IssueCell.swift in Sources */,

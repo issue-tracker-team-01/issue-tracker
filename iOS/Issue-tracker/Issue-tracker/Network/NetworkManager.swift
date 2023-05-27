@@ -19,8 +19,8 @@ final class NetworkManager {
     private init() {}
     typealias NetworkCompletion = (Result<[Issue], NetworkError>) -> Void
 
-    func fetchIssue(searchTerm: String, completion: @escaping NetworkCompletion) {
-        let urlString = "http://52.79.159.39:8888/api/issues?status=" + searchTerm
+    func fetchIssue(URL: String, completion: @escaping NetworkCompletion) {
+        let urlString = URL
         performRequest(with: urlString) { result in
             completion(result)
         }
