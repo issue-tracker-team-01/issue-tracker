@@ -51,7 +51,7 @@ class FilterTableViewController: UIViewController, CustomNaviDelegate {
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.filterListHeaderIdentifier)
         
         view.addSubview(tableView)
-        
+        tableView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
