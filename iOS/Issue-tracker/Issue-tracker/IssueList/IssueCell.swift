@@ -34,6 +34,14 @@ class IssueCell: UICollectionViewCell {
         return lbl
     }()
     
+    var detailLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = UIFont.mediumM
+        lbl.textColor = UIColor.neutralTextWeak
+        lbl.text = ">"
+        return lbl
+    }()
+    
     var tagLabelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
