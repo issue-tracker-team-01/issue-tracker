@@ -31,7 +31,6 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         super.viewDidLoad()
         let width = self.view.bounds.width
         let layout = initLayout()
-        layout.minimumLineSpacing = 0
         layout.itemSize = CGSize(width: width, height: width * cellRatio)
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         self.view.backgroundColor = .white
