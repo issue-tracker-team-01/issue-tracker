@@ -91,6 +91,7 @@ extension FilterTableViewController: UITableViewDataSource {
         return cell
         
     }
+    
 }
 extension FilterTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -104,7 +105,7 @@ extension FilterTableViewController: UITableViewDelegate {
             headerView.addSubview(label)
             return label
         }()
-        
+        headerView.backgroundColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
