@@ -32,9 +32,7 @@ class CustomNaviFilter: UIView {
         label.font = UIFont(name: "SFProDisplay-Semibold", size: 18)
         return label
     }()
-    
-    lazy var component = [self.cancelButton, self.filterLabel, self.saveButton]
-    
+   
     override init(frame: CGRect) {
         super .init(frame: frame)
         self.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1.0)
@@ -48,22 +46,22 @@ class CustomNaviFilter: UIView {
         }
         
         NSLayoutConstraint.activate([
-            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            cancelButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             
-            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            saveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            saveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             
-            filterLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            filterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -17)
+            filterLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            filterLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -17)
         ])
     }
     
-    @objc func cancelButtonTapped(){
+    @objc func cancelButtonTapped() {
         delegate?.cancelButtonTapped()
     }
     
-    @objc func saveButtonTapped(){
+    @objc func saveButtonTapped() {
         delegate?.saveButtonTapped()
     }
     
