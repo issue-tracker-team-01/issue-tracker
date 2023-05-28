@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Checkbox from '../../../../../components/common/checkbox/Checkbox';
+import Checkbox from '@components/common/checkbox/Checkbox';
+import OpenIssueStatusIcon from '@assets/icons/OpenIssueStatusIcon.svg';
+import CloseIssueStatusIcon from '@assets/icons/CloseIssueStatusIcon.svg';
+import { MainPageInfoContext } from '@pages/MainPage';
 import IssueStateButton from './IssueStateButton';
-import OpenIssueStatusIcon from '../../../../../assets/icons/OpenIssueStatusIcon.svg';
-import CloseIssueStatusIcon from '../../../../../assets/icons/CloseIssueStatusIcon.svg';
-import { MainPageInfoContext } from '../../../../../pages/MainPage';
 
 const IssueStateFilterBox = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import UserImageLarge from '../../../assets/images/UserImageLarge.svg';
+import UserImageLarge from '@assets/images/UserImageLarge.svg';
 import Inputs from './Inputs';
 import Sidebar from './Sidebar';
 

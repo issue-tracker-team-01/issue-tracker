@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../../common/button/Button';
-import CancelIcon from '../../../assets/icons/CancelIcon.svg';
+import Button from '@common/button/Button';
+import CancelIcon from '@assets/icons/CancelIcon.svg';
 
 const ButtonsBox = styled.div`
   display: flex;

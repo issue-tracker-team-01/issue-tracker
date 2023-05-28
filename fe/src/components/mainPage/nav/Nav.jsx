@@ -1,8 +1,8 @@
 import FilterBar from './filterBar/FilterBar';
 import styled from 'styled-components';
-import Button from '../../../components/common/button/Button';
-import PlusIcon from '../../../assets/icons/PlusIcon.svg';
-import Tab from '../../../components/common/tabs/Tabs';
+import Button from '@components/common/button/Button';
+import PlusIcon from '@assets/icons/PlusIcon.svg';
+import Tab from '@components/common/tabs/Tabs';
 import { Link } from 'react-router-dom';
 
 const NavContainer = styled.div`

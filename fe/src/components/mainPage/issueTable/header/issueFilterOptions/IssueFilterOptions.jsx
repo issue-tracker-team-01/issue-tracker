@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dropdown from '../../../../common/dropdown/Dropdown';
-import apiUrl from '../../../../../utils/api/api';
+import Dropdown from '@common/dropdown/Dropdown';
+import apiUrl from '@utils/api/api';
 
 const IssueFilterOptionsBox = styled.div`
   display: flex;

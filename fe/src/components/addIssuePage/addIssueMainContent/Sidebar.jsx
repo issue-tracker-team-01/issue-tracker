@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dropdown from '../../common/dropdown/Dropdown';
+import Dropdown from '@common/dropdown/Dropdown';
 
 const SidebarContainer = styled.div`
   display: flex;
