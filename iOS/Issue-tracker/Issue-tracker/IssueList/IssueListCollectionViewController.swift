@@ -47,7 +47,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.neutralBackgroundStrong
-
+        
         collectionView.register(IssueCell.self, forCellWithReuseIdentifier: IssueCell.identifier)
         collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderView.identifier)
         self.view.addSubview(collectionView)
@@ -70,22 +70,15 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     
     func buttonTapped() {
         self.present(filterViewController, animated: true, completion: nil)
-        }
+    }
     
     func changeStatusBarBgColor(bgColor: UIColor?) {
-            if #available(iOS 13.0, *) {
-                let window = UIApplication.shared.windows.first
-                let statusBarManager = window?.windowScene?.statusBarManager
-                
-                let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
-                statusBarView.backgroundColor = bgColor
-                
-                window?.addSubview(statusBarView)
-            } else {
-                let statusBarView = UIApplication.shared.value(forKey: "statusBar") as? UIView
-                statusBarView?.backgroundColor = bgColor
-            }
-        }
+        let window = UIApplication.shared.windows.first
+        let statusBarManager = window?.windowScene?.statusBarManager
+        let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
+        statusBarView.backgroundColor = bgColor
+        window?.addSubview(statusBarView)
+    }
 }
 
 extension IssueListCollectionViewController: UICollectionViewDataSource {
@@ -99,9 +92,9 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell
-      
+        
         cell?.backgroundColor = UIColor.neutralBackground
-
+        
         cell?.titleLabel.text = issueArrays[indexPath.row].title
         cell?.descriptionLabel.text = "두줄까지 가능 ~"
         //마일스톤
@@ -119,10 +112,10 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderView.identifier, for: indexPath)
-        as? CollectionHeaderView else {return UICollectionReusableView()}
+                as? CollectionHeaderView else {return UICollectionReusableView()}
         headerView.delegate = self
         return headerView
-        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width = self.view.frame.width
@@ -143,7 +136,7 @@ extension IssueListCollectionViewController: UICollectionViewDelegateFlowLayout 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            let sectionInsets = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
-            return sectionInsets
-        }
+        let sectionInsets = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
+        return sectionInsets
+    }
 }
