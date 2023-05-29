@@ -1,12 +1,12 @@
 import React, { useState, useEffect, createContext } from 'react';
-import IssueTable from '../components/mainPage/issueTable/IssueTable';
-import Nav from '../components/mainPage/nav/Nav';
-import PageLayout from '../components/common/layout/PageLayout';
-import apiUrl from '../utils/api/api';
+import IssueTable from '@components/issueList/issueTable/IssueTable';
+import Nav from '@components/issueList/nav/Nav';
+import PageLayout from '@components/common/layout/PageLayout';
+import apiUrl from '@utils/api/api';
 
 export const MainPageInfoContext = createContext();
 
-const MainPage = () => {
+const IssueList = () => {
   const [isIssueOpen, setIssueState] = useState(true);
   const [issuePageData, setIssuePageData] = useState(null);
 
@@ -36,4 +36,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default IssueList;

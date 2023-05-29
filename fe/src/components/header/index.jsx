@@ -1,6 +1,6 @@
 import Logo from '@assets/images/Logo.svg';
 import UserImageLarge from '@assets/images/UserImageLarge.svg';
-import { HeaderContainer, UserImage } from './HeaderStyled';
+import { HeaderContainer, UserImage } from './style';
 
 const Header = () => {
   return (

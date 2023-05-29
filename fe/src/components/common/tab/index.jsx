@@ -1,5 +1,5 @@
-import Button from '../button/Button';
-import TabContainer from './TabStyled';
+import Button from '@common/button/index';
+import TabContainer from './style';
 
 const Tab = () => {
   return (

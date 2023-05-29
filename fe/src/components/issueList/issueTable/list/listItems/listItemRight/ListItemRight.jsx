@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import UserIcon from './UserIcon';
-import { MainPageInfoContext } from '../../../../../../pages/MainPage';
+import { MainPageInfoContext } from '@pages/IssueList';
 
 const ListItemRightBox = styled.div`
   margin-right: 10px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dropdown from '@common/dropdown/Dropdown';
+import Dropdown from '@components/common/dropdown';
 import apiUrl from '@utils/api/api';
 
 const IssueFilterOptionsBox = styled.div`

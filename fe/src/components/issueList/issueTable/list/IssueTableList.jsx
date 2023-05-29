@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import IssueTableListItem from './listItems/IssueTableListItem';
-import { MainPageInfoContext } from '../../../../pages/MainPage';
+import { MainPageInfoContext } from '@pages/IssueList';
 
 const IssueTableListBox = styled.ul`
   display: flex;

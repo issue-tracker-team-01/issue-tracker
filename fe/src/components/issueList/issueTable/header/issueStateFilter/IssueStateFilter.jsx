@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Checkbox from '@components/common/checkbox/Checkbox';
+import Checkbox from '@components/common/checkbox';
 import OpenIssueStatusIcon from '@assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '@assets/icons/CloseIssueStatusIcon.svg';
-import { MainPageInfoContext } from '@pages/MainPage';
+import { MainPageInfoContext } from '@pages/IssueList';
 import IssueStateButton from './IssueStateButton';
 
 const IssueStateFilterBox = styled.div`

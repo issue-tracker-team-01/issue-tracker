@@ -1,8 +1,8 @@
 import FilterBar from './filterBar/FilterBar';
 import styled from 'styled-components';
-import Button from '@components/common/button/Button';
+import Button from '@components/common/button/index';
 import PlusIcon from '@assets/icons/PlusIcon.svg';
-import Tab from '@components/common/tabs/Tabs';
+import Tab from '@components/common/tab/index';
 import { Link } from 'react-router-dom';
 
 const NavContainer = styled.div`
@@ -24,7 +24,7 @@ const Nav = () => {
       <FilterBar />
       <SubNavBlock>
         <Tab />
-        <Link to="/addIssue">
+        <Link to="/issueForm">
           <Button type="container" size="medium">
             <img src={PlusIcon} />
             이슈 작성

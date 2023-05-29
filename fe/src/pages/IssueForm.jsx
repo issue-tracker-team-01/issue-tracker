@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import AddIssueMainContent from '../components/addIssuePage/addIssueMainContent/AddIssueMainContent';
-import PageLayout from '../components/common/layout/PageLayout';
-import Buttons from '../components/addIssuePage/addIssueButtons/Buttons';
+import AddIssueMainContent from '@components/issueForm/addIssueMainContent/AddIssueMainContent';
+import PageLayout from '@components/common/layout/PageLayout';
+import Buttons from '@components/issueForm/issueFormButtons/Buttons';
 
 const AddIssuePageTitle = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.XXL}px;
@@ -16,7 +16,7 @@ const DividingLine = styled.div`
   margin-top: 24px;
 `;
 
-const AddIssuePage = () => {
+const IssueForm = () => {
   return (
     <PageLayout>
       <AddIssuePageTitle>새로운 이슈 작성</AddIssuePageTitle>
@@ -28,4 +28,4 @@ const AddIssuePage = () => {
   );
 };
 
-export default AddIssuePage;
+export default IssueForm;

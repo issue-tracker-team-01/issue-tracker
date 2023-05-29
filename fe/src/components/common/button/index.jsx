@@ -1,4 +1,4 @@
-import StyledButton from './ButtonStyled';
+import StyledButton from './style';
 
 const Button = ({ children, flexible, type, elementPattern, state, size, ...rest }) => {
   return (

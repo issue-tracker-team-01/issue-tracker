@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '@common/button/Button';
+import Button from '@common/button/index';
 import CancelIcon from '@assets/icons/CancelIcon.svg';
 
 const ButtonsBox = styled.div`
