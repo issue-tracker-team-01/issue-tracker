@@ -85,11 +85,10 @@ extension FilterTableViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
-        let image = UIImage(systemName: "checkmark")
-        cell.accessoryView = UIImageView(image: image)
+        cell.accessoryType = .checkmark
+        cell.tintColor = .gray
         
         return cell
-        
     }
     
 }
