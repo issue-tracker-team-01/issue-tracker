@@ -86,7 +86,7 @@ extension FilterTableViewController: UITableViewDataSource {
         
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
         cell.accessoryType = .checkmark
-        cell.tintColor = .gray
+        cell.tintColor = .neutralTextWeak
         
         return cell
     }
@@ -117,5 +117,17 @@ extension FilterTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.tintColor = .accentTextPrimary
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.tintColor = .neutralTextWeak
     }
 }
