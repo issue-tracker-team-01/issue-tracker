@@ -35,7 +35,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         self.view.backgroundColor = .white
         setUI()
-        setupDatas()
+        setupData()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -54,11 +54,11 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         self.view.addSubview(createIssueButton)
     }
     
-    func setupDatas() {
+    func setupData() {
         networkManager.performRequest(urlString: PrivateURL.openIssue) { result in
             switch result {
-            case .success(let issueDatas):
-                self.issueArrays = issueDatas
+            case .success(let issueData):
+                self.issueArrays = issueData
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
