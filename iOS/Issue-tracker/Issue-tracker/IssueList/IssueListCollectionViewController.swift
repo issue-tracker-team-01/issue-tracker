@@ -14,7 +14,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     let filterViewController = FilterTableViewController()
     
     let networkManager = NetworkManager.shared
-    var issueArrays: [IssueList.Issue] = []
+    var issueArrays: [APIData] = []
     
     var createIssueButton: UIButton = {
         let button = UIButton()
@@ -95,17 +95,17 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         
         cell?.backgroundColor = UIColor.neutralBackground
         
-        cell?.titleLabel.text = issueArrays[indexPath.row].title
-        cell?.descriptionLabel.text = "두줄까지 가능 ~"
+        cell?.titleLabel.text = (issueArrays as? [IssueList.Issue])?[indexPath.row].title
+        cell?.descriptionLabel.text = (issueArrays as? [IssueList.Issue])?[indexPath.row].issueDescription
         //마일스톤
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: TabBarItems.milestone.rawValue)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: issueArrays[indexPath.row].milestone ?? String()))
+        attributedString.append(NSAttributedString(string: (issueArrays as? [IssueList.Issue])?[indexPath.row].milestone ?? String()))
         cell?.milestones.attributedText = attributedString
         
-        cell?.makeLabel(labels: issueArrays[indexPath.row].labels)
+        cell?.makeLabel(labels: (issueArrays as? [IssueList.Issue])?[indexPath.row].labels ?? [IssueList.Label]())
         return cell ?? UICollectionViewCell()
     }
     
