@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import UserImage from '../../../../../../assets/userImage/UserImage.svg';
 
 const UserIconBlock = styled.div`
   width: 20px;
@@ -8,10 +7,10 @@ const UserIconBlock = styled.div`
   border-radius: 50%;
   background-position: center;
   background-size: cover;
-  background-image: url(${({ authorUrl }) => authorUrl});
+  background-image: url(${({ userImgUrl }) => userImgUrl});
 `;
-const UserIcon = ({ authorUrl }) => {
-  return <UserIconBlock authorUrl={authorUrl} />;
+const UserIcon = ({ userImgUrl, alt }) => {
+  return <UserIconBlock userImgUrl={userImgUrl} alt={alt} />;
 };
 
 export default UserIcon;
