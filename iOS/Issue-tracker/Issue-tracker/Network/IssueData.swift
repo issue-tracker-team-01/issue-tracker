@@ -27,32 +27,32 @@ struct IssueList {
     
     struct Issue: Codable, APIData {
         let id: Int?
-        let title, issueDescription, createAt: String?
+        let title, description, createAt: String?
         let labels: [Label]
         let milestone, author: String?
         let authorURL: String?
     }
 }
 struct LabelList {
-    struct LabelData {
+    struct LabelData: Codable {
         let labels: [Label]
     }
     
-    struct Label: APIData {
-        let id: Int
-        let title, labelDescription, bgColorCode, fontColorCode: String
+    struct Label: APIData, Codable {
+        let id: Int?
+        let title, labelDescription, bgColorCode, fontColorCode: String?
     }
 }
 
-struct AllAssignee {
-    struct AssigneeData {
+struct AssigneeList {
+    struct AssigneeData: Codable {
         let assignees: [Assignee]
     }
     
     // MARK: - Assignee
     struct Assignee: APIData, Codable {
-        let id: Int
-        let name: String
-        let imgURL: String
+        let id: Int?
+        let name: String?
+        let imgURL: String?
     }
 }

@@ -96,7 +96,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
         cell?.backgroundColor = UIColor.neutralBackground
         
         cell?.titleLabel.text = (issueArrays as? [IssueList.Issue])?[indexPath.row].title
-        cell?.descriptionLabel.text = (issueArrays as? [IssueList.Issue])?[indexPath.row].issueDescription
+        cell?.descriptionLabel.text = (issueArrays as? [IssueList.Issue])?[indexPath.row].description
         //마일스톤
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()

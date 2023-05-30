@@ -13,11 +13,10 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     private let tableView = UITableView()
     
     private let sectionKind = ["상태", "담당자", "레이블"]
-    private let status = ["열린 이슈", "내가 작성한 이슈", "내가 댓글을 남긴 이슈", "닫힌 이슈"]
+    private let status = ["열린 이슈", "닫힌 이슈"]
     private var assigneeArray: [APIData] = []
-    private var labelKind = ["레이블 없음", "그룹프로젝트:이슈트래커"]
+    private var labelArray: [APIData] = []
     
-    private lazy var filterMenu = [status, assigneeArray, labelKind] as [Any]
     
     private let filterListCellIdentifier = "filterListCell"
     private let filterListHeaderIdentifier = "filterListHeader"
@@ -66,11 +65,21 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     }
     
     func setupData() {
-        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+        networkManager.performRequest(urlString: PrivateURL.label) { result in
             switch result {
             case .success(let assigneeData):
-                self.assigneeArray = assigneeData
-                self.filterMenu[1] = assigneeData  // 담당자 섹션의 데이터 업데이트
+                self.assigneeArray = assigneeData// 담당자 섹션의 데이터 업데이트
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+            switch result {
+            case .success(let labelData):
+                self.labelArray = labelData// 담당자 섹션의 데이터 업데이트
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -96,24 +105,39 @@ extension FilterTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterMenu.count
+        switch section {
+        case 0:
+            return status.count
+        case 1:
+            return assigneeArray.count
+        case 2:
+            return labelArray.count
+        default:
+            return 0
+        }
     }
+    //(assigneeArray as? [AllAssignee.Assignee])?[indexPath.row].name
+    //(labelArray as? [LabelList.Label])?[indexPath.row].title
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
-        if let menuData = filterMenu[indexPath.section] as? [String] {
-            cell.textLabel?.text = menuData[indexPath.row]
-        } else if let menuData = filterMenu[indexPath.section] as? [AllAssignee.Assignee] {
-            let assignee = menuData[indexPath.row]
-            cell.textLabel?.text = assignee.name
-        }
-        
-        cell.accessoryType = .checkmark
-        cell.tintColor = .neutralTextWeak
-        
-        return cell
-    }
+        switch indexPath.section {
+                case 0:
+                    cell.textLabel?.text = status[indexPath.row]
+                case 1:
+                    cell.textLabel?.text = (assigneeArray as? [AssigneeList.Assignee])?[indexPath.row].name
+                case 2:
+                    cell.textLabel?.text = (labelArray as? [LabelList.Label])?[indexPath.row].title
+                default:
+                    break
+                }
+                
+                cell.accessoryType = .checkmark
+                cell.tintColor = .neutralTextWeak
+                
+                return cell
+            }
     
 }
 extension FilterTableViewController: UITableViewDelegate {
