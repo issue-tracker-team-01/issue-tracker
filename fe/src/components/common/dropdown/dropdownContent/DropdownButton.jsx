@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DropdownIcon from '../../../../assets/icons/DropdownIcon.svg';
+import DropdownIcon from '@assets/icons/DropdownIcon.svg';
 
 const DropdownButtonBlock = styled.button`
   display: flex;

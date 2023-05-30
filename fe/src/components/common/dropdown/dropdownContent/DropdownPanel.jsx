@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CheckOffCircle from '../../../../assets/icons/CheckOffCircle.svg';
+import CheckOffCircle from '@assets/icons/CheckOffCircle.svg';
 
 // 스타일 중복되는 부분 리팩토링 작업 필요
 const DropdownPanelBlock = styled.div`
