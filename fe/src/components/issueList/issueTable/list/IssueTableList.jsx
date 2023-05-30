@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import IssueTableListItem from './listItems/IssueTableListItem';
-import { MainPageInfoContext } from '@pages/IssueList';
+import { IssueListStateContext } from '@pages/IssueList';
 
 const IssueTableListBox = styled.ul`
   display: flex;
@@ -16,8 +16,8 @@ const IssueTableListBox = styled.ul`
 
 const IssueTableList = () => {
   const {
-    issuePageData: { issues },
-  } = useContext(MainPageInfoContext);
+    issueListData: { issues },
+  } = useContext(IssueListStateContext);
 
   return (
     <IssueTableListBox>
