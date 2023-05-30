@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FilterTableViewController: UIViewController, CustomNaviDelegate {
-    private let customView = CustomNaviFilter()
+class FilterTableViewController: UIViewController, CustomNavigationDelegate {
+    private let customView = CustomNavigationFilter()
     private let tableView = UITableView()
     
     private let sectionKind = ["상태", "담당자", "레이블"]
