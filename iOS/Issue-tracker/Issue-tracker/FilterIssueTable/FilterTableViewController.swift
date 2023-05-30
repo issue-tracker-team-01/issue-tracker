@@ -65,28 +65,30 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     }
     
     func setupData() {
-        networkManager.performRequest(urlString: PrivateURL.label) { result in
-            switch result {
-            case .success(let assigneeData):
-                self.assigneeArray = assigneeData// 담당자 섹션의 데이터 업데이트
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            let group = DispatchGroup()
+            group.enter()
+            networkManager.performRequest(urlString: PrivateURL.label) { result in
+                switch result {
+                case .success(let labelData):
+                    self.labelArray = labelData
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
+                group.leave()
             }
-        }
-        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
-            switch result {
-            case .success(let labelData):
-                self.labelArray = labelData// 담당자 섹션의 데이터 업데이트
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            group.enter()
+            networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+                switch result {
+                case .success(let assigneeData):
+                    self.assigneeArray = assigneeData
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
+                group.leave()
             }
-        }
+            group.notify(queue: .main) {
+                self.tableView.reloadData()
+            }
     }
     
     func cancelButtonTapped() {
