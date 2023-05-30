@@ -19,7 +19,7 @@ public class IssueLabel {
     private Long labelId;
     @Column("issue_id")
     private Long issueId;
-
+  
     public IssueLabel deleteLabel(Label targetLabel) {
         if (targetLabel != null && labelId.equals(targetLabel.getId())) {
             labelId = null;
