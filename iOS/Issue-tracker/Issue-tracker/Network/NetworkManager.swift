@@ -17,7 +17,7 @@ final class NetworkManager {
     
     static let shared = NetworkManager()
     private init() {}
-    typealias NetworkCompletion = (Result<[Issue], NetworkError>) -> Void
+    typealias NetworkCompletion = (Result<[IssueList.Issue], NetworkError>) -> Void
     
     func performRequest(urlString: String, completion: @escaping NetworkCompletion) {
         guard let url = URL(string: urlString) else { return }
@@ -43,9 +43,9 @@ final class NetworkManager {
         task.resume()
     }
     
-    private func parseJSON(_ issueData: Data) -> [Issue]? {
+    private func parseJSON(_ issueData: Data) -> [IssueList.Issue]? {
         do {
-            let issueData = try JSONDecoder().decode(IssueData.self, from: issueData)
+            let issueData = try JSONDecoder().decode(IssueList.IssueData.self, from: issueData)
             return issueData.issues
         } catch {
             print(error.localizedDescription)
