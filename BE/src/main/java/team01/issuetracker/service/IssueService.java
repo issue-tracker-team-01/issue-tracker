@@ -64,7 +64,7 @@ public class IssueService {
         //issue -> issueResponseDTO로 변환
         List<IssueResponseDTO> issues = issueRepository.findAllByFilter(requestDTO.isOpen(), requestDTO.getMilestone(), requestDTO.getLabel(), requestDTO.getAssignee(), requestDTO.getWriters()).stream()
                 .map(issue -> IssueResponseDTO.of(issue,
-                        members.get(issue.getMemberId().getId()),
+                        members.get(issue.getWriterId().getId()),
                         issue.getMilestoneId() == null ? "" : milestones.get(issue.getMilestoneId().getId()).getTitle(),
                         issue.getIssueLabels().stream().map(il -> MiniLabel.of(labels.get(il.getLabelId()))).collect(Collectors.toList())))
                 .collect(Collectors.toList());
