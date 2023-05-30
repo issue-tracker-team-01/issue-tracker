@@ -18,15 +18,8 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     typealias NetworkCompletion = (Result<[Issue], NetworkError>) -> Void
-
-    func fetchIssue(URL: String, completion: @escaping NetworkCompletion) {
-        let urlString = URL
-        performRequest(with: urlString) { result in
-            completion(result)
-        }
-    }
     
-    private func performRequest(with urlString: String, completion: @escaping NetworkCompletion) {
+    func performRequest(urlString: String, completion: @escaping NetworkCompletion) {
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in

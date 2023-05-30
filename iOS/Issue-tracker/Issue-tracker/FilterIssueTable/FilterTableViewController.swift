@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FilterTableViewController: UIViewController, CustomNaviDelegate {
-    private let customView = CustomNaviFilter()
+class FilterTableViewController: UIViewController, CustomNavigationDelegate {
+    private let customView = CustomNavigationFilter()
     private let tableView = UITableView()
     
     private let sectionKind = ["상태", "담당자", "레이블"]
@@ -67,7 +67,7 @@ class FilterTableViewController: UIViewController, CustomNaviDelegate {
     }
     
     func saveButtonTapped() {
-        print("저장은 추후 구현")
+        //TODO: 추후 구현
     }
 }
 
@@ -85,11 +85,10 @@ extension FilterTableViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
-        let image = UIImage(systemName: "checkmark")
-        cell.accessoryView = UIImageView(image: image)
+        cell.accessoryType = .checkmark
+        cell.tintColor = .neutralTextWeak
         
         return cell
-        
     }
     
 }
@@ -118,5 +117,17 @@ extension FilterTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.tintColor = .accentTextPrimary
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        cell?.tintColor = .neutralTextWeak
     }
 }
