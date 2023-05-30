@@ -14,7 +14,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     let filterViewController = FilterTableViewController()
     
     let networkManager = NetworkManager.shared
-    var issueArrays: [Issue] = []
+    var issueArrays: [IssueList.Issue] = []
     
     var createIssueButton: UIButton = {
         let button = UIButton()

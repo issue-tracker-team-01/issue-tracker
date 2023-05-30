@@ -24,12 +24,10 @@ struct IssueList {
     }
 }
 struct LabelList {
-    // MARK: - Welcome10
     struct LabelData {
         let labels: [Label]
     }
     
-    // MARK: - Label
     struct Label {
         let id: Int
         let title, labelDescription, bgColorCode, fontColorCode: String
