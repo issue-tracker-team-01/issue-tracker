@@ -8,15 +8,16 @@
 import UIKit
 
 class FilterTableViewController: UIViewController, CustomNavigationDelegate {
+    private let networkManager = NetworkManager.shared
     private let customView = CustomNavigationFilter()
     private let tableView = UITableView()
     
     private let sectionKind = ["상태", "담당자", "레이블"]
     private let status = ["열린 이슈", "내가 작성한 이슈", "내가 댓글을 남긴 이슈", "닫힌 이슈"]
-    private var manager = ["chloe", "head", "sam", "zello"]
+    private var assigneeArray: [APIData] = []
     private var labelKind = ["레이블 없음", "그룹프로젝트:이슈트래커"]
     
-    private lazy var filterMenu = [status, manager, labelKind]
+    private lazy var filterMenu = [status, assigneeArray, labelKind] as [Any]
     
     private let filterListCellIdentifier = "filterListCell"
     private let filterListHeaderIdentifier = "filterListHeader"
@@ -29,6 +30,8 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
         
         customViewLayout()
         tableViewLayout()
+        setupData()
+        
     }
     
     func customViewLayout() {
@@ -62,6 +65,21 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
         ])
     }
     
+    func setupData() {
+        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+            switch result {
+            case .success(let assigneeData):
+                self.assigneeArray = assigneeData
+                self.filterMenu[1] = assigneeData  // 담당자 섹션의 데이터 업데이트
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     func cancelButtonTapped() {
         self.dismiss(animated: true)
     }
@@ -78,13 +96,19 @@ extension FilterTableViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterMenu[section].count
+        return filterMenu.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = filterMenu[indexPath.section][indexPath.row]
+        if let menuData = filterMenu[indexPath.section] as? [String] {
+            cell.textLabel?.text = menuData[indexPath.row]
+        } else if let menuData = filterMenu[indexPath.section] as? [AllAssignee.Assignee] {
+            let assignee = menuData[indexPath.row]
+            cell.textLabel?.text = assignee.name
+        }
+        
         cell.accessoryType = .checkmark
         cell.tintColor = .neutralTextWeak
         
@@ -124,7 +148,7 @@ extension FilterTableViewController: UITableViewDelegate {
         cell?.accessoryType = .checkmark
         cell?.tintColor = .accentTextPrimary
     }
-
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
