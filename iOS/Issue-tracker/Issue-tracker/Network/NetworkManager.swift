@@ -31,7 +31,7 @@ final class NetworkManager {
                 completion(.failure(.dataError))
                 return
             }
-
+            
             if let safeData = self.parseJSON(safeData) {
                 print("Parse 실행")
                 completion(.success(safeData))
@@ -45,8 +45,17 @@ final class NetworkManager {
     
     private func parseJSON(_ issueData: Data) -> [APIData]? {
         do {
-            let issueData = try JSONDecoder().decode(IssueList.IssueData.self, from: issueData)
-            return issueData.issues
+            let decoder = JSONDecoder()
+            
+            if let labelData = try? decoder.decode(LabelList.LabelData.self, from: issueData) {
+                return labelData.labels
+            } else if let assigneeData = try? decoder.decode(AssigneeList.AssigneeData.self, from: issueData) {
+                return assigneeData.assignees
+            } else if let issueData = try? decoder.decode(IssueList.IssueData.self, from: issueData) {
+                return issueData.issues
+            }
+            
+            return nil
         } catch {
             print(error.localizedDescription)
             return nil
