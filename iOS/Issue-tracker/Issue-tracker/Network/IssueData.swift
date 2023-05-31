@@ -48,11 +48,39 @@ struct AssigneeList {
     struct AssigneeData: Codable {
         let assignees: [Assignee]
     }
-    
-    // MARK: - Assignee
+
     struct Assignee: APIData, Codable {
         let id: Int?
         let name: String?
         let imgURL: String?
+    }
+}
+
+struct MilestoneList {
+    struct MilesoneData {
+        let count: Count
+        let milestones: [Milestone]
+    }
+
+    struct Count {
+        let label, milestone, opened, closed: Int
+    }
+
+    struct Milestone {
+        let id: Int
+        let title, milestoneDescription, dueDate: String
+        let openedIssue, closedIssue: Int
+    }
+}
+
+struct WriterList {
+    struct WriterData {
+        let writers: [Writer]
+    }
+    
+    struct Writer {
+        let id: Int
+        let name: String
+        let imgURL: String
     }
 }

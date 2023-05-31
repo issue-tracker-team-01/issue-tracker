@@ -16,6 +16,9 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     private let status = ["열린 이슈", "닫힌 이슈"]
     private var assigneeArray: [APIData] = []
     private var labelArray: [APIData] = []
+    private var milestoneArray: [APIData] = []
+    private var writerArray: [APIData] = []
+    
     
     
     private let filterListCellIdentifier = "filterListCell"
@@ -67,7 +70,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     func setupData() {
         let group = DispatchGroup()
         group.enter()
-        networkManager.performRequest(searchTerm: PrivateURL.openIssue) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.label) { result in
             switch result {
             case .success(let labelData):
                 self.labelArray = labelData
