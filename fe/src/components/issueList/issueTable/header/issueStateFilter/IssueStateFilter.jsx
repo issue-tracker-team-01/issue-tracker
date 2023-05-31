@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Checkbox from '@components/common/checkbox';
 import OpenIssueStatusIcon from '@assets/icons/OpenIssueStatusIcon.svg';
 import CloseIssueStatusIcon from '@assets/icons/CloseIssueStatusIcon.svg';
-import { MainPageInfoContext } from '@pages/IssueList';
+import { IssueListStateContext } from '@pages/IssueList';
 import IssueStateButton from './IssueStateButton';
 
 const IssueStateFilterBox = styled.div`
@@ -21,22 +21,22 @@ const IssueStateButtonBox = styled.div`
 
 const IssueStateFilter = () => {
   const {
-    isIssueOpen,
-    setIssueState,
-    issuePageData: {
+    issueListState: { isOpen },
+    dispatch,
+    issueListData: {
       count: { opened, closed },
       issues,
     },
-  } = useContext(MainPageInfoContext);
+  } = useContext(IssueListStateContext);
 
   const openButtonHandler = () => {
-    if (isIssueOpen) return;
-    setIssueState((prevState) => !prevState);
+    if (isOpen) return;
+    dispatch({ type: 'TOGGLE_OPEN_STATE', payload: true });
   };
 
   const closeButtonHandler = () => {
-    if (!isIssueOpen) return;
-    setIssueState((prevState) => !prevState);
+    if (!isOpen) return;
+    dispatch({ type: 'TOGGLE_OPEN_STATE', payload: false });
   };
 
   return (
@@ -47,16 +47,16 @@ const IssueStateFilter = () => {
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
-          issuesCount={isIssueOpen ? issues.length : opened}
-          issueState={isIssueOpen}
+          issuesCount={isOpen ? issues.length : opened}
+          issueState={isOpen}
           onClick={openButtonHandler}
         />
         <IssueStateButton
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
-          issuesCount={isIssueOpen ? closed : issues.length}
-          issueState={!isIssueOpen}
+          issuesCount={isOpen ? closed : issues.length}
+          issueState={!isOpen}
           onClick={closeButtonHandler}
         />
       </IssueStateButtonBox>

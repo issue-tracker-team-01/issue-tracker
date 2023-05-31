@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import DropdownButton from './dropdownContent/DropdownButton';
-import DropdownPanel from './dropdownContent/DropdownPanel';
+import DropdownButton from './dropdownContent/dropdownButton';
+import DropdownPanel from './dropdownContent/dropdownPanel';
+import DropdownContainer from './style';
 
-const DropdownContainer = styled.div`
-  position: relative;
-`;
-
-const Dropdown = ({ contentKey, title, fetchDropdownContent }) => {
+const Dropdown = ({
+  buttonId,
+  title,
+  fetchDropdownContent,
+  filterState,
+  filterClickHandler,
+  dropdownStyle,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownContent, setDropdownContent] = useState([]);
+  const [dropdownContent, setDropdownContent] = useState(null);
   const ref = useRef();
 
   useEffect(() => {
@@ -21,7 +24,7 @@ const Dropdown = ({ contentKey, title, fetchDropdownContent }) => {
     if (isOpen) {
       fetchData();
     }
-  }, [isOpen, fetchDropdownContent]);
+  }, [isOpen]);
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
@@ -42,9 +45,18 @@ const Dropdown = ({ contentKey, title, fetchDropdownContent }) => {
   };
 
   return (
-    <DropdownContainer ref={ref}>
-      <DropdownButton buttonName={title} onClick={handleToggleDropdown} />
-      {isOpen && <DropdownPanel contentkey={contentKey} content={dropdownContent} />}
+    <DropdownContainer ref={ref} onClick={handleToggleDropdown}>
+      <DropdownButton buttonName={title} />
+      {isOpen && dropdownContent && (
+        <DropdownPanel
+          buttonName={title}
+          buttonId={buttonId}
+          filterState={filterState}
+          filterClickHandler={filterClickHandler}
+          content={dropdownContent}
+          dropdownStyle={dropdownStyle}
+        />
+      )}
     </DropdownContainer>
   );
 };

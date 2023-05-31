@@ -9,8 +9,8 @@ const LeftContentBottomContainer = styled.div`
   gap: 12px;
 `;
 
-const LeftContentBottom = ({ issue: { id, createdDateTime, milestone, author } }) => {
-  const timeElapsed = getTimeElapsed(createdDateTime);
+const LeftContentBottom = ({ issue: { id, createAt, milestone, author } }) => {
+  const timeElapsed = getTimeElapsed(createAt);
   return (
     <LeftContentBottomContainer>
       <IssueInfo>#{id}</IssueInfo>
