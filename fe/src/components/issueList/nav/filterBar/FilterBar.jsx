@@ -58,7 +58,7 @@ const FilterBar = () => {
       </FilterButton>
       <FilterInputContentBox>
         <img src={SearchIcon} alt={SearchIcon} />
-        <FilterInput type="text" value={issueListStateText} />
+        <FilterInput type="text" value={issueListStateText} readOnly />
       </FilterInputContentBox>
     </FilterBarContainer>
   );
