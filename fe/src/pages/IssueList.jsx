@@ -3,6 +3,7 @@ import IssueTable from '@components/issueList/issueTable/IssueTable';
 import Nav from '@components/issueList/nav/Nav';
 import PageLayout from '@components/common/layout/PageLayout';
 import apiUrl from '@utils/api/api';
+import ResetFilterButton from '@components/issueList/resetButton';
 
 export const IssueListStateContext = createContext();
 
@@ -23,6 +24,8 @@ const issueListReducer = (state, action) => {
       return state[payload.key] === payload.value
         ? { ...state, [payload.key]: null }
         : { ...state, [payload.key]: payload.value };
+    case `RESET_STATE`:
+      return initialState;
     default:
       return state;
   }
@@ -62,10 +65,26 @@ const IssueList = () => {
     fetchData();
   }, [issueListState]);
 
+  const resetFilterClickHandler = () => {
+    dispatch({ type: 'RESET_STATE' });
+  };
+
+  const compareStateObject = (initialState, changedState) => {
+    for (const key in initialState) {
+      if (initialState[key] !== changedState[key]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const isShowResetFilterButton = compareStateObject(initialState, issueListState);
+
   return (
     <PageLayout>
       <IssueListStateContext.Provider value={{ issueListState, dispatch, issueListData }}>
         <Nav />
+        {!isShowResetFilterButton && <ResetFilterButton onClick={resetFilterClickHandler} />}
         {issueListData && <IssueTable />}
       </IssueListStateContext.Provider>
     </PageLayout>
