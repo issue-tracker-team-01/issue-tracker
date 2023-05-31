@@ -49,10 +49,22 @@ final class NetworkManager {
             
             if let labelData = try? decoder.decode(LabelList.LabelData.self, from: issueData) {
                 return labelData.labels
-            } else if let assigneeData = try? decoder.decode(AssigneeList.AssigneeData.self, from: issueData) {
+            }
+            
+            else if let assigneeData = try? decoder.decode(AssigneeList.AssigneeData.self, from: issueData) {
                 return assigneeData.assignees
-            } else if let issueData = try? decoder.decode(IssueList.IssueData.self, from: issueData) {
+            }
+            
+            else if let issueData = try? decoder.decode(IssueList.IssueData.self, from: issueData) {
                 return issueData.issues
+            }
+            
+            else if let milestoneData = try? decoder.decode(MilestoneList.MilesoneData.self, from: issueData) {
+                return milestoneData.milestones
+            }
+            
+            else if let writerData = try? decoder.decode(WriterList.WriterData.self, from: issueData) {
+                return writerData.writers
             }
             
             return nil

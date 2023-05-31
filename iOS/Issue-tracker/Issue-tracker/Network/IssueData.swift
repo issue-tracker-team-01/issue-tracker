@@ -57,30 +57,25 @@ struct AssigneeList {
 }
 
 struct MilestoneList {
-    struct MilesoneData {
-        let count: Count
+    struct MilesoneData: Codable {
         let milestones: [Milestone]
     }
 
-    struct Count {
-        let label, milestone, opened, closed: Int
-    }
-
-    struct Milestone {
-        let id: Int
-        let title, milestoneDescription, dueDate: String
-        let openedIssue, closedIssue: Int
+    struct Milestone: Codable, APIData {
+        let id: Int?
+        let title, milestoneDescription, dueDate: String?
+        let openedIssue, closedIssue: Int?
     }
 }
 
 struct WriterList {
-    struct WriterData {
+    struct WriterData: Codable {
         let writers: [Writer]
     }
     
-    struct Writer {
-        let id: Int
-        let name: String
-        let imgURL: String
+    struct Writer: Codable, APIData {
+        let id: Int?
+        let name: String?
+        let imgURL: String?
     }
 }

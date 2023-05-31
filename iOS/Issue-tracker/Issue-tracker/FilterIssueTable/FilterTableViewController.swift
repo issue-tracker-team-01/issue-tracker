@@ -12,14 +12,12 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     private let customView = CustomNavigationFilter()
     private let tableView = UITableView()
     
-    private let sectionKind = ["상태", "담당자", "레이블"]
+    private let sectionKind = ["상태", "담당자", "레이블", "마일스톤", "작성자"]
     private let status = ["열린 이슈", "닫힌 이슈"]
     private var assigneeArray: [APIData] = []
     private var labelArray: [APIData] = []
     private var milestoneArray: [APIData] = []
     private var writerArray: [APIData] = []
-    
-    
     
     private let filterListCellIdentifier = "filterListCell"
     private let filterListHeaderIdentifier = "filterListHeader"
@@ -79,6 +77,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
             }
             group.leave()
         }
+        
         group.enter()
         networkManager.performRequest(searchTerm: PrivateURL.allAssignee) { result in
             switch result {
@@ -89,10 +88,34 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
             }
             group.leave()
         }
+        
+        group.enter()
+        networkManager.performRequest(searchTerm: PrivateURL.milestone) { result in
+            switch result {
+            case .success(let milestoneData):
+                self.milestoneArray = milestoneData
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            group.leave()
+        }
+        
+        group.enter()
+        networkManager.performRequest(searchTerm: PrivateURL.writer) { result in
+            switch result {
+            case .success(let writerData):
+                self.writerArray = writerData
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            group.leave()
+        }
+        
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
     }
+    
     
     func cancelButtonTapped() {
         self.dismiss(animated: true)
@@ -117,13 +140,16 @@ extension FilterTableViewController: UITableViewDataSource {
             return assigneeArray.count
         case 2:
             return labelArray.count
+        case 3:
+            return milestoneArray.count
+        case 4:
+            return writerArray.count
+            
         default:
             return 0
         }
     }
-    //(assigneeArray as? [AllAssignee.Assignee])?[indexPath.row].name
-    //(labelArray as? [LabelList.Label])?[indexPath.row].title
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
@@ -134,6 +160,10 @@ extension FilterTableViewController: UITableViewDataSource {
             cell.textLabel?.text = (assigneeArray as? [AssigneeList.Assignee])?[indexPath.row].name
         case 2:
             cell.textLabel?.text = (labelArray as? [LabelList.Label])?[indexPath.row].title
+        case 3:
+            cell.textLabel?.text = (milestoneArray as? [MilestoneList.Milestone])?[indexPath.row].title
+        case 4:
+            cell.textLabel?.text = (writerArray as? [WriterList.Writer])?[indexPath.row].name
         default:
             break
         }
