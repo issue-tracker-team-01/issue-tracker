@@ -46,7 +46,6 @@ const generateQuery = (issueState) => {
 const IssueList = () => {
   const [issueListState, dispatch] = useReducer(issueListReducer, initialState);
   const [issueListData, setIssuePageData] = useState(null);
-
   const fetchData = async () => {
     try {
       const url = generateQuery(issueListState);
