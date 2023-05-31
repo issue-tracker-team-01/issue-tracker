@@ -1,17 +1,11 @@
-import StyledButton from './style';
+import ButtonBox from './style';
 
-const Button = ({ children, flexible, type, elementPattern, state, size, ...rest }) => {
+const Button = ({ type, state, size, icon, title, ...rest }) => {
   return (
-    <StyledButton
-      flexible={flexible}
-      type={type}
-      elementPattern={elementPattern}
-      state={state}
-      size={size}
-      {...rest}
-    >
-      {children}
-    </StyledButton>
+    <ButtonBox type={type} state={state} size={size} {...rest}>
+      <img src={icon} />
+      <span>{title}</span>
+    </ButtonBox>
   );
 };
 
