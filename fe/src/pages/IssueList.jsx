@@ -52,6 +52,7 @@ const IssueList = () => {
   const fetchData = async () => {
     try {
       const url = generateQuery(issueListState);
+      console.log(url);
       const response = await fetch(url);
       const issueListData = await response.json();
       setIssuePageData(issueListData);
@@ -78,11 +79,29 @@ const IssueList = () => {
     return true;
   };
 
+  const generateIssueListStateText = (issueState) => {
+    const issueListStateText = Object.entries(issueState)
+      .reduce((acc, [key, value]) => {
+        if (key === 'isOpen') {
+          return acc + `isOpen:${value === true ? 'open' : 'close'} `;
+        } else if (value !== null) {
+          return acc + `${key}:${value} `;
+        }
+        return acc;
+      }, 'is:issue ')
+      .slice(0, -1);
+
+    return issueListStateText;
+  };
+
   const isShowResetFilterButton = compareStateObject(initialState, issueListState);
+  const issueListStateText = generateIssueListStateText(issueListState);
 
   return (
     <PageLayout>
-      <IssueListStateContext.Provider value={{ issueListState, dispatch, issueListData }}>
+      <IssueListStateContext.Provider
+        value={{ issueListState, issueListStateText, dispatch, issueListData }}
+      >
         <Nav />
         {!isShowResetFilterButton && <ResetFilterButton onClick={resetFilterClickHandler} />}
         {issueListData && <IssueTable />}
