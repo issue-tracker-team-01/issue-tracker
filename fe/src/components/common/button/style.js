@@ -78,7 +78,7 @@ const stateStyles = css`
     `}
 `;
 
-const StyledButton = styled.button`
+const ButtonBox = styled.button`
   ${sizeStyles}
   ${typeStyles}
   ${stateStyles}
@@ -88,4 +88,4 @@ const StyledButton = styled.button`
   gap: 5px;
 `;
 
-export default StyledButton;
+export default ButtonBox;
