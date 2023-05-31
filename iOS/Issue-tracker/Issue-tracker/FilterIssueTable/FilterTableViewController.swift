@@ -65,30 +65,30 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     }
     
     func setupData() {
-            let group = DispatchGroup()
-            group.enter()
-            networkManager.performRequest(urlString: PrivateURL.label) { result in
-                switch result {
-                case .success(let labelData):
-                    self.labelArray = labelData
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-                group.leave()
+        let group = DispatchGroup()
+        group.enter()
+        networkManager.performRequest(urlString: PrivateURL.label) { result in
+            switch result {
+            case .success(let labelData):
+                self.labelArray = labelData
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            group.enter()
-            networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
-                switch result {
-                case .success(let assigneeData):
-                    self.assigneeArray = assigneeData
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-                group.leave()
+            group.leave()
+        }
+        group.enter()
+        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+            switch result {
+            case .success(let assigneeData):
+                self.assigneeArray = assigneeData
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            group.notify(queue: .main) {
-                self.tableView.reloadData()
-            }
+            group.leave()
+        }
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
     }
     
     func cancelButtonTapped() {
@@ -125,21 +125,21 @@ extension FilterTableViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
         switch indexPath.section {
-                case 0:
-                    cell.textLabel?.text = status[indexPath.row]
-                case 1:
-                    cell.textLabel?.text = (assigneeArray as? [AssigneeList.Assignee])?[indexPath.row].name
-                case 2:
-                    cell.textLabel?.text = (labelArray as? [LabelList.Label])?[indexPath.row].title
-                default:
-                    break
-                }
-                
-                cell.accessoryType = .checkmark
-                cell.tintColor = .neutralTextWeak
-                
-                return cell
-            }
+        case 0:
+            cell.textLabel?.text = status[indexPath.row]
+        case 1:
+            cell.textLabel?.text = (assigneeArray as? [AssigneeList.Assignee])?[indexPath.row].name
+        case 2:
+            cell.textLabel?.text = (labelArray as? [LabelList.Label])?[indexPath.row].title
+        default:
+            break
+        }
+        
+        cell.accessoryType = .checkmark
+        cell.tintColor = .neutralTextWeak
+        
+        return cell
+    }
     
 }
 extension FilterTableViewController: UITableViewDelegate {
@@ -173,11 +173,16 @@ extension FilterTableViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         cell?.tintColor = .accentTextPrimary
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-        cell?.tintColor = .neutralTextWeak
+        
+        let section = indexPath.section
+        let rows = tableView.numberOfRows(inSection: section)
+        
+        for row in 0..<rows {
+            if let currentCell = tableView.cellForRow(at: IndexPath(row: row, section: section)) {
+                if currentCell != cell && currentCell.tintColor == .accentTextPrimary {
+                    currentCell.tintColor = .neutralTextWeak
+                }
+            }
+        }
     }
 }
