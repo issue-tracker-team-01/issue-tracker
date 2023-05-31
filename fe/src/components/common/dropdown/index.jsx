@@ -2,22 +2,23 @@ import React, { useState, useEffect, useRef } from 'react';
 import DropdownButton from './dropdownContent/dropdownButton';
 import DropdownPanel from './dropdownContent/dropdownPanel';
 import DropdownContainer from './style';
+import apiUrl from '@utils/api/api';
 
-const Dropdown = ({
-  buttonId,
-  title,
-  fetchDropdownContent,
-  filterState,
-  filterClickHandler,
-  dropdownStyle,
-}) => {
+const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownStyle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownContent, setDropdownContent] = useState(null);
   const ref = useRef();
 
+  const fetchDropdownContent = async (buttonId) => {
+    const url = `${apiUrl}/${buttonId === 'milestones' ? buttonId + '?isOpen=true' : buttonId}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchDropdownContent();
+      const data = await fetchDropdownContent(buttonId);
       setDropdownContent(data);
     };
 

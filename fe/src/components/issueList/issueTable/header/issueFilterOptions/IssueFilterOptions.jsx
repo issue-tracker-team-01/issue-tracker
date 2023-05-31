@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Dropdown from '@components/common/dropdown';
-import apiUrl from '@utils/api/api';
 import { IssueListStateContext } from '@pages/IssueList';
 
 const IssueFilterOptionsBox = styled.div`
@@ -13,14 +12,6 @@ const IssueFilterOptionsBox = styled.div`
 
 const IssueFilterOptions = () => {
   const { issueListState, dispatch } = useContext(IssueListStateContext);
-  const fetchDropdownContent = async (buttonType) => {
-    const url = `${apiUrl}/${
-      buttonType === 'milestones' ? buttonType + '?isOpen=true' : buttonType
-    }`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  };
 
   const issueDropdownButtons = [
     { buttonName: '담당자', buttonId: 'assignees' },
@@ -44,7 +35,6 @@ const IssueFilterOptions = () => {
           title={button.buttonName}
           filterState={issueListState}
           filterClickHandler={filterClickHandler}
-          fetchDropdownContent={() => fetchDropdownContent(button.buttonId)}
           dropdownStyle={dropdownStyle}
         />
       ))}
