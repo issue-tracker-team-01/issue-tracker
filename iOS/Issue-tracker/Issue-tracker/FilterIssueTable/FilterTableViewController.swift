@@ -153,6 +153,8 @@ extension FilterTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
         
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = status[indexPath.row]
@@ -221,5 +223,7 @@ extension FilterTableViewController: UITableViewDelegate {
                 }
             }
         }
+        //클릭하기 쉽도록 스크롤 컨트롤
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
     }
 }
