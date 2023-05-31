@@ -67,7 +67,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     func setupData() {
         let group = DispatchGroup()
         group.enter()
-        networkManager.performRequest(urlString: PrivateURL.label) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.openIssue) { result in
             switch result {
             case .success(let labelData):
                 self.labelArray = labelData
@@ -77,7 +77,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
             group.leave()
         }
         group.enter()
-        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.allAssignee) { result in
             switch result {
             case .success(let assigneeData):
                 self.assigneeArray = assigneeData

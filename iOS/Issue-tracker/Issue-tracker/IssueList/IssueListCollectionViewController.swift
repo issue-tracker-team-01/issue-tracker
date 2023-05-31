@@ -55,7 +55,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     }
     
     func setupData() {
-        networkManager.performRequest(urlString: PrivateURL.openIssue) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.openIssue) { result in
             switch result {
             case .success(let issueData):
                 self.issueArrays = issueData

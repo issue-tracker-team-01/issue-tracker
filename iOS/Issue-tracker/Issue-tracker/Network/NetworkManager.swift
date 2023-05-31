@@ -19,8 +19,8 @@ final class NetworkManager {
     private init() {}
     typealias NetworkCompletion = (Result<[APIData], NetworkError>) -> Void
     
-    func performRequest(urlString: String, completion: @escaping NetworkCompletion) {
-        guard let url = URL(string: urlString) else { return }
+    func performRequest(searchTerm: String, completion: @escaping NetworkCompletion) {
+        guard let url = URL(string: "\(PrivateURL.url)\(searchTerm)") else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
             if error != nil {
