@@ -1,6 +1,6 @@
 import FilterBar from './filterBar/FilterBar';
 import styled from 'styled-components';
-import Button from '@components/common/button/index';
+import Button from '@components/common/button';
 import PlusIcon from '@assets/icons/PlusIcon.svg';
 import Tab from '@components/common/tab/index';
 import { Link } from 'react-router-dom';
@@ -25,10 +25,7 @@ const Nav = () => {
       <SubNavBlock>
         <Tab />
         <Link to="/issueForm">
-          <Button type="container" size="medium">
-            <img src={PlusIcon} />
-            이슈 작성
-          </Button>
+          <Button type="container" size="medium" icon={PlusIcon} title="이슈 작성" />
         </Link>
       </SubNavBlock>
     </NavContainer>
