@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol UploadData: AnyObject {
+    func uploadIssue(url: String)
+}
+
 class FilterTableViewController: UIViewController, CustomNavigationDelegate {
+    weak var delegate: UploadData?
+    
     private let networkManager = NetworkManager.shared
     private let customView = CustomNavigationFilter()
     private let tableView = UITableView()
@@ -27,7 +33,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         customView.delegate = self
-        
+       
         customViewLayout()
         tableViewLayout()
         setupData()
@@ -122,7 +128,48 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     }
     
     func saveButtonTapped() {
-        //TODO: 추후 구현
+        //해당하는 데이터를 불러와서 이슈목록에 보여줌 !!!@!@@!@!@@ㅣ떠따ㅓ끼ㅏㅓㅣㅏㄹ 하하하하ㅏ 그리고 마지막에 디스미스 후 이슈리스트 다시 그리기
+        
+        var issueUrl = PrivateURL.openIssue
+        var assigneeUrl = ""
+        var labelUrl = ""
+        var milestoneUrl = ""
+        var writeUrl = ""
+        var selectedRows: [IndexPath] = []
+           
+           for section in 0..<sectionKind.count {
+               let rows = tableView.numberOfRows(inSection: section)
+               for row in 0..<rows {
+                   let indexPath = IndexPath(row: row, section: section)
+                   if let cell = tableView.cellForRow(at: indexPath), cell.tintColor == .accentTextPrimary {
+                       selectedRows.append(indexPath)
+                   }
+               }
+           }
+
+        
+        for item in selectedRows {
+            switch item.first {
+            case 0:
+                if item.last == 0 {
+                    issueUrl = PrivateURL.openIssue
+                }else {
+                    issueUrl = PrivateURL.closedIssue
+                }
+            case 1:
+                assigneeUrl = "&assignees=\((item.last ?? 0) + 1)"
+            case 2:
+                labelUrl = "&labels=\((item.last ?? 0) + 1)"
+            case 3:
+                milestoneUrl = "&milestones=\((item.last ?? 0) + 1)"
+            case 4:
+                writeUrl = "&writers=\((item.last ?? 0) + 1)"
+            default:
+                break
+            }
+        }
+        dismiss(animated: true)
+        delegate?.uploadIssue(url: issueUrl + assigneeUrl + labelUrl + milestoneUrl + writeUrl)
     }
 }
 

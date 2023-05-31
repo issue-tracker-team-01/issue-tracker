@@ -88,6 +88,11 @@ class IssueCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        tagLabelStackView.arrangedSubviews.forEach { view in view.removeFromSuperview() }
+      }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

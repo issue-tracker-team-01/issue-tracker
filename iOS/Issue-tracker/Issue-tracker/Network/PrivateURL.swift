@@ -13,6 +13,6 @@ struct PrivateURL {
     static let closedIssue = "/issues?isOpen=false"
     static let allAssignee = "/assignees"
     static let label = "/labels"
-    static let milestone = "/milestones?status=open"
+    static let milestone = "/milestones?isOpen=true"
     static let writer = "/writers"
 }
