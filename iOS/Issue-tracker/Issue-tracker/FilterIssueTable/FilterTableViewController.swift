@@ -204,9 +204,13 @@ extension FilterTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-        cell?.tintColor = .accentTextPrimary
-        
+        // 토글형식
+        if cell?.tintColor == .accentTextPrimary{
+            cell?.tintColor = .neutralTextWeak
+        }else{
+            cell?.tintColor = .accentTextPrimary
+        }
+        // 섹션마다 단일선택
         let section = indexPath.section
         let rows = tableView.numberOfRows(inSection: section)
         
