@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import UserImage from '@assets/images/UserImage.svg';
 
 const UserIcon = styled.div`
   width: 32px;
