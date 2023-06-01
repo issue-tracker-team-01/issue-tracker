@@ -1,22 +1,23 @@
 import styled from 'styled-components';
 
 export const StyledInputContainer = styled.div`
+  position: relative;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
   width: 958px;
   height: 436px;
-  background-color: ${({ theme }) => theme.COLOR.GRAY200};
+  background-color: ${({ focusState, theme }) =>
+    focusState ? theme.COLOR.GRAY50 : theme.COLOR.GRAY200};
+  border-style: ${({ focusState }) => (focusState ? 'solid' : 'none')};
   border-radius: 16px;
 
   textarea {
-    padding: 10px;
-    margin-top: 15px;
+    margin-top: 50px;
     border: 0;
     width: 900px;
     background-color: transparent;
-    min-height: 340px;
+    height: 310px;
 
     &:focus {
       outline: 0;
@@ -32,24 +33,33 @@ export const StyledInputContainer = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-  color: #999;
-  padding: 1.3rem 30px 1rem 30px;
   position: absolute;
   top: 10px;
   left: 0;
+  color: ${({ theme }) => theme.COLOR.GRAY600};
+  padding: 1.3rem 30px 1rem 30px;
   transition: all 0.25s ease;
   pointer-events: none;
 `;
 
 export const CountBox = styled.span`
   position: absolute;
-  font-size: 12px;
-  color: ${({ theme }) => theme.COLOR.GRAY600};
+  right: 50px;
   bottom: 80px;
-  right: 40px;
+  color: ${({ theme }) => theme.COLOR.GRAY600};
+  font-size: 12px;
 `;
 
 export const UploadFileBox = styled.div`
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 40px;
+  padding-left: 30px;
+  border-top: 1px dashed ${({ theme }) => theme.COLOR.GRAY300};
+
   > input {
     visibility: hidden;
   }
