@@ -14,9 +14,6 @@ const ButtonsBox = styled.div`
   margin-top: 20px;
 `;
 
-// TODO : 작성취소 버튼 클릭시 router 동작 필요
-// TODO : 메인상태에서 title 길이가 0이상이냐
-
 const Buttons = () => {
   const {
     issueFormInfoState: { title },
