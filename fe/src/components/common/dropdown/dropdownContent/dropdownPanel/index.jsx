@@ -8,14 +8,16 @@ const DropdownPanel = ({
   filterState,
   filterClickHandler,
   dropdownStyle,
+  onClick,
 }) => {
   return (
-    <DropdownPanelBlock dropdownStyle={dropdownStyle}>
-      <PanelHeaderBlock>{buttonName} 필터</PanelHeaderBlock>
+    <DropdownPanelBlock dropdownStyle={dropdownStyle} onClick={onClick}>
+      {dropdownStyle === 'filter' && <PanelHeaderBlock>{buttonName} 필터</PanelHeaderBlock>}
       <ul>
         {(buttonId === 'assignees' || buttonId === 'writers') &&
-          content[buttonId]?.map(({ id, name, imgUrl }) => {
+          content[buttonId]?.map(({ id, name, imgUrl }, _, array) => {
             const isChecked = filterState[buttonId] === id;
+            const isOnlyChild = array.length === 1;
             return (
               <DropdownBody
                 buttonId={buttonId}
@@ -25,12 +27,14 @@ const DropdownPanel = ({
                 name={name}
                 imgUrl={imgUrl}
                 filterClickHandler={filterClickHandler}
+                isOnlyChild={isOnlyChild}
               />
             );
           })}
         {buttonId === 'labels' &&
-          content[buttonId]?.map(({ id, title, bgColorCode }) => {
+          content[buttonId]?.map(({ id, title, bgColorCode }, _, array) => {
             const isChecked = filterState[buttonId] === id;
+            const isOnlyChild = array.length === 1;
             return (
               <DropdownBody
                 buttonId={buttonId}
@@ -40,12 +44,14 @@ const DropdownPanel = ({
                 isChecked={isChecked}
                 bgColorCode={bgColorCode}
                 filterClickHandler={filterClickHandler}
+                isOnlyChild={isOnlyChild}
               />
             );
           })}
         {buttonId === 'milestones' &&
-          content[buttonId]?.map(({ id, title }) => {
+          content[buttonId]?.map(({ id, title }, _, array) => {
             const isChecked = filterState[buttonId] === id;
+            const isOnlyChild = array.length === 1;
             return (
               <DropdownBody
                 buttonId={buttonId}
@@ -54,6 +60,7 @@ const DropdownPanel = ({
                 title={title}
                 isChecked={isChecked}
                 filterClickHandler={filterClickHandler}
+                isOnlyChild={isOnlyChild}
               />
             );
           })}

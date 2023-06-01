@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const positions = {
   sidebar: {
     position: 'absolute',
-    top: '30px',
+    top: '70px',
   },
   filter: {
     position: 'absolute',
@@ -28,6 +28,7 @@ const DropdownPanelBlock = styled.div`
   width: 240px;
   border: 1px solid ${({ theme }) => theme.COLOR.GRAY300};
   border-radius: 16px;
+  z-index: 9999;
 `;
 
 // TODO: absolute의 위치 조정을 props에 따라 달리 줘야함

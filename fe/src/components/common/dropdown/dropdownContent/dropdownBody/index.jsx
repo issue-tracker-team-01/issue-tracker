@@ -13,11 +13,11 @@ const DropdownBody = ({
   title,
   bgColorCode,
   filterClickHandler,
+  isOnlyChild,
 }) => {
   const checkCircleImgSrc = isChecked ? CheckOnCircle : CheckOffCircle;
-
   return (
-    <DropdownBodyBlock onClick={() => filterClickHandler(buttonId, id)}>
+    <DropdownBodyBlock onClick={() => filterClickHandler(buttonId, id)} isOnlyChild={isOnlyChild}>
       <ContentBlock>
         {imgUrl && <UserIcon userImgUrl={imgUrl} alt={name} />}
         {name && <span>{name}</span>}

@@ -3,6 +3,7 @@ import DropdownButton from './dropdownContent/dropdownButton';
 import DropdownPanel from './dropdownContent/dropdownPanel';
 import DropdownContainer from './style';
 import apiUrl from '@utils/api/api';
+import styled from 'styled-components';
 
 const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownStyle }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,8 +47,13 @@ const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownSt
   };
 
   return (
-    <DropdownContainer ref={ref} onClick={handleToggleDropdown}>
-      <DropdownButton buttonName={title} />
+    <DropdownContainer ref={ref} dropdownStyle={dropdownStyle}>
+      <DropdownButton
+        onClick={handleToggleDropdown}
+        buttonName={title}
+        dropdownStyle={dropdownStyle}
+      />
+      {dropdownStyle === 'sidebar' && <StyledDiv>hi</StyledDiv>}
       {isOpen && dropdownContent && (
         <DropdownPanel
           buttonName={title}
@@ -56,10 +62,16 @@ const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownSt
           filterClickHandler={filterClickHandler}
           content={dropdownContent}
           dropdownStyle={dropdownStyle}
+          onClick={handleToggleDropdown}
         />
       )}
     </DropdownContainer>
   );
 };
+
+const StyledDiv = styled.div`
+  width: 30px;
+  height: 30px;
+`;
 
 export default Dropdown;

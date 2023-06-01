@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AddIssueMainContent from '@components/issueForm/addIssueMainContent/AddIssueMainContent';
+import IssueFormMainContent from '@components/issueForm/issueFormMainContent';
 import PageLayout from '@components/common/layout/PageLayout';
 import Buttons from '@components/issueForm/issueFormButtons/Buttons';
 
@@ -21,7 +21,7 @@ const IssueForm = () => {
     <PageLayout>
       <AddIssuePageTitle>새로운 이슈 작성</AddIssuePageTitle>
       <DividingLine />
-      <AddIssueMainContent />
+      <IssueFormMainContent />
       <DividingLine />
       <Buttons />
     </PageLayout>
