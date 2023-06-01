@@ -1,5 +1,5 @@
 import { CommentBody, CommentBox, CommentHeaderBox, TimeStampBox } from './style';
-import UserImageLarge from '@assets/images/UserImageLarge.svg';
+import UserImage from '@assets/images/UserImage.svg';
 import Label from '@components/common/lable';
 
 const CommentHeader = ({ image, assignee, timeStamp }) => {
@@ -16,7 +16,7 @@ const CommentHeader = ({ image, assignee, timeStamp }) => {
 const DetailContent = () => {
   return (
     <CommentBox>
-      <CommentHeader image={UserImageLarge} assignee="daon" timeStamp="9분" />
+      <CommentHeader image={UserImage} assignee="daon" timeStamp="9분" />
       <CommentBody>이슈 트래커 언제 끝나아</CommentBody>
     </CommentBox>
   );

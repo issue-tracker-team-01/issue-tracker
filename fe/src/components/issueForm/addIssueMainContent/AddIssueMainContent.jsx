@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import UserImageLarge from '@assets/images/UserImageLarge.svg';
+import UserImage from '@assets/images/UserImage.svg';
 import Inputs from './Inputs';
 import Sidebar from './Sidebar';
 
@@ -10,7 +10,7 @@ const UserIcon = styled.div`
   border-radius: 50%;
   background-position: center;
   background-size: cover;
-  background-image: url(${UserImageLarge});
+  background-image: url(${UserImage});
 `;
 
 const MainContentContainer = styled.div`

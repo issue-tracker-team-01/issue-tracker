@@ -1,12 +1,12 @@
-import Logo from '@assets/images/Logo.svg';
-import UserImageLarge from '@assets/images/UserImageLarge.svg';
-import { HeaderContainer, UserImage } from './style';
+import IssueTrackerLogo from '@assets/images/IssueTrackerLogo.svg';
+import UserImage from '@assets/images/UserImage.svg';
+import { HeaderContainer, UserImageBlock } from './style';
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <img src={Logo} />
-      <UserImage src={UserImageLarge} />
+      <img src={IssueTrackerLogo} />
+      <UserImageBlock src={UserImage} />
     </HeaderContainer>
   );
 };

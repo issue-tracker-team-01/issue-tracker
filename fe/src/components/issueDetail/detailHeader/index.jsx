@@ -1,4 +1,4 @@
-import { react, useState } from 'react';
+import { useState } from 'react';
 import {
   ControlButtonBox,
   IssueNumberBox,
@@ -9,7 +9,7 @@ import {
 } from './style';
 import Button from '@components/common/button';
 import EditIcon from '@assets/icons/EditIcon.svg';
-import archiveIcon from '@assets/icons/archiveIcon.svg';
+import DirectoryIcon from '@assets/icons/DirectoryIcon.svg';
 import Label from '@components/common/lable';
 import OpenIssueStatusIcon from '@assets/icons/OpenIssueStatusIcon.svg';
 import InputText from '@components/common/inputText';
@@ -43,7 +43,7 @@ const DetailHeader = () => {
                 title="제목 편집"
                 onClick={handleClick}
               />
-              <Button type="outline" size="medium" icon={archiveIcon} title="이슈 닫기" />
+              <Button type="outline" size="medium" icon={DirectoryIcon} title="이슈 닫기" />
             </ControlButtonBox>
           </>
         ) : (
