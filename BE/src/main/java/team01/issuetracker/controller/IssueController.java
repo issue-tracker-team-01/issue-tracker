@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import team01.issuetracker.service.IssueService;
 import team01.issuetracker.service.dto.request.FilterRequestDTO;
 import team01.issuetracker.service.dto.request.IssueRequestDTO;
+import team01.issuetracker.service.dto.response.IssueDetailResponseDTO;
+import team01.issuetracker.service.dto.response.IssuesResponseDTO;
 
 @Tag(name = "Issue", description = "이슈 관련 API")
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class IssueController {
 
     @Operation(summary = "이슈 목록 조회")
     @GetMapping
-    public ResponseEntity<?> view(FilterRequestDTO requestDTO) {
+    public ResponseEntity<IssuesResponseDTO> view(FilterRequestDTO requestDTO) {
         logger.info("이슈 필터 호출");
         return ResponseEntity.ok(issueService.getIssues(requestDTO));
     }
@@ -36,7 +38,7 @@ public class IssueController {
 
     @Operation(summary = "이슈 상세 보기")
     @GetMapping("/{id}")
-    public ResponseEntity<?> detailView(@PathVariable Long id) {
+    public ResponseEntity<IssueDetailResponseDTO> detailView(@PathVariable Long id) {
         logger.debug("이슈 상세보기");
         return ResponseEntity.ok(issueService.getIssue(id));
     }

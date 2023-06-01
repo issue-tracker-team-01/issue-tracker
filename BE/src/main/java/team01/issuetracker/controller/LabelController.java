@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import team01.issuetracker.service.LabelService;
 import team01.issuetracker.service.dto.response.LabelDTO;
+import team01.issuetracker.service.dto.response.LabelsResponseDTO;
 
 @Tag(name = "Label", description = "라벨 관련 API")
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class LabelController {
     private final Logger logger = LoggerFactory.getLogger(LabelController.class);
 
     @GetMapping
-    public ResponseEntity<?> labelsView() {
+    public ResponseEntity<LabelsResponseDTO> labelsView() {
         logger.info("전체 라벨 조회");
         return ResponseEntity.ok(labelService.getLabels());
     }

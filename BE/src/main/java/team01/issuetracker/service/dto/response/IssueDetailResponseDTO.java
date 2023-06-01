@@ -23,7 +23,6 @@ public class IssueDetailResponseDTO {
     private final MemberDTO writer;
     private final List<MemberDTO> assignees;
 
-
     public static IssueDetailResponseDTO of(Issue issue, Member writer, MilestoneDTO milestone, List<LabelDTO> labels, List<MemberDTO> assignees) {
         return IssueDetailResponseDTO.builder()
                 .id(issue.getId())

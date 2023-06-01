@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import team01.issuetracker.service.WriterService;
+import team01.issuetracker.service.dto.response.WritersResponseDTO;
 
 @Tag(name = "Writer", description = "작성자 관련 API")
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class WriterController {
     private final Logger logger = LoggerFactory.getLogger(WriterController.class);
 
     @GetMapping
-    public ResponseEntity<?> writersView() {
+    public ResponseEntity<WritersResponseDTO> writersView() {
         logger.info("작성자 조회");
         return ResponseEntity.ok(writerService.getWriters());
     }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import team01.issuetracker.service.AssigneeService;
+import team01.issuetracker.service.dto.response.AssigneesResponseDTO;
 
 @Tag(name = "Assignee", description = "담당자 관련 API")
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class AssigneeController {
     private final Logger logger = LoggerFactory.getLogger(AssigneeController.class);
 
     @GetMapping
-    public ResponseEntity<?> assigneesView() {
+    public ResponseEntity<AssigneesResponseDTO> assigneesView() {
         logger.info("담당자 조회");
         return ResponseEntity.ok(assigneeService.getAssignees());
     }
