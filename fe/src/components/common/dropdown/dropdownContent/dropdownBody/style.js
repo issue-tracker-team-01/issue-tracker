@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const DropdownBodyBlock = styled.li`
   display: flex;
@@ -12,12 +12,20 @@ const DropdownBodyBlock = styled.li`
   cursor: pointer;
 
   &:first-child {
-    border-radius: 16px 16px 0px 0px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
   }
 
   &:last-child {
-    border-radius: 0px 0px 16px 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
   }
+
+  ${({ isOnlyChild }) =>
+    isOnlyChild &&
+    css`
+      border-radius: 16px;
+    `}
 
   & img {
     width: 20px;

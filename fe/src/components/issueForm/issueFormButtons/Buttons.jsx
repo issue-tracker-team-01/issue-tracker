@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Button from '@common/button/index';
 import CancelIcon from '@assets/icons/CancelIcon.svg';
+import { IssueFormInfoStateContext } from '@pages/IssueForm';
 
 const ButtonsBox = styled.div`
   display: flex;
@@ -12,16 +13,20 @@ const ButtonsBox = styled.div`
   margin-top: 20px;
 `;
 
+// TODO : 작성취소 버튼 클릭시 router 동작 필요
+// TODO : 메인상태에서 title 길이가 0이상이냐
+
 const Buttons = () => {
+  const {
+    issueFormInfoState: { title },
+  } = useContext(IssueFormInfoStateContext);
+
+  const submitButtonState = title.length > 0 ? 'default' : 'disabled';
+
   return (
     <ButtonsBox>
-      <Button type="ghost" size="medium">
-        <img src={CancelIcon} alt="cancelIcon" />
-        작성 취소
-      </Button>
-      <Button type="container" size="large" state="disabled">
-        완료
-      </Button>
+      <Button title="작성취소" icon={CancelIcon} type="ghost" size="medium" />
+      <Button title="완료" type="container" size="large" state={submitButtonState} />
     </ButtonsBox>
   );
 };
