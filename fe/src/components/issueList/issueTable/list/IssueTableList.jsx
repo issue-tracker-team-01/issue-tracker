@@ -2,14 +2,18 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import IssueTableListItem from './listItems/IssueTableListItem';
 import { IssueListStateContext } from '@pages/IssueList';
+import { Link } from 'react-router-dom';
 
 const IssueTableListBox = styled.ul`
   display: flex;
   flex-direction: column;
-  > li:not(:last-child) {
+  border-radius: 16px;
+
+  > a:last-child > li:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.COLOR.GRAY300};
   }
-  > li:last-child {
+
+  > a:last-child > li {
     border-radius: 0px 0px 16px 16px;
   }
 `;
@@ -22,7 +26,9 @@ const IssueTableList = () => {
   return (
     <IssueTableListBox>
       {issues.map((issue) => (
-        <IssueTableListItem key={issue.id} issue={issue} />
+        <Link to={`/issueDetail/${issue.id}`} key={issue.id}>
+          <IssueTableListItem issue={issue}></IssueTableListItem>
+        </Link>
       ))}
     </IssueTableListBox>
   );
