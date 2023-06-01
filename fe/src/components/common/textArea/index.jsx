@@ -1,4 +1,4 @@
-import react, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { StyledInputContainer, StyledLabel, CountBox, UploadFileBox } from './style';
 import Button from '@common/button';
 import PaperClip from '@assets/icons/PaperClip.svg';
