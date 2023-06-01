@@ -11,20 +11,21 @@ import Button from '@components/common/button';
 import EditIcon from '@assets/icons/EditIcon.svg';
 import DirectoryIcon from '@assets/icons/DirectoryIcon.svg';
 import Label from '@components/common/label';
-import OpenIssueStatusIcon from '@assets/icons/OpenIssueStatusIcon.svg';
 import InputText from '@components/common/inputText';
+import getTimeElapsed from '@utils/api/timeElapsed';
 
-const DetailHeader = () => {
+const DetailHeader = ({ id, issueTitle, dateTime, assignee, status }) => {
   const [isEdit, setEdit] = useState(false);
-  const [title, setTitle] = useState('');
-
+  const [title, setTitle] = useState(issueTitle);
   const handleClick = () => {
-    setEdit(!isEdit);
+    setEdit((prevState) => !prevState);
   };
 
   const handleUpload = () => {
-    setInput(e.target.valut);
+    setInput(e.target.value);
   };
+  const labelTitle = status ? '열린 이슈' : '닫힌 이슈';
+  const labelBgColor = status ? 'blue' : 'navy';
 
   return (
     <>
@@ -33,7 +34,7 @@ const DetailHeader = () => {
           <>
             <IssueTitleBox>
               <span>{title}</span>
-              <IssueNumberBox>#2</IssueNumberBox>
+              <IssueNumberBox>#{id}</IssueNumberBox>
             </IssueTitleBox>
             <ControlButtonBox>
               <Button
@@ -47,7 +48,6 @@ const DetailHeader = () => {
             </ControlButtonBox>
           </>
         ) : (
-          // input 컴포넌트 불러오기 (edit 클릭하면 input 컴포넌트로 변경)
           <>
             <InputText title={title} setTitle={setTitle} />
             <ControlButtonBox>
@@ -71,12 +71,10 @@ const DetailHeader = () => {
       </LayoutStyle>
 
       <IssueInfoBox>
-        <Label
-          title="열린 이슈"
-          bgColor={({ theme }) => theme.COLOR.BLUE}
-          icon={OpenIssueStatusIcon}
-        />
-        <span>이 이슈가 3분전에 열렸음</span>
+        <Label title={labelTitle} bgColor={labelBgColor} />
+        <span>
+          이 이슈가 {getTimeElapsed(dateTime)} 전에 {assignee}님에 의해 열렸습니다.
+        </span>
       </IssueInfoBox>
       <Line />
     </>
