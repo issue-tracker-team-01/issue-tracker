@@ -37,6 +37,7 @@
     "array-callback-return": "off",
     "no-case-declarations": "off",
     "prefer-const": "off",
-    "no-useless-return": "off"
+    "no-useless-return": "off",
+    "no-unneeded-ternary": "off"
   }
 }
