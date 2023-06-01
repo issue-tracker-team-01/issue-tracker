@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '@common/button/index';
 import CancelIcon from '@assets/icons/CancelIcon.svg';
 import { IssueFormInfoStateContext } from '@pages/IssueForm';
+import { Link } from 'react-router-dom';
 
 const ButtonsBox = styled.div`
   display: flex;
@@ -25,7 +26,9 @@ const Buttons = () => {
 
   return (
     <ButtonsBox>
-      <Button title="작성취소" icon={CancelIcon} type="ghost" size="medium" />
+      <Link to="/">
+        <Button title="작성취소" icon={CancelIcon} type="ghost" size="medium" />
+      </Link>
       <Button title="완료" type="container" size="large" state={submitButtonState} />
     </ButtonsBox>
   );
