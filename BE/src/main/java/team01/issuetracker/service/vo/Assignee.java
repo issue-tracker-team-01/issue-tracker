@@ -7,10 +7,9 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class Count {
+public class Assignee {
 
-    private final int label;
-    private final int milestone;
-    private final int opened;
-    private final int closed;
+    private final long id;
+    private final String name;
+    private final String imgUrl;
 }
