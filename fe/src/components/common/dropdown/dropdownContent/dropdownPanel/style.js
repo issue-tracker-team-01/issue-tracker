@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const positions = {
   sidebar: {
     position: 'absolute',
-    top: '70px',
+    top: '90px',
   },
   filter: {
     position: 'absolute',

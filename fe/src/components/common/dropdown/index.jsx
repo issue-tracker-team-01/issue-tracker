@@ -3,7 +3,7 @@ import DropdownButton from './dropdownContent/dropdownButton';
 import DropdownPanel from './dropdownContent/dropdownPanel';
 import DropdownContainer from './style';
 import apiUrl from '@utils/api/api';
-import styled from 'styled-components';
+import SelectedItem from './dropdownContent/selectedItem';
 
 const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownStyle }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +46,15 @@ const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownSt
     setIsOpen((prevState) => !prevState);
   };
 
+  const getSelectedItem = (dropdownContent, buttonId, filterState) => {
+    if (dropdownContent) {
+      return dropdownContent[buttonId].find(({ id }) => id === filterState[buttonId]);
+    }
+    // const selectedItem = dropdownContent[buttonId].filter(({ id }) => id === filterState[buttonId]);
+  };
+
+  const selectedItem = getSelectedItem(dropdownContent, buttonId, filterState);
+
   return (
     <DropdownContainer ref={ref} dropdownStyle={dropdownStyle}>
       <DropdownButton
@@ -53,7 +62,15 @@ const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownSt
         buttonName={title}
         dropdownStyle={dropdownStyle}
       />
-      {dropdownStyle === 'sidebar' && <StyledDiv>hi</StyledDiv>}
+      {dropdownStyle === 'sidebar' && buttonId === 'assignees' && selectedItem && (
+        <SelectedItem key={selectedItem.id} name={selectedItem.name} imgUrl={selectedItem.imgUrl} />
+      )}
+      {dropdownStyle === 'sidebar' && buttonId === 'labels' && selectedItem && (
+        <SelectedItem title={selectedItem.title} bgColorCode={selectedItem.bgColorCode} />
+      )}
+      {dropdownStyle === 'sidebar' && buttonId === 'milestones' && selectedItem && (
+        <SelectedItem key={selectedItem.id} title={selectedItem.title} />
+      )}
       {isOpen && dropdownContent && (
         <DropdownPanel
           buttonName={title}
@@ -68,10 +85,5 @@ const Dropdown = ({ buttonId, title, filterState, filterClickHandler, dropdownSt
     </DropdownContainer>
   );
 };
-
-const StyledDiv = styled.div`
-  width: 30px;
-  height: 30px;
-`;
 
 export default Dropdown;
