@@ -36,6 +36,7 @@
     "no-unused-vars": "off",
     "array-callback-return": "off",
     "no-case-declarations": "off",
-    "prefer-const": "off"
+    "prefer-const": "off",
+    "no-useless-return": "off"
   }
 }
