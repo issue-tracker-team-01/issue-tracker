@@ -11,7 +11,7 @@ const initialState = {
   writerId: 4, // 로그인 기능이 없어 작성자 id 고정
   title: '',
   description: '',
-  fileUrl: '', // 파일 타입이 따로 있음
+  fileUrl: '',
   assignees: null,
   labels: null,
   milestones: null,
@@ -39,12 +39,8 @@ const issueFormReducer = (state, action) => {
   }
 };
 
-// TODO : post 보내는 로직 작성 필요(poco)
-// TODO : 상태를 post 보낼 json 형식으로 변경 필요
-
 const IssueForm = () => {
   const [issueFormInfoState, dispatch] = useReducer(issueFormReducer, initialState);
-
   const generatePostData = (issueFormInfoState) => {
     const { writerId, title, description, fileUrl, assignees, labels, milestones } =
       issueFormInfoState;
@@ -53,7 +49,7 @@ const IssueForm = () => {
       writerId,
       title,
       description,
-      fileUrl,
+      fileUrl: fileUrl ? fileUrl : null,
       assigneeIds: assignees ? [assignees] : null,
       labelIds: labels ? [labels] : null,
       milestoneId: milestones,
@@ -67,6 +63,9 @@ const IssueForm = () => {
     try {
       const response = await fetch(`${apiUrl}/issues`, {
         method: 'POST',
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // }, // header에 무엇을 넣어야하는가
         body: JSON.stringify(postData),
       });
 
@@ -82,7 +81,7 @@ const IssueForm = () => {
   };
 
   const submitButtonClickHandler = () => {
-    // postData(issueFormInfoState);
+    postData(issueFormInfoState);
   };
 
   return (
