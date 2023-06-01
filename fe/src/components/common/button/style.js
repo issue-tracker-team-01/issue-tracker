@@ -51,6 +51,7 @@ const states = {
   },
   disabled: {
     opacity: '0.32',
+    'pointer-events': 'none',
   },
 };
 
@@ -82,7 +83,7 @@ const stateStyles = css`
     state &&
     states[state] &&
     css`
-      opacity: ${states[state].opacity};
+      ${states[state]};
     `}
 `;
 

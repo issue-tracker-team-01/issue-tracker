@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import IssueFormMainContent from '@components/issueForm/issueFormMainContent';
 import PageLayout from '@components/common/layout/PageLayout';
 import Buttons from '@components/issueForm/issueFormButtons/Buttons';
+import apiUrl from '@utils/api/api';
 
 export const IssueFormInfoStateContext = createContext();
 
@@ -10,7 +11,7 @@ const initialState = {
   writerId: 4, // 로그인 기능이 없어 작성자 id 고정
   title: '',
   description: '',
-  fileUrl: '', // 파일 타입이 따로 있음
+  fileUrl: '',
   assignees: null,
   labels: null,
   milestones: null,
@@ -38,18 +39,56 @@ const issueFormReducer = (state, action) => {
   }
 };
 
-// TODO : post 보내는 로직 작성 필요(poco)
-// TODO : 상태를 post 보낼 json 형식으로 변경 필요
-
 const IssueForm = () => {
   const [issueFormInfoState, dispatch] = useReducer(issueFormReducer, initialState);
-  const convertInfoToJSON = (issueFormInfoState) => {
-    // TODO : 상태를 post 보낼 json 형식으로 변경 필요
+  const generatePostData = (issueFormInfoState) => {
+    const { writerId, title, description, fileUrl, assignees, labels, milestones } =
+      issueFormInfoState;
+
+    const postData = {
+      writerId,
+      title,
+      description,
+      fileUrl: fileUrl ? fileUrl : null,
+      assigneeIds: assignees ? [assignees] : null,
+      labelIds: labels ? [labels] : null,
+      milestoneId: milestones,
+    };
+
+    return JSON.stringify(postData);
+  };
+
+  const postData = async (issueFormInfoState) => {
+    const postData = generatePostData(issueFormInfoState);
+    try {
+      const response = await fetch(`${apiUrl}/issues`, {
+        method: 'POST',
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // }, // header에 무엇을 넣어야하는가
+        body: JSON.stringify(postData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to post data');
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const submitButtonClickHandler = () => {
+    postData(issueFormInfoState);
   };
 
   return (
     <PageLayout>
-      <IssueFormInfoStateContext.Provider value={{ issueFormInfoState, dispatch }}>
+      <IssueFormInfoStateContext.Provider
+        value={{ issueFormInfoState, dispatch, submitButtonClickHandler }}
+      >
         <IssueFormTitle>새로운 이슈 작성</IssueFormTitle>
         <DividingLine />
         <IssueFormMainContent />
