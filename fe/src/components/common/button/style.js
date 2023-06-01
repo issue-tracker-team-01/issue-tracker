@@ -5,12 +5,19 @@ const sizes = {
     width: '240px',
     height: '56px',
     borderRadius: '16px',
+    fontSize: '18px',
   },
 
   medium: {
     width: '120px',
     height: '40px',
     borderRadius: '11px',
+    fontSize: '16px',
+  },
+
+  small: {
+    height: '20px',
+    fontSize: '12px',
   },
 };
 
@@ -55,6 +62,7 @@ const sizeStyles = css`
       width: ${sizes[size].width};
       height: ${sizes[size].height};
       border-radius: ${sizes[size].borderRadius};
+      font-size: ${sizes[size].fontSize};
     `}
 `;
 
