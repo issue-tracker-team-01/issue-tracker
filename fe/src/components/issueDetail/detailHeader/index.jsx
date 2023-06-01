@@ -9,14 +9,14 @@ import {
 } from './style';
 import Button from '@components/common/button';
 import EditIcon from '@assets/icons/EditIcon.svg';
-import archiveIcon from '@assets/icons/archiveIcon.svg';
-import Label from '@components/common/lable';
+import ArchiveIcon from '@assets/icons/ArchiveIcon.svg';
+import Label from '@components/common/label';
 import OpenIssueStatusIcon from '@assets/icons/OpenIssueStatusIcon.svg';
 import InputText from '@components/common/inputText';
 
 const DetailHeader = () => {
   const [isEdit, setEdit] = useState(false);
-  const [input, setInput] = useState('');
+  const [title, setTitle] = useState('');
 
   const handleClick = () => {
     setEdit(!isEdit);
@@ -32,7 +32,7 @@ const DetailHeader = () => {
         {!isEdit ? (
           <>
             <IssueTitleBox>
-              <span>input</span>
+              <span>{title}</span>
               <IssueNumberBox>#2</IssueNumberBox>
             </IssueTitleBox>
             <ControlButtonBox>
@@ -43,13 +43,13 @@ const DetailHeader = () => {
                 title="제목 편집"
                 onClick={handleClick}
               />
-              <Button type="outline" size="medium" icon={archiveIcon} title="이슈 닫기" />
+              <Button type="outline" size="medium" icon={ArchiveIcon} title="이슈 닫기" />
             </ControlButtonBox>
           </>
         ) : (
           // input 컴포넌트 불러오기 (edit 클릭하면 input 컴포넌트로 변경)
           <>
-            <InputText value={input}></InputText>
+            <InputText title={title} setTitle={setTitle} />
             <ControlButtonBox>
               <Button
                 type="outline"
