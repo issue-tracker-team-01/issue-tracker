@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Dropdown from '@components/common/dropdown';
-import { IssueFormInfoStateContext } from '..';
 
 const SidebarContainer = styled.div`
   display: flex;
@@ -14,9 +13,7 @@ const SidebarContainer = styled.div`
   background-color: ${({ theme }) => theme.COLOR.GRAY50};
 `;
 
-const Sidebar = () => {
-  const { issueFormInfoState, dispatch } = useContext(IssueFormInfoStateContext);
-
+const Sidebar = ({ filterState, dispatch }) => {
   const sidebarDropdownButtons = [
     { buttonName: '담당자', buttonId: 'assignees' },
     { buttonName: '레이블', buttonId: 'labels' },
@@ -28,7 +25,7 @@ const Sidebar = () => {
   };
 
   const dropdownStyle = 'sidebar';
-  /* todo : sidebar style 상태 관리 필요 */
+
   return (
     <SidebarContainer>
       {sidebarDropdownButtons.map((button) => (
@@ -36,7 +33,7 @@ const Sidebar = () => {
           key={button.buttonId}
           buttonId={button.buttonId}
           title={button.buttonName}
-          filterState={issueFormInfoState}
+          filterState={filterState}
           filterClickHandler={filterClickHandler}
           dropdownStyle={dropdownStyle}
         />
