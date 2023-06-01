@@ -1,5 +1,6 @@
 package team01.issuetracker.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import team01.issuetracker.service.LabelService;
 import team01.issuetracker.service.dto.response.LabelDTO;
 
+@Tag(name = "Label", description = "라벨 관련 API")
 @RequiredArgsConstructor
 @RequestMapping("/api/labels")
 @RestController
