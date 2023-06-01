@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import team01.issuetracker.service.MilestoneService;
 import team01.issuetracker.service.dto.response.MilestoneDTO;
+import team01.issuetracker.service.dto.response.MilestoneResponseDTO;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/milestones")
@@ -17,7 +18,7 @@ public class MilestoneController {
     private final Logger logger = LoggerFactory.getLogger(MilestoneController.class);
 
     @GetMapping
-    public ResponseEntity<?> milestoneView(@RequestParam("isOpen") boolean status) {
+    public ResponseEntity<MilestoneResponseDTO> milestoneView(@RequestParam("isOpen") boolean status) {
         logger.info(status + " 마일스톤 조회");
         return ResponseEntity.ok(milestoneService.getMilestone(status));
     }

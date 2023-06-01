@@ -21,8 +21,6 @@ public interface IssueRepository extends CrudRepository<Issue, Long> {
 
     List<Issue> findAll();
 
-    List<Issue> findAllByMilestoneId(Long id);
-
     @Query("SELECT DISTINCT i.id, i.WRITER_ID, i.TITLE, i.DESCRIPTION, i.IS_OPEN, i.CREATE_DATE_TIME, i.MILESTONE_ID FROM issue i" +
             "    LEFT OUTER JOIN issue_label il ON i.id = il.issue_id" +
             "    LEFT OUTER JOIN assignee a ON i.id = a.issue_id" +

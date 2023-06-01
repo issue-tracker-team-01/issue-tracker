@@ -52,6 +52,7 @@ public class Issue {
                 .title(title)
                 .description(description)
                 .isOpen(true)
+                .createAt(LocalDateTime.now())
                 .fileUrl(fileUrl)
                 .milestoneId(AggregateReference.to(milestoneId))
                 .build();

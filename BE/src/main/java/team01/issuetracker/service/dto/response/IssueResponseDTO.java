@@ -24,13 +24,12 @@ public class IssueResponseDTO {
     private final String author;
     private final String authorUrl;
 
-
-    public static IssueResponseDTO of(Issue temp, Member writer, String milestone, List<MiniLabel> labels) {
+    public static IssueResponseDTO of(Issue issue, Member writer, String milestone, List<MiniLabel> labels) {
         return IssueResponseDTO.builder()
-                .id(temp.getId())
-                .title(temp.getTitle())
-                .createAt(temp.getCreateAt())
-                .description(temp.getDescription())
+                .id(issue.getId())
+                .title(issue.getTitle())
+                .createAt(issue.getCreateAt())
+                .description(issue.getDescription())
                 .author(writer.getName())
                 .authorUrl(writer.getFileURL())
                 .milestone(milestone)
