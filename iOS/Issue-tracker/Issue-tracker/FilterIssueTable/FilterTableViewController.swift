@@ -7,16 +7,23 @@
 
 import UIKit
 
+protocol UploadData: AnyObject {
+    func uploadIssue(url: String)
+}
+
 class FilterTableViewController: UIViewController, CustomNavigationDelegate {
+    weak var delegate: UploadData?
+    
     private let networkManager = NetworkManager.shared
     private let customView = CustomNavigationFilter()
     private let tableView = UITableView()
     
-    private let sectionKind = ["상태", "담당자", "레이블"]
+    private let sectionKind = ["상태", "담당자", "레이블", "마일스톤", "작성자"]
     private let status = ["열린 이슈", "닫힌 이슈"]
     private var assigneeArray: [APIData] = []
     private var labelArray: [APIData] = []
-    
+    private var milestoneArray: [APIData] = []
+    private var writerArray: [APIData] = []
     
     private let filterListCellIdentifier = "filterListCell"
     private let filterListHeaderIdentifier = "filterListHeader"
@@ -26,7 +33,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         customView.delegate = self
-        
+       
         customViewLayout()
         tableViewLayout()
         setupData()
@@ -67,7 +74,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     func setupData() {
         let group = DispatchGroup()
         group.enter()
-        networkManager.performRequest(urlString: PrivateURL.label) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.label) { result in
             switch result {
             case .success(let labelData):
                 self.labelArray = labelData
@@ -76,8 +83,9 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
             }
             group.leave()
         }
+        
         group.enter()
-        networkManager.performRequest(urlString: PrivateURL.allAssignee) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.allAssignee) { result in
             switch result {
             case .success(let assigneeData):
                 self.assigneeArray = assigneeData
@@ -86,17 +94,82 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
             }
             group.leave()
         }
+        
+        group.enter()
+        networkManager.performRequest(searchTerm: PrivateURL.milestone) { result in
+            switch result {
+            case .success(let milestoneData):
+                self.milestoneArray = milestoneData
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            group.leave()
+        }
+        
+        group.enter()
+        networkManager.performRequest(searchTerm: PrivateURL.writer) { result in
+            switch result {
+            case .success(let writerData):
+                self.writerArray = writerData
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            group.leave()
+        }
+        
         group.notify(queue: .main) {
             self.tableView.reloadData()
         }
     }
+    
     
     func cancelButtonTapped() {
         self.dismiss(animated: true)
     }
     
     func saveButtonTapped() {
-        //TODO: 추후 구현
+        //해당하는 데이터를 불러와서 이슈목록에 보여줌 !!!@!@@!@!@@ㅣ떠따ㅓ끼ㅏㅓㅣㅏㄹ 하하하하ㅏ 그리고 마지막에 디스미스 후 이슈리스트 다시 그리기
+        
+        var issueUrl = PrivateURL.openIssue
+        var assigneeUrl = ""
+        var labelUrl = ""
+        var milestoneUrl = ""
+        var writeUrl = ""
+        var selectedRows: [IndexPath] = []
+           
+           for section in 0..<sectionKind.count {
+               let rows = tableView.numberOfRows(inSection: section)
+               for row in 0..<rows {
+                   let indexPath = IndexPath(row: row, section: section)
+                   if let cell = tableView.cellForRow(at: indexPath), cell.tintColor == .accentTextPrimary {
+                       selectedRows.append(indexPath)
+                   }
+               }
+           }
+
+        
+        for item in selectedRows {
+            switch item.first {
+            case 0:
+                if item.last == 0 {
+                    issueUrl = PrivateURL.openIssue
+                }else {
+                    issueUrl = PrivateURL.closedIssue
+                }
+            case 1:
+                assigneeUrl = "&assignees=\((item.last ?? 0) + 1)"
+            case 2:
+                labelUrl = "&labels=\((item.last ?? 0) + 1)"
+            case 3:
+                milestoneUrl = "&milestones=\((item.last ?? 0) + 1)"
+            case 4:
+                writeUrl = "&writers=\((item.last ?? 0) + 1)"
+            default:
+                break
+            }
+        }
+        dismiss(animated: true)
+        delegate?.uploadIssue(url: issueUrl + assigneeUrl + labelUrl + milestoneUrl + writeUrl)
     }
 }
 
@@ -114,15 +187,20 @@ extension FilterTableViewController: UITableViewDataSource {
             return assigneeArray.count
         case 2:
             return labelArray.count
+        case 3:
+            return milestoneArray.count
+        case 4:
+            return writerArray.count
+            
         default:
             return 0
         }
     }
-    //(assigneeArray as? [AllAssignee.Assignee])?[indexPath.row].name
-    //(labelArray as? [LabelList.Label])?[indexPath.row].title
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.filterListCellIdentifier, for: indexPath)
+        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         switch indexPath.section {
         case 0:
@@ -131,6 +209,10 @@ extension FilterTableViewController: UITableViewDataSource {
             cell.textLabel?.text = (assigneeArray as? [AssigneeList.Assignee])?[indexPath.row].name
         case 2:
             cell.textLabel?.text = (labelArray as? [LabelList.Label])?[indexPath.row].title
+        case 3:
+            cell.textLabel?.text = (milestoneArray as? [MilestoneList.Milestone])?[indexPath.row].title
+        case 4:
+            cell.textLabel?.text = (writerArray as? [WriterList.Writer])?[indexPath.row].name
         default:
             break
         }
@@ -171,9 +253,13 @@ extension FilterTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-        cell?.tintColor = .accentTextPrimary
-        
+        // 토글형식
+        if cell?.tintColor == .accentTextPrimary{
+            cell?.tintColor = .neutralTextWeak
+        }else{
+            cell?.tintColor = .accentTextPrimary
+        }
+        // 섹션마다 단일선택
         let section = indexPath.section
         let rows = tableView.numberOfRows(inSection: section)
         
@@ -184,5 +270,7 @@ extension FilterTableViewController: UITableViewDelegate {
                 }
             }
         }
+        //클릭하기 쉽도록 스크롤 컨트롤
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .middle)
     }
 }

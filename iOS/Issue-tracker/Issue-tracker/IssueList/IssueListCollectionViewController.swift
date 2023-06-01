@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
+class IssueListCollectionViewController: UIViewController, CustomViewDelegate, UploadData {
     
     var collectionView: UICollectionView!
     let cellRatio: CGFloat = 150/375
@@ -46,6 +46,7 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     func setUI() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        filterViewController.delegate = self
         collectionView.backgroundColor = UIColor.neutralBackgroundStrong
         
         collectionView.register(IssueCell.self, forCellWithReuseIdentifier: IssueCell.identifier)
@@ -55,7 +56,8 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
     }
     
     func setupData() {
-        networkManager.performRequest(urlString: PrivateURL.openIssue) { result in
+        networkManager.performRequest(searchTerm: PrivateURL.openIssue) { result in
+            print(PrivateURL.openIssue)
             switch result {
             case .success(let issueData):
                 self.issueArrays = issueData
@@ -78,6 +80,21 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate {
         let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
         statusBarView.backgroundColor = bgColor
         window?.addSubview(statusBarView)
+    }
+    
+    func uploadIssue(url: String) {
+        print(url)
+        networkManager.performRequest(searchTerm: url) { result in
+            switch result {
+            case .success(let issueData):
+                self.issueArrays = issueData
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

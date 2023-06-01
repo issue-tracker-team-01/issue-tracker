@@ -19,8 +19,8 @@ final class NetworkManager {
     private init() {}
     typealias NetworkCompletion = (Result<[APIData], NetworkError>) -> Void
     
-    func performRequest(urlString: String, completion: @escaping NetworkCompletion) {
-        guard let url = URL(string: urlString) else { return }
+    func performRequest(searchTerm: String, completion: @escaping NetworkCompletion) {
+        guard let url = URL(string: "\(PrivateURL.url)\(searchTerm)") else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -49,10 +49,22 @@ final class NetworkManager {
             
             if let labelData = try? decoder.decode(LabelList.LabelData.self, from: issueData) {
                 return labelData.labels
-            } else if let assigneeData = try? decoder.decode(AssigneeList.AssigneeData.self, from: issueData) {
+            }
+            
+            else if let assigneeData = try? decoder.decode(AssigneeList.AssigneeData.self, from: issueData) {
                 return assigneeData.assignees
-            } else if let issueData = try? decoder.decode(IssueList.IssueData.self, from: issueData) {
+            }
+            
+            else if let issueData = try? decoder.decode(IssueList.IssueData.self, from: issueData) {
                 return issueData.issues
+            }
+            
+            else if let milestoneData = try? decoder.decode(MilestoneList.MilesoneData.self, from: issueData) {
+                return milestoneData.milestones
+            }
+            
+            else if let writerData = try? decoder.decode(WriterList.WriterData.self, from: issueData) {
+                return writerData.writers
             }
             
             return nil
