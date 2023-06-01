@@ -43,7 +43,6 @@ const issueFormReducer = (state, action) => {
 
 const IssueForm = () => {
   const [issueFormInfoState, dispatch] = useReducer(issueFormReducer, initialState);
-
   const convertInfoToJSON = (issueFormInfoState) => {
     // TODO : 상태를 post 보낼 json 형식으로 변경 필요
   };
