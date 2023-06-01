@@ -47,6 +47,8 @@ public class Issue {
     private Set<IssueLabel> issueLabels = new HashSet<>();
 
     public static Issue create(Long writerId, String title, String description, String fileUrl, Long milestoneId) {
+        AggregateReference<Milestone, @NonNull Long> milestoneParam
+                = milestoneId == null ? null: AggregateReference.to(milestoneId);
         return Issue.builder()
                 .writerId(AggregateReference.to(writerId))
                 .title(title)
@@ -54,7 +56,7 @@ public class Issue {
                 .isOpen(true)
                 .createAt(LocalDateTime.now())
                 .fileUrl(fileUrl)
-                .milestoneId(AggregateReference.to(milestoneId))
+                .milestoneId(milestoneParam)
                 .build();
     }
 
