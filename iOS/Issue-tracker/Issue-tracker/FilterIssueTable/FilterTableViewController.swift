@@ -130,7 +130,7 @@ class FilterTableViewController: UIViewController, CustomNavigationDelegate {
     func saveButtonTapped() {
         //해당하는 데이터를 불러와서 이슈목록에 보여줌 !!!@!@@!@!@@ㅣ떠따ㅓ끼ㅏㅓㅣㅏㄹ 하하하하ㅏ 그리고 마지막에 디스미스 후 이슈리스트 다시 그리기
         
-        var issueUrl = PrivateURL.openIssue
+        var issueUrl = PrivateURL.issue
         var assigneeUrl = ""
         var labelUrl = ""
         var milestoneUrl = ""

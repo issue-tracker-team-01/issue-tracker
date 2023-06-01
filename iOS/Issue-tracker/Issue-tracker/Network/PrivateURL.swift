@@ -9,6 +9,7 @@ import Foundation
 
 struct PrivateURL {
     static let url = "http://52.79.159.39:8888/api"
+    static let issue = "/issues"
     static let openIssue = "/issues?isOpen=true"
     static let closedIssue = "/issues?isOpen=false"
     static let allAssignee = "/assignees"
