@@ -20,6 +20,7 @@ const ButtonsBox = styled.div`
 const Buttons = () => {
   const {
     issueFormInfoState: { title },
+    submitButtonClickHandler,
   } = useContext(IssueFormInfoStateContext);
 
   const submitButtonState = title.length > 0 ? 'default' : 'disabled';
@@ -29,7 +30,13 @@ const Buttons = () => {
       <Link to="/">
         <Button title="작성취소" icon={CancelIcon} type="ghost" size="medium" />
       </Link>
-      <Button title="완료" type="container" size="large" state={submitButtonState} />
+      <Button
+        title="완료"
+        type="container"
+        size="large"
+        state={submitButtonState}
+        onClick={submitButtonClickHandler}
+      />
     </ButtonsBox>
   );
 };
