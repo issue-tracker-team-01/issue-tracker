@@ -96,6 +96,8 @@ class IssueListCollectionViewController: UIViewController, CustomViewDelegate, U
             }
         }
     }
+    
+    
 }
 
 extension IssueListCollectionViewController: UICollectionViewDataSource {
@@ -136,7 +138,7 @@ extension IssueListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width = self.view.frame.width
-        let headerRatio: CGFloat = 94/375
+        let headerRatio: CGFloat = 110/321
         
         return CGSize(width: width, height: width * headerRatio)
     }
