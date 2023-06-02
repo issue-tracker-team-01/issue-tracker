@@ -12,9 +12,8 @@ import EditIcon from '@assets/icons/EditIcon.svg';
 import DirectoryIcon from '@assets/icons/DirectoryIcon.svg';
 import Label from '@components/common/label';
 import InputText from '@components/common/inputText';
-import getTimeElapsed from '@utils/api/timeElapsed';
 
-const DetailHeader = ({ id, issueTitle, dateTime, assignee, status }) => {
+const DetailHeader = ({ id, issueTitle, dateTime, writer, status }) => {
   const [isEdit, setEdit] = useState(false);
   const [title, setTitle] = useState(issueTitle);
   const handleClick = () => {
@@ -73,7 +72,7 @@ const DetailHeader = ({ id, issueTitle, dateTime, assignee, status }) => {
       <IssueInfoBox>
         <Label title={labelTitle} bgColor={labelBgColor} />
         <span>
-          이 이슈가 {getTimeElapsed(dateTime)} 전에 {assignee}님에 의해 열렸습니다.
+          이 이슈가 {dateTime}에 {writer}님에 의해 열렸습니다.
         </span>
       </IssueInfoBox>
       <Line />
