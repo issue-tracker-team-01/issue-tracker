@@ -33,3 +33,17 @@ export const CommentBody = styled.div`
 export const TimeStampBox = styled.span`
   color: ${({ theme }) => theme.COLOR.GRAY600};
 `;
+
+export const UserImageBox = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-image: url(${({ userImage }) => userImage});
+`;
+
+export const DetailContentBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

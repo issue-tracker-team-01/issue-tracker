@@ -4,6 +4,7 @@ import PageLayout from '@components/common/layout/PageLayout';
 import DetailHeader from '@components/issueDetail/detailHeader';
 import DetailContent from '@components/issueDetail/detailContent';
 import apiUrl from '@utils/api/api';
+import getTimeElapsed from '@utils/api/timeElapsed';
 
 const IssueDetail = () => {
   const [detailContent, setDetailContent] = useState(null);
@@ -25,14 +26,15 @@ const IssueDetail = () => {
           <DetailHeader
             id={detailContent.id}
             issueTitle={detailContent.title}
-            dateTime={detailContent.createDateTime}
-            assignee={detailContent.assignees[0].name}
+            dateTime={getTimeElapsed(detailContent.createDateTime)}
+            writer={detailContent.writer.name}
             state={detailContent.status}
           />
           <DetailContent
             description={detailContent.description}
             imgUrl={detailContent.writer.imgUrl}
             name={detailContent.writer.name}
+            dateTime={getTimeElapsed(detailContent.createDateTime)}
           />
         </React.Fragment>
       )}

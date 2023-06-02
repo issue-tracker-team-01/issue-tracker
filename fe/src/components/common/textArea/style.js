@@ -6,18 +6,19 @@ export const StyledInputContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 958px;
-  height: 436px;
+  height: 306px;
   background-color: ${({ focusState, theme }) =>
     focusState ? theme.COLOR.GRAY50 : theme.COLOR.GRAY200};
   border-style: ${({ focusState }) => (focusState ? 'solid' : 'none')};
   border-radius: 16px;
+  margin-top: 30px;
 
   textarea {
     margin-top: 50px;
     border: 0;
     width: 900px;
     background-color: transparent;
-    height: 310px;
+    height: 180px;
 
     &:focus {
       outline: 0;

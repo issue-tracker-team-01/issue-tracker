@@ -7,6 +7,7 @@ export const LabelBox = styled.div`
   border-radius: 50px;
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ theme }) => theme.COLOR.GRAY50};
+  border: solid 1px ${({ borderColor }) => borderColor};
 `;
 
 export const ContentLayoutStyle = styled.div`

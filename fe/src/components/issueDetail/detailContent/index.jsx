@@ -1,28 +1,38 @@
-import { CommentBody, CommentBox, CommentHeaderBox, TimeStampBox } from './style';
-import UserImage from '@assets/images/UserImage.svg';
+import {
+  CommentBody,
+  CommentBox,
+  CommentHeaderBox,
+  TimeStampBox,
+  UserImageBox,
+  DetailContentBox,
+} from './style';
 import Label from '@components/common/label';
 import TextArea from '@components/common/textArea';
+import Sidebar from '@components/issueForm/issueFormMainContent/mainContentSidebar/Sidebar';
 
-const CommentHeader = ({ image, assignee, timeStamp }) => {
+const CommentHeader = ({ userImage, assignee, timeStamp }) => {
   return (
     <CommentHeaderBox>
-      <img src={image} alt="이미지" />
+      <UserImageBox userImage={userImage} />
       <span>{assignee}</span>
-      <TimeStampBox>{timeStamp} 전</TimeStampBox>
-      <Label title="작성자" bgColor="black" />
+      <TimeStampBox>{timeStamp}</TimeStampBox>
+      <Label title="작성자" bgColor="none" borderColor="gray" />
     </CommentHeaderBox>
   );
 };
 
-const DetailContent = () => {
+const DetailContent = ({ description, dateTime, name, imgUrl }) => {
   return (
-    <>
-      <CommentBox>
-        <CommentHeader image={UserImage} assignee="daon" timeStamp="9분" />
-        <CommentBody>이슈 트래커 언제 끝나아</CommentBody>
-      </CommentBox>
-      <TextArea />
-    </>
+    <DetailContentBox>
+      <div>
+        <CommentBox>
+          <CommentHeader userImage={imgUrl} assignee={name} timeStamp={dateTime} />
+          <CommentBody>{description}</CommentBody>
+        </CommentBox>
+        <TextArea />
+      </div>
+      <Sidebar />
+    </DetailContentBox>
   );
 };
 
