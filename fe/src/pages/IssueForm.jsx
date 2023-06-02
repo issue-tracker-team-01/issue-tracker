@@ -50,8 +50,8 @@ const IssueForm = () => {
       title,
       description,
       fileUrl: fileUrl ? fileUrl : null,
-      assigneeIds: assignees ? [assignees] : null,
-      labelIds: labels ? [labels] : null,
+      assigneeIds: assignees ? [assignees] : [],
+      labelIds: labels ? [labels] : [],
       milestoneId: milestones,
     };
 
@@ -60,13 +60,14 @@ const IssueForm = () => {
 
   const postData = async (issueFormInfoState) => {
     const postData = generatePostData(issueFormInfoState);
+
     try {
       const response = await fetch(`${apiUrl}/issues`, {
         method: 'POST',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // }, // header에 무엇을 넣어야하는가
-        body: JSON.stringify(postData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: postData,
       });
 
       if (!response.ok) {
