@@ -18,7 +18,7 @@
   "rules": {
     "prettier/prettier": "error",
     "arrow-parens": ["error", "always"],
-    "no-console": "warn",
+    "no-console": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "no-undef": "off",
