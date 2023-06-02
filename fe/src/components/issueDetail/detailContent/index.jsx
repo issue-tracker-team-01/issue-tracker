@@ -5,18 +5,22 @@ import {
   TimeStampBox,
   UserImageBox,
   DetailContentBox,
+  HeaderInfoBox,
 } from './style';
 import Label from '@components/common/label';
 import TextArea from '@components/common/textArea';
+import Header from '@components/header';
 import Sidebar from '@components/issueForm/issueFormMainContent/mainContentSidebar/Sidebar';
 
 const CommentHeader = ({ userImage, assignee, timeStamp }) => {
   return (
     <CommentHeaderBox>
-      <UserImageBox userImage={userImage} />
-      <span>{assignee}</span>
-      <TimeStampBox>{timeStamp}</TimeStampBox>
-      <Label title="작성자" bgColor="none" borderColor="gray" />
+      <HeaderInfoBox>
+        <UserImageBox userImage={userImage} />
+        <span>{assignee}</span>
+        <TimeStampBox>{timeStamp}</TimeStampBox>
+      </HeaderInfoBox>
+      <Label title="작성자" bgColor="none" borderColor="gray" border="true" />
     </CommentHeaderBox>
   );
 };

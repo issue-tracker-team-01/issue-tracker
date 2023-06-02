@@ -6,8 +6,8 @@ export const LabelBox = styled.div`
   padding: 5px 18px;
   border-radius: 50px;
   background-color: ${({ bgColor }) => bgColor};
-  color: ${({ theme }) => theme.COLOR.GRAY50};
-  border: solid 1px ${({ borderColor }) => borderColor};
+  color: ${({ border, theme }) => (border ? theme.COLOR.GRAY500 : theme.COLOR.GRAY50)};
+  border: solid 1px ${({ border, theme }) => (border ? theme.COLOR.GRAY500 : 'none')};
 `;
 
 export const ContentLayoutStyle = styled.div`

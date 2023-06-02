@@ -1,8 +1,8 @@
 import { LabelBox, ContentLayoutStyle } from './style';
 
-const Label = ({ title, bgColor, icon }) => {
+const Label = ({ title, bgColor, icon, border }) => {
   return (
-    <LabelBox bgColor={bgColor}>
+    <LabelBox bgColor={bgColor} border={border}>
       <ContentLayoutStyle>
         <img src={icon} />
         <span>{title}</span>

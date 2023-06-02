@@ -7,6 +7,7 @@ export const CommentBox = styled.div`
 
 export const CommentHeaderBox = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
   width: 958px;
@@ -15,7 +16,6 @@ export const CommentHeaderBox = styled.div`
   border: solid 1px ${({ theme }) => theme.COLOR.GRAY300};
   border-bottom: none;
   background-color: ${({ theme }) => theme.COLOR.GRAY200};
-  gap: 8px;
 `;
 
 export const CommentBody = styled.div`
@@ -46,4 +46,9 @@ export const UserImageBox = styled.div`
 export const DetailContentBox = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const HeaderInfoBox = styled.div`
+  display: flex;
+  gap: 8px;
 `;
