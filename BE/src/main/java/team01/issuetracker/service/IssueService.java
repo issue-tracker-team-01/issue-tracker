@@ -56,7 +56,7 @@ public class IssueService {
         return IssuesResponseDTO.of(count, issues);
     }
 
-    public void create(IssueRequestDTO issueDTO) {
+    public Long create(IssueRequestDTO issueDTO) {
         Issue issue = Issue.create(
                 issueDTO.getWriterId(),
                 issueDTO.getTitle(),
@@ -83,6 +83,7 @@ public class IssueService {
         issue.setIssueLabels(issueLabelList);
 
         issueRepository.save(issue);
+        return issue.getId();
     }
 
     public IssueDetailResponseDTO getIssue(Long id) {
@@ -96,7 +97,6 @@ public class IssueService {
             int closedIssueCount = issueRepository.countByIsOpenAndMilestoneId(false, milestone.getId());
             issueMilestone = MilestoneDTO.of(milestone, openIssueCount, closedIssueCount);
         }
-
 
         //맴버 전체 조회
         Map<Long, Member> members = memberRepository.findAll().stream()

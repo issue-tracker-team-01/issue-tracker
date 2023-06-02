@@ -11,11 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 public class IssueRequestDTO {
 
-    private final Long writerId;
-    private final String title;
-    private final String description;
-    private final String fileUrl;
-    private final List<Long> assigneeIds;
-    private final List<Long> labelIds;
-    private final Long milestoneId;
+    private Long writerId;
+    private String title;
+    private String description;
+    private String fileUrl;
+    private List<Long> assigneeIds;
+    private List<Long> labelIds;
+    private Long milestoneId;
 }
