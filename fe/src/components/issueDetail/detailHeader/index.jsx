@@ -13,7 +13,7 @@ import DirectoryIcon from '@assets/icons/DirectoryIcon.svg';
 import Label from '@components/common/label';
 import InputText from '@components/common/inputText';
 
-const DetailHeader = ({ id, issueTitle, dateTime, writer, status }) => {
+const DetailHeader = ({ id, issueTitle, dateTime, writer, state }) => {
   const [isEdit, setEdit] = useState(false);
   const [title, setTitle] = useState(issueTitle);
   const handleClick = () => {
@@ -23,8 +23,9 @@ const DetailHeader = ({ id, issueTitle, dateTime, writer, status }) => {
   const handleUpload = () => {
     setInput(e.target.value);
   };
-  const labelTitle = status ? '열린 이슈' : '닫힌 이슈';
-  const labelBgColor = status ? 'blue' : 'navy';
+
+  const labelTitle = state ? '열린 이슈' : '닫힌 이슈';
+  const labelBgColor = state ? 'blue' : 'navy';
 
   return (
     <>
