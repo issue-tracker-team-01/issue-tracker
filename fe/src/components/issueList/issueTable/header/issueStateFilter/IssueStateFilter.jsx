@@ -47,7 +47,7 @@ const IssueStateFilter = () => {
           imgSrc={OpenIssueStatusIcon}
           imgAlt={OpenIssueStatusIcon}
           buttonName="열린이슈"
-          issuesCount={isOpen ? issues.length : opened}
+          issuesCount={opened}
           issueState={isOpen}
           onClick={openButtonHandler}
         />
@@ -55,7 +55,7 @@ const IssueStateFilter = () => {
           imgSrc={CloseIssueStatusIcon}
           imgAlt={CloseIssueStatusIcon}
           buttonName="닫힌이슈"
-          issuesCount={isOpen ? closed : issues.length}
+          issuesCount={closed}
           issueState={!isOpen}
           onClick={closeButtonHandler}
         />
